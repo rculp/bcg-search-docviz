@@ -45,73 +45,73 @@ class ResultsContainer extends Component {
 
           <h2>Alerts</h2>
           <button onClick={() => {
-                sdk.search.listAlerts().then(testResponse => this.setState({ testResponse }));
-              }}>
+            sdk.search.listAlerts().then(testResponse => this.setState({ testResponse }));
+          }}>
             List
           </button>
 
           <button onClick={() => {
-                sdk.search.createAlerts({
-                  "name": "MyAlert",
-                  "description": "alert description",
-                  "timezone": "Europe/Berlin",
-                  "profile": "DocSearch",
-                  "frequency": "immediate",
-                  "days": "Tuesday,Thursday",
-                  "from": "09:00",
-                  "to": "17:00",
-                  "times": "12:00",
-                  "active": true,
-                  "combineWithOtherAlerts": false,
-                  "respectTabSelection": false,
-                  "query":{
-                    "emptyQuestion": true,
-                    "questionLanguage": "autodetect",
-                    "fuzzySearch": true,
-                    "phonetics": false,
-                    "scmode": "Correct"
-                  }
-                }).then(testResponse => this.setState({ testResponse }));
-              }}>
+            sdk.search.createAlerts({
+              "name": "MyAlert",
+              "description": "alert description",
+              "timezone": "Europe/Berlin",
+              "profile": "DocSearch",
+              "frequency": "immediate",
+              "days": "Tuesday,Thursday",
+              "from": "09:00",
+              "to": "17:00",
+              "times": "12:00",
+              "active": true,
+              "combineWithOtherAlerts": false,
+              "respectTabSelection": false,
+              "query":{
+                "emptyQuestion": true,
+                "questionLanguage": "autodetect",
+                "fuzzySearch": true,
+                "phonetics": false,
+                "scmode": "Correct"
+              }
+            }).then(testResponse => this.setState({ testResponse }));
+          }}>
             Create
           </button>
 
           <button onClick={() => {
-                sdk.search.readAlerts("MyAlert").then(testResponse => this.setState({ testResponse }));
-              }}>
+            sdk.search.readAlerts("MyAlert").then(testResponse => this.setState({ testResponse }));
+          }}>
             Read
           </button>
 
           <button onClick={() => {
-                sdk.search.updateAlerts({
-                  "name": "MyNewAlertName",
-                  "oldName": "MyAlert",
-                  "description": "alert description",
-                  "timezone": "Europe/Berlin",
-                  "profile": "DocSearch",
-                  "frequency": "immediate",
-                  "days": "Monday,Thursday",
-                  "from": "09:00",
-                  "to": "17:00",
-                  "times": "12:00",
-                  "active": true,
-                  "combineWithOtherAlerts": false,
-                  "respectTabSelection": false,
-                  "query":{
-                    "emptyQuestion": true,
-                    "questionLanguage": "autodetect",
-                    "fuzzySearch": true,
-                    "phonetics": false,
-                    "scmode": "Correct"
-                  }
-                }).then(testResponse => this.setState({ testResponse }));
-              }}>
+            sdk.search.updateAlerts({
+              "name": "MyNewAlertName",
+              "oldName": "MyAlert",
+              "description": "alert description",
+              "timezone": "Europe/Berlin",
+              "profile": "DocSearch",
+              "frequency": "immediate",
+              "days": "Monday,Thursday",
+              "from": "09:00",
+              "to": "17:00",
+              "times": "12:00",
+              "active": true,
+              "combineWithOtherAlerts": false,
+              "respectTabSelection": false,
+              "query":{
+                "emptyQuestion": true,
+                "questionLanguage": "autodetect",
+                "fuzzySearch": true,
+                "phonetics": false,
+                "scmode": "Correct"
+              }
+            }).then(testResponse => this.setState({ testResponse }));
+          }}>
             Update
           </button>
 
           <button onClick={() => {
-                sdk.search.deleteAlerts("MyAlert").then(testResponse => this.setState({ testResponse }));
-              }}>
+            sdk.search.deleteAlerts("MyAlert").then(testResponse => this.setState({ testResponse }));
+          }}>
             Delete
           </button>
 
@@ -179,7 +179,7 @@ function debounce(func, wait, immediate){
         context = args = null;
       }
     }
-  };
+  }
 
   var debounced = function(){
     context = this;

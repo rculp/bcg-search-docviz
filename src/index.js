@@ -5,16 +5,23 @@ import registerServiceWorker from 'register-service-worker';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux'
 import store from 'redux/store/store';
-import App from 'App';
+
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+
+import HomePage from 'pages/HomePage';
+import ResultsPage from 'pages/ResultsPage';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App/>
+      <Switch>
+        <Route exact path="/" component={HomePage}/>
+        <Route path="/results" component={ResultsPage}/>
+        <Redirect from="*" to="/"/>
+      </Switch>
     </BrowserRouter>
   </Provider>
 , document.getElementById('root'));
