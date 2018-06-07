@@ -3,21 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "react-test-renderer": "^16.4.0",
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.81.1"
   },
+  "devDependencies": {
+    "cross-env": "^5.1.6",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "react-test-renderer": "^16.4.0"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "cross-env NODE_PATH=src react-scripts start",
+    "build": "cross-env NODE_PATH=src react-scripts build",
+    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
+    "eject": "cross-env NODE_PATH=src react-scripts eject"
   },
   "proxy": "http://172.22.77.4"
 }
