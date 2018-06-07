@@ -1,1 +1,5 @@
-export default 'store';
+import { createStore } from 'redux'
+
+export default createStore(function (state = {}, action) {
+
+});
