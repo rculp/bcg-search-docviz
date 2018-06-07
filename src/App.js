@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import sdk from './sinequa-sdk';
 
-import { Input, Button } from 'semantic-ui-react'
+import { Input, Button } from 'semantic-ui-react';
 
 import './App.css';
 
@@ -36,119 +37,123 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Button content='Click Here'/>
-        {JSON.stringify(this.state.testResponse)}
+        <Header />
+        <div className="content">
+          <Button content='Click Here'/>
+          {JSON.stringify(this.state.testResponse)}
 
-        <h2>Alerts</h2>
-        <button onClick={() => {
-          sdk.search.listAlerts().then(testResponse => this.setState({ testResponse }));
-        }}>
-          List
-        </button>
+          <h2>Alerts</h2>
+          <button onClick={() => {
+            sdk.search.listAlerts().then(testResponse => this.setState({ testResponse }));
+          }}>
+            List
+          </button>
 
-        <button onClick={() => {
-          sdk.search.createAlerts({
-            "name": "MyAlert",
-            "description": "alert description",
-            "timezone": "Europe/Berlin",
-            "profile": "DocSearch",
-            "frequency": "immediate",
-            "days": "Tuesday,Thursday",
-            "from": "09:00",
-            "to": "17:00",
-            "times": "12:00",
-            "active": true,
-            "combineWithOtherAlerts": false,
-            "respectTabSelection": false,
-            "query":{
-              "emptyQuestion": true,
-              "questionLanguage": "autodetect",
-              "fuzzySearch": true,
-              "phonetics": false,
-              "scmode": "Correct"
+          <button onClick={() => {
+            sdk.search.createAlerts({
+              "name": "MyAlert",
+              "description": "alert description",
+              "timezone": "Europe/Berlin",
+              "profile": "DocSearch",
+              "frequency": "immediate",
+              "days": "Tuesday,Thursday",
+              "from": "09:00",
+              "to": "17:00",
+              "times": "12:00",
+              "active": true,
+              "combineWithOtherAlerts": false,
+              "respectTabSelection": false,
+              "query":{
+                "emptyQuestion": true,
+                "questionLanguage": "autodetect",
+                "fuzzySearch": true,
+                "phonetics": false,
+                "scmode": "Correct"
+              }
+            }).then(testResponse => this.setState({ testResponse }));
+          }}>
+            Create
+          </button>
+
+          <button onClick={() => {
+            sdk.search.readAlerts("MyAlert").then(testResponse => this.setState({ testResponse }));
+          }}>
+            Read
+          </button>
+
+          <button onClick={() => {
+            sdk.search.updateAlerts({
+              "name": "MyNewAlertName",
+              "oldName": "MyAlert",
+              "description": "alert description",
+              "timezone": "Europe/Berlin",
+              "profile": "DocSearch",
+              "frequency": "immediate",
+              "days": "Monday,Thursday",
+              "from": "09:00",
+              "to": "17:00",
+              "times": "12:00",
+              "active": true,
+              "combineWithOtherAlerts": false,
+              "respectTabSelection": false,
+              "query":{
+                "emptyQuestion": true,
+                "questionLanguage": "autodetect",
+                "fuzzySearch": true,
+                "phonetics": false,
+                "scmode": "Correct"
+              }
+            }).then(testResponse => this.setState({ testResponse }));
+          }}>
+            Update
+          </button>
+
+          <button onClick={() => {
+            sdk.search.deleteAlerts("MyAlert").then(testResponse => this.setState({ testResponse }));
+          }}>
+            Delete
+          </button>
+
+          <form>
+            <label>
+              Name:
+              <Input placeholder="Search..." value={this.state.value} onChange={this.handleChange} />
+            </label>
+          </form>
+
+          {false && <div>Suggestions:
+            {
+              this.state.suggestion.map((suggestion, index) => {
+                return (
+                  <div key={index} style={{color: 'lightgray'}}>
+                    <a onClick={() => {this.setState({value: suggestion.Display}); this.query();}}>
+                      {suggestion.Display}
+                    </a>
+                  </div>
+                )
+              })
             }
-          }).then(testResponse => this.setState({ testResponse }));
-        }}>
-          Create
-        </button>
+          </div>}
 
-        <button onClick={() => {
-          sdk.search.readAlerts("MyAlert").then(testResponse => this.setState({ testResponse }));
-        }}>
-          Read
-        </button>
-
-        <button onClick={() => {
-          sdk.search.updateAlerts({
-            "name": "MyNewAlertName",
-            "oldName": "MyAlert",
-            "description": "alert description",
-            "timezone": "Europe/Berlin",
-            "profile": "DocSearch",
-            "frequency": "immediate",
-            "days": "Monday,Thursday",
-            "from": "09:00",
-            "to": "17:00",
-            "times": "12:00",
-            "active": true,
-            "combineWithOtherAlerts": false,
-            "respectTabSelection": false,
-            "query":{
-              "emptyQuestion": true,
-              "questionLanguage": "autodetect",
-              "fuzzySearch": true,
-              "phonetics": false,
-              "scmode": "Correct"
-            }
-          }).then(testResponse => this.setState({ testResponse }));
-        }}>
-          Update
-        </button>
-
-        <button onClick={() => {
-          sdk.search.deleteAlerts("MyAlert").then(testResponse => this.setState({ testResponse }));
-        }}>
-          Delete
-        </button>
-
-        <form>
-          <label>
-            Name:
-            <Input placeholder="Search..." value={this.state.value} onChange={this.handleChange} />
-          </label>
-        </form>
-
-        {false && <div>Suggestions:
-          {
-            this.state.suggestion.map((suggestion, index) => {
+          <table>
+            <tbody>
+            {this.state.response.map((doc, index) => {
               return (
-                <div key={index} style={{color: 'lightgray'}}>
-                  <a onClick={() => {this.setState({value: suggestion.Display}); this.query();}}>
-                    {suggestion.Display}
-                  </a>
-                </div>
+                <tr key={index}>
+                  <td>{doc.filename}</td>
+                  <td>
+                  </td>
+                  <td>
+                    {this.state.previewIndex === index && <iframe src={doc.resulturl}></iframe>}
+                    {this.state.previewIndex !== index && <button onClick={() => {this.state.previewIndex = index; this.forceUpdate()}}>Preview</button>}
+                  </td>
+                </tr>
               )
-            })
-          }
-        </div>}
-
-        <table>
-          <tbody>
-          {this.state.response.map((doc, index) => {
-            return (
-              <tr key={index}>
-                <td>{doc.filename}</td>
-                <td>
-                </td>
-                <td>
-                  {this.state.previewIndex === index && <iframe src={doc.resulturl}></iframe>}
-                  {this.state.previewIndex !== index && <button onClick={() => {this.state.previewIndex = index; this.forceUpdate()}}>Preview</button>}
-                </td>
-              </tr>
-            )
-          })}
-          </tbody>
-        </table>
+            })}
+            </tbody>
+          </table>
+        </div>
+        <Footer />
       </div>
     );
   }
