@@ -1,19 +1,19 @@
 import 'semantic-ui-css/semantic.min.css';
 import 'index.css';
 
-import 'utils/setup-tests'
+import 'utils/setup-tests';
 import 'utils/register-service-worker';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import store from 'redux/store/store';
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import HomePage from 'pages/HomePage';
-import ResultsPage from 'pages/ResultsPage';
+import HomePage from 'pages/HomePage/HomePage';
+import ResultsPage from 'pages/ResultsPage/ResultsPage';
 
 const app = (
   <Provider store={store}>

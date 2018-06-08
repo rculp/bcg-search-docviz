@@ -1,3 +1,5 @@
+import './ResultsPage.css';
+
 import React, { Component } from 'react';
 import sdk from 'sinequa-sdk';
 import { Input, Button } from 'semantic-ui-react';
