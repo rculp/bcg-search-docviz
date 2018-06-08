@@ -3,12 +3,10 @@
 exports[`class Footer extends _react.Component {
   render() {
     return (
-      _react2.default.createElement('div', { className: 'Footer', __source: { fileName: _jsxFileName, lineNumber: 8 }, __self: this }, 'This is a footer!'));
+      _react2.default.createElement('footer', { __source: { fileName: _jsxFileName, lineNumber: 8 }, __self: this }, 'This is a footer!'));
 
   }} renders and matches our snapshot 1`] = `
-<div
-  className="Footer"
->
+<footer>
   This is a footer!
-</div>
+</footer>
 `;

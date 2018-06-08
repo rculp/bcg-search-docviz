@@ -3,12 +3,10 @@
 exports[`class Header extends _react.Component {
   render() {
     return (
-      _react2.default.createElement('div', { className: 'Header', __source: { fileName: _jsxFileName, lineNumber: 8 }, __self: this }, 'Minerva'));
+      _react2.default.createElement('header', { __source: { fileName: _jsxFileName, lineNumber: 8 }, __self: this }, 'Minerva'));
 
   }} renders and matches our snapshot 1`] = `
-<div
-  className="Header"
->
+<header>
   Minerva
-</div>
+</header>
 `;

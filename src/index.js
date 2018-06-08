@@ -1,7 +1,6 @@
 import 'semantic-ui-css/semantic.min.css';
 import 'index.css';
 
-import 'utils/setup-tests';
 import 'utils/register-service-worker';
 
 import React from 'react';
