@@ -1,8 +1,7 @@
 import 'semantic-ui-css/semantic.min.css';
 import 'index.css';
 
-import 'utils/setup-tests';
-import 'utils/register-service-worker';
+import registerServiceWorker from 'registerServiceWorker';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -28,3 +27,5 @@ const app = (
 );
 
 ReactDOM.render(app, document.getElementById('root'));
+
+registerServiceWorker();
