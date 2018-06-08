@@ -1,4 +1,4 @@
-// Doesn't need to be imported. Enzyme looks for this file in /src automatically.
+// Doesn't need to be imported. create-react-app looks for this file in /src automatically.
 
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
