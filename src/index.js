@@ -1,7 +1,8 @@
 import 'semantic-ui-css/semantic.min.css';
 import 'index.css';
 
-import registerServiceWorker from 'registerServiceWorker';
+import 'utils/setup-tests'
+import 'utils/register-service-worker';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -14,7 +15,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import HomePage from 'pages/HomePage';
 import ResultsPage from 'pages/ResultsPage';
 
-ReactDOM.render(
+const app = (
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
@@ -24,6 +25,6 @@ ReactDOM.render(
       </Switch>
     </BrowserRouter>
   </Provider>
-, document.getElementById('root'));
+);
 
-registerServiceWorker();
+ReactDOM.render(app, document.getElementById('root'));
