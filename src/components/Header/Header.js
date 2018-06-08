@@ -5,7 +5,7 @@ import './Header.css';
 class Header extends Component {
   render() {
     return (
-      <div className="Header">Minerva</div>
+      <header>Minerva</header>
     );
   }
 }
