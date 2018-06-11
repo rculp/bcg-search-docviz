@@ -1,2 +1,4 @@
 src/registerServiceWorker.js
 src/setupTests.js
+**/*.test.js
+sinequa-sdk

@@ -5,6 +5,10 @@
     "jest": true
   },
   "rules": {
-    "react/jsx-filename-extension": [1, {"extensions": [".js"]}]
+    "react/jsx-filename-extension": [1, {"extensions": [".js"]}],
+    "linebreak-style": 0,
+    "function-paren-newline": 0,
+    "comma-dangle": 0,
+    "max-len": 0
   }
 }

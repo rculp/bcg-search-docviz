@@ -1,6 +1,6 @@
-//TODO redux-form                      - store form state in redux store
-//TODO redux-immutable-state-invariant - throw error if not immutable in dev
-//TODO reselect                        - efficient redux selectors
+// TODO redux-form                      - store form state in redux store
+// TODO redux-immutable-state-invariant - throw error if not immutable in dev
+// TODO reselect                        - efficient redux selectors
 
 import 'semantic-ui-css/semantic.min.css';
 import 'index.css';
@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router'
+import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router';
 
 import { combineReducers, applyMiddleware, createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -32,25 +32,28 @@ const store = createStore(
     })
   ),
   compose(
-    applyMiddleware(             // Order dependent
+    applyMiddleware( // Order dependent
       routerMiddleware(history), // Enables dispatching actions
-      promiseMiddleware(),       // Enables actions to return promises
-      thunkMiddleware,           // Enables actions to return functions
-      createLogger({})           // Must be at bottom
+      promiseMiddleware(), // Enables actions to return promises
+      thunkMiddleware, // Enables actions to return functions
+      createLogger({}) // Must be at bottom
     )
   )
 );
 
-ReactDOM.render((
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/" component={HomePage}/>
-        <Route path="/results" component={ResultsPage}/>
-        <Redirect from="*" to="/"/>
-      </Switch>
-    </ConnectedRouter>
-  </Provider>
-), document.getElementById('root'));
+ReactDOM.render(
+  (
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/results" component={ResultsPage} />
+          <Redirect from="*" to="/" />
+        </Switch>
+      </ConnectedRouter>
+    </Provider>
+  ),
+  document.getElementById('root')
+);
 
 registerServiceWorker();

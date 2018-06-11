@@ -3,15 +3,15 @@ export const name = 'search';
 const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 
 const initialState = {
-  searchValue: ''
+  searchValue: '',
 };
 
 export const actions = {
-  changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload })
+  changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
 };
 
 export const selectors = {
-  getSearchValue: state => state[name].searchValue
+  getSearchValue: state => state[name].searchValue,
 };
 
 export function reducer(state = initialState, action) {
@@ -19,7 +19,7 @@ export function reducer(state = initialState, action) {
     case CHANGE_SEARCH_VALUE:
       return {
         ...state,
-        searchValue: action.payload
+        searchValue: action.payload,
       };
 
     default:
