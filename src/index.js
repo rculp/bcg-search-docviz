@@ -19,7 +19,7 @@ import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
-import { reducer as search } from 'redux/search';
+import { name as searchReducerName, reducer as searchReducer } from 'redux/search';
 
 import HomePage from 'pages/HomePage/HomePage';
 import ResultsPage from 'pages/ResultsPage/ResultsPage';
@@ -28,7 +28,7 @@ const history = createBrowserHistory();
 const store = createStore(
   connectRouter(history)( // Adds router key-value pair to store state
     combineReducers({
-      search
+      [searchReducerName]: searchReducer
     })
   ),
   compose(

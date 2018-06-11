@@ -1,3 +1,5 @@
+export const name = 'search';
+
 const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 
 const initialState = {
@@ -9,7 +11,7 @@ export const actions = {
 };
 
 export const selectors = {
-  getSearchValue: state => state.search.searchValue
+  getSearchValue: state => state[name].searchValue
 };
 
 export function reducer(state = initialState, action) {
