@@ -1,4 +1,4 @@
-import './ResultsPage.css';
+import './ResultsContainer.css';
 
 import React, { Component } from 'react';
 import sdk from 'sinequa-sdk';
