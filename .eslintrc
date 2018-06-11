@@ -10,5 +10,12 @@
     "function-paren-newline": 0,
     "comma-dangle": 0,
     "max-len": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }
