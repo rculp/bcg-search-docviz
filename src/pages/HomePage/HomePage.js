@@ -7,11 +7,13 @@ import { Input } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { actions, selectors } from 'redux/search';
 
 class HomeContainer extends Component {
 
   handleChange = (event) => {
-    //actions.setSearchValue(event.target.value);
+    const { actions: { changeSearchValue } } = this.props;
+    changeSearchValue(event.target.value);
     //this.query();
   };
 
@@ -32,9 +34,10 @@ class HomeContainer extends Component {
           <form>
             <label>
               Name:
-              <Input placeholder="Search..." value={this.props.searchValue} onChange={this.handleChange} />
+              <Input placeholder="Search..." onChange={this.handleChange} />
             </label>
           </form>
+          {this.props.searchValue}
         </main>
       </div>
     );
@@ -42,12 +45,12 @@ class HomeContainer extends Component {
 
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  //searchValue: selectors.getSearchValue(state)
+const mapStateToProps = (state) => ({
+  searchValue: selectors.getSearchValue(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  //actions: bindActionCreators({ ...actions }, dispatch)
+  actions: bindActionCreators({ ...actions }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
