@@ -6,10 +6,15 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, {"extensions": [".js"]}],
+    "jsx-a11y/anchor-is-valid": [ 2, {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ]
+    }],
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
     "linebreak-style": 0,
     "function-paren-newline": 0,
+    "func-names": [1, "as-needed"],
     "comma-dangle": 0,
     "max-len": 0
   },

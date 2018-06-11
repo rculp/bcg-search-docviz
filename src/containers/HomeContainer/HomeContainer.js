@@ -1,5 +1,3 @@
-import './HomeContainer.css';
-
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -9,43 +7,41 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search';
 
-class HomeContainer extends Component {
+import './HomeContainer.css';
 
+class HomeContainer extends Component {
   handleChange = (event) => {
     const { actions: { changeSearchValue } } = this.props;
     changeSearchValue(event.target.value);
-    //this.query();
+    // this.query();
   };
 
-  //query = debounce(() => {
+  // query = debounce(() => {
   //  sdk.search.basicQuery(this.state.value).then((response) => {
   //    this.setState({ response: response.Result.Docs });
   //  });
   //  sdk.search.suggest(this.state.value).then((response) => {
   //    this.setState({ suggestion: response.Suggests });
   //  });
-  //}, 750);
+  // }, 750);
 
-  render = () => {
-    return (
-      <div className="page">
-        <Link to="/results">Results</Link>
-        <main>
-          <form>
-            <label>
+  render = () => (
+    <div className="page">
+      <Link to="/results">Results</Link>
+      <main>
+        <form>
+          <label htmlFor="nameInput">
               Name:
-              <Input placeholder="Search..." onChange={this.handleChange} />
-            </label>
-          </form>
-          {this.props.searchValue}
-        </main>
-      </div>
-    );
-  };
-
+            <Input placeholder="Search..." id="nameInput" onChange={this.handleChange} />
+          </label>
+        </form>
+        {this.props.searchValue}
+      </main>
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state)
 });
 
