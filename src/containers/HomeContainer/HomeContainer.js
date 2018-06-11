@@ -1,4 +1,4 @@
-import './HomePage.css';
+import './HomeContainer.css';
 
 import React, { Component } from 'react';
 

@@ -6,6 +6,8 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, {"extensions": [".js"]}],
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
     "linebreak-style": 0,
     "function-paren-newline": 0,
     "comma-dangle": 0,

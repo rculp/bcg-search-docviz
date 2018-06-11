@@ -21,8 +21,8 @@ import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import { name as searchReducerName, reducer as searchReducer } from 'redux/search';
 
-import { HomePage } from 'pages/HomePage/HomePage';
-import { ResultsPage } from 'pages/ResultsPage/ResultsPage';
+import HomeContainer from 'containers/HomeContainer/HomeContainer';
+import ResultsContainer from 'containers/ResultsContainer/ResultsContainer';
 
 const history = createBrowserHistory();
 const store = createStore(
@@ -45,8 +45,8 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/results" component={ResultsPage} />
+        <Route exact path="/" component={HomeContainer} />
+        <Route path="/results" component={ResultsContainer} />
         <Redirect from="*" to="/" />
       </Switch>
     </ConnectedRouter>
