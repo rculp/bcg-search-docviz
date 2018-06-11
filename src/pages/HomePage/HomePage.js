@@ -7,7 +7,7 @@ import { Input } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions, selectors } from 'redux/search';
+import { actions as searchActions, selectors as searchSelectors } from 'redux/search';
 
 class HomeContainer extends Component {
 
@@ -46,11 +46,11 @@ class HomeContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  searchValue: selectors.getSearchValue(state)
+  searchValue: searchSelectors.getSearchValue(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ ...actions }, dispatch)
+  actions: bindActionCreators({ ...searchActions }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
