@@ -14,7 +14,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["src"]
+        "paths": ["src"] // Must match NODE_PATH
       }
     }
   }
