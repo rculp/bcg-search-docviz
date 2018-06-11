@@ -22,20 +22,6 @@ class ResultsContainer extends Component {
     };
   }
 
-  handleChange = (event) => {
-    this.setState({value: event.target.value, previewIndex: -1});
-    this.query();
-  };
-
-  query = debounce(() => {
-    sdk.search.basicQuery(this.state.value).then((response) => {
-      this.setState({ response: response.Result.Docs });
-    });
-    sdk.search.suggest(this.state.value).then((response) => {
-      this.setState({ suggestion: response.Suggests });
-    });
-  }, 750);
-
   render = () => {
     return (
       <div className="page">
