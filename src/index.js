@@ -21,8 +21,8 @@ import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import { name as searchReducerName, reducer as searchReducer } from 'redux/search';
 
-import HomePage from 'pages/HomePage/HomePage';
-import ResultsPage from 'pages/ResultsPage/ResultsPage';
+import { HomePage } from 'pages/HomePage/HomePage';
+import { ResultsPage } from 'pages/ResultsPage/ResultsPage';
 
 const history = createBrowserHistory();
 const store = createStore(
