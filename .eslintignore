@@ -1,4 +1,5 @@
 src/registerServiceWorker.js
 src/setupTests.js
 **/*.test.js
+config-overrides.js
 sinequa-sdk
