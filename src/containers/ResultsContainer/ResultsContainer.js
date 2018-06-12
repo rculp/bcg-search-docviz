@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import sdk from 'sinequa-sdk';
 import { Input, Button } from 'semantic-ui-react';
+import uuid from 'uuid/v1';
 
 import { Link } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ class ResultsContainer extends Component {
 
   render = () => (
     <div className="page">
-      <Link to="/">Home</Link>
+      <Link to="/">Back</Link>
       <Header />
       <main>
         <Button content="Click Here" />
@@ -117,7 +118,7 @@ class ResultsContainer extends Component {
           <div>Suggestions:
             {
               this.state.suggestion.map((suggestion, index) => (
-                <div key={index} style={{ color: 'lightgray' }}>
+                <div key={uuid()} style={{ color: 'lightgray' }}>
                   <button onClick={() => { this.setState({ value: suggestion.Display }); this.query(); }}>
                     {suggestion.Display}
                   </button>
@@ -130,7 +131,7 @@ class ResultsContainer extends Component {
         <table>
           <tbody>
             {this.state.response.map((doc, index) => (
-              <tr key={index}>
+              <tr key={uuid()}>
                 <td>{doc.filename}</td>
                 <td />
                 <td>

@@ -1,6 +1,6 @@
-import './Page.css';
-
 import React from 'react';
+
+import './Page.css';
 
 const Page = ({id, children}) => (
   <div id={id} className="page">
