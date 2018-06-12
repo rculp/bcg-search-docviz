@@ -7,20 +7,25 @@ import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search';
 
 import Page from 'components/Page/Page';
-import sdk from 'sinequa-sdk';
 
 import './HomeContainer.css';
 
 class HomeContainer extends Component {
-  fetchResults = () => {
-    const { actions: { changeLoading, changeResults }, searchValue, history } = this.props;
+  componentDidMount = () => {
+    const { actions: { reset } } = this.props;
+    reset();
+  };
 
-    changeLoading(true);
-    sdk.search.basicQuery(searchValue).then((response) => {
-      changeLoading(false);
-      changeResults(response);
+  componentDidUpdate = () => {
+    const { history, fulfilled } = this.props;
+    if (fulfilled) {
       history.push('/results');
-    });
+    }
+  };
+
+  fetchResults = () => {
+    const { actions: { search }, searchValue } = this.props;
+    search(searchValue);
   };
 
   handleChange = (event) => {
@@ -54,7 +59,9 @@ class HomeContainer extends Component {
 
 const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state),
-  loading: searchSelectors.getLoading(state)
+  loading: searchSelectors.getLoading(state),
+  error: searchSelectors.getError(state),
+  fulfilled: searchSelectors.getFulfilled(state)
 });
 
 const mapDispatchToProps = dispatch => ({
