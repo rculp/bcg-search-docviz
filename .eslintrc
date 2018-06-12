@@ -6,6 +6,7 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, {"extensions": [".js"]}],
+    "react/prop-types": [2, { "skipUndeclared": true }],
     "jsx-a11y/anchor-is-valid": [ 2, {
       "components": [ "Link" ],
       "specialLink": [ "to" ]

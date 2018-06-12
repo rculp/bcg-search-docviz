@@ -12,7 +12,6 @@ import sdk from 'sinequa-sdk';
 import './HomeContainer.css';
 
 class HomeContainer extends Component {
-
   fetchResults = () => {
     const { actions: { changeLoading, changeResults }, searchValue, history } = this.props;
 
@@ -49,7 +48,7 @@ class HomeContainer extends Component {
           </Form>
         </main>
       </Page>
-    )
+    );
   };
 }
 
