@@ -1,48 +1,63 @@
+import './HomeContainer.css';
+
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
-import { Input } from 'semantic-ui-react';
+import { Form, Input, Button } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search';
+import { push } from 'connected-react-router'
 
-import './HomeContainer.css';
+import Page from 'components/Page/Page';
+
+import sdk from 'sinequa-sdk';
 
 class HomeContainer extends Component {
+
+  fetchResults = () => {
+    const { actions: { changeLoading, changeResults }, searchValue } = this.props;
+
+    changeLoading(true);
+    sdk.search.basicQuery(searchValue).then((response) => {
+      changeLoading(false); //TODO make page change always set loading to false?
+      changeResults(response);
+      push('/results');
+    });
+  };
+
   handleChange = (event) => {
     const { actions: { changeSearchValue } } = this.props;
     changeSearchValue(event.target.value);
-    // this.query();
   };
 
-  // query = debounce(() => {
-  //  sdk.search.basicQuery(this.state.value).then((response) => {
-  //    this.setState({ response: response.Result.Docs });
-  //  });
-  //  sdk.search.suggest(this.state.value).then((response) => {
-  //    this.setState({ suggestion: response.Suggests });
-  //  });
-  // }, 750);
-
-  render = () => (
-    <div className="page">
-      <Link to="/results">Results</Link>
-      <main>
-        <form>
-          <label htmlFor="nameInput">
-              Name:
-            <Input placeholder="Search..." id="nameInput" onChange={this.handleChange} />
-          </label>
-        </form>
-        {this.props.searchValue}
-      </main>
-    </div>
-  );
+  render = () => {
+    const { loading } = this.props;
+    return (
+      <Page id="home">
+        <main>
+          <h2>Sinequa Search</h2>
+          <Form>
+            <Form.Field>
+              <Input
+                placeholder="Search..."
+                id="query"
+                loading={loading}
+                onChange={this.handleChange}
+              />
+            </Form.Field>
+            <Button type="submit" onClick={this.fetchResults}>Submit</Button>
+          </Form>
+        </main>
+      </Page>
+    )
+  };
 }
 
 const mapStateToProps = state => ({
-  searchValue: searchSelectors.getSearchValue(state)
+  searchValue: searchSelectors.getSearchValue(state),
+  loading: searchSelectors.getLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({
