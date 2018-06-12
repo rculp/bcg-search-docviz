@@ -11,11 +11,6 @@ import Page from 'components/Page/Page';
 import './HomeContainer.css';
 
 class HomeContainer extends Component {
-  componentDidMount = () => {
-    const { actions: { reset } } = this.props;
-    reset();
-  };
-
   componentDidUpdate = () => {
     const { history, fulfilled } = this.props;
     if (fulfilled) {

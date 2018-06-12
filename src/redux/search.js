@@ -3,7 +3,6 @@ import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware';
 
 export const name = 'search';
 
-const RESET = 'RESET';
 const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 const API_SEARCH_PROFILE = 'API_SEARCH_PROFILE';
 
@@ -16,7 +15,6 @@ const initialState = {
 };
 
 export const actions = {
-  reset: () => ({ type: CHANGE_SEARCH_VALUE }),
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
   search: payload => ({
     type: API_SEARCH_PROFILE,
@@ -34,8 +32,13 @@ export const selectors = {
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
-    case RESET:
-      return initialState;
+    case '@@router/LOCATION_CHANGE':
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        fulfilled: false
+      };
     case CHANGE_SEARCH_VALUE:
       return {
         ...state,
