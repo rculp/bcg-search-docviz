@@ -1,27 +1,25 @@
-import './HomeContainer.css';
-
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
 import { Form, Input, Button } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search';
-import { push } from 'connected-react-router'
+import { push } from 'connected-react-router';
 
 import Page from 'components/Page/Page';
 
 import sdk from 'sinequa-sdk';
 
-class HomeContainer extends Component {
+import './HomeContainer.css';
 
+class HomeContainer extends Component {
   fetchResults = () => {
     const { actions: { changeLoading, changeResults }, searchValue } = this.props;
 
     changeLoading(true);
     sdk.search.basicQuery(searchValue).then((response) => {
-      changeLoading(false); //TODO make page change always set loading to false?
+      changeLoading(false); // TODO make page change always set loading to false?
       changeResults(response);
       push('/results');
     });
@@ -51,7 +49,7 @@ class HomeContainer extends Component {
           </Form>
         </main>
       </Page>
-    )
+    );
   };
 }
 
