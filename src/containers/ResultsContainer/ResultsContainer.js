@@ -117,7 +117,7 @@ class ResultsContainer extends Component {
         {false &&
           <div>Suggestions:
             {
-              this.state.suggestion.map((suggestion, index) => (
+              this.state.suggestion.map(suggestion => (
                 <div key={uuid()} style={{ color: 'lightgray' }}>
                   <button onClick={() => { this.setState({ value: suggestion.Display }); this.query(); }}>
                     {suggestion.Display}
