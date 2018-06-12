@@ -3,7 +3,6 @@ import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware';
 
 export const name = 'search';
 
-const RESET = 'RESET';
 const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 const API_SEARCH_PROFILE = 'API_SEARCH_PROFILE';
 
@@ -11,12 +10,11 @@ const initialState = {
   searchValue: '',
   loading: false,
   error: false,
-  fulfilled: false,
+  shouldRedirect: false,
   results: {}
 };
 
 export const actions = {
-  reset: () => ({ type: CHANGE_SEARCH_VALUE }),
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
   search: payload => ({
     type: API_SEARCH_PROFILE,
@@ -28,14 +26,17 @@ export const selectors = {
   getSearchValue: state => state[name].searchValue,
   getLoading: state => state[name].loading,
   getError: state => state[name].error,
-  getFulfilled: state => state[name].fulfilled,
+  getShouldRedirect: state => state[name].shouldRedirect,
   getResults: state => state[name].results
 };
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
-    case RESET:
-      return initialState;
+    case '@@router/LOCATION_CHANGE':
+      return {
+        ...state,
+        shouldRedirect: false
+      };
     case CHANGE_SEARCH_VALUE:
       return {
         ...state,
@@ -51,7 +52,7 @@ export function reducer(state = initialState, action) {
         ...state,
         loading: false,
         error: true,
-        fulfilled: false,
+        shouldRedirect: false,
         results: {}
       };
     case `${API_SEARCH_PROFILE}_${FULFILLED}`:
@@ -59,7 +60,7 @@ export function reducer(state = initialState, action) {
         ...state,
         loading: false,
         error: false,
-        fulfilled: true,
+        shouldRedirect: true,
         results: action.payload
       };
     default:

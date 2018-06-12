@@ -11,14 +11,9 @@ import Page from 'components/Page/Page';
 import './HomeContainer.css';
 
 class HomeContainer extends Component {
-  componentDidMount = () => {
-    const { actions: { reset } } = this.props;
-    reset();
-  };
-
   componentDidUpdate = () => {
-    const { history, fulfilled } = this.props;
-    if (fulfilled) {
+    const { history, shouldRedirect } = this.props;
+    if (shouldRedirect) {
       history.push('/results');
     }
   };
@@ -61,7 +56,7 @@ const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state),
   loading: searchSelectors.getLoading(state),
   error: searchSelectors.getError(state),
-  fulfilled: searchSelectors.getFulfilled(state)
+  shouldRedirect: searchSelectors.getShouldRedirect(state)
 });
 
 const mapDispatchToProps = dispatch => ({
