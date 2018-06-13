@@ -8,7 +8,7 @@ import { actions as searchActions, selectors as searchSelectors } from 'redux/se
 
 import Page from 'components/Page/Page';
 
-import './HomeContainer.css';
+import './Home.css';
 
 class HomeContainer extends Component {
   componentDidUpdate = () => {

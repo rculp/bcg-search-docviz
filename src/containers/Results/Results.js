@@ -11,7 +11,7 @@ import Footer from 'components/Footer/Footer';
 
 import Page from 'components/Page/Page';
 
-import './ResultsContainer.css';
+import './Results.css';
 
 class ResultsContainer extends Component {
   renderTagCloudRefiner = box => (
@@ -45,7 +45,7 @@ class ResultsContainer extends Component {
       <Page id="results">
         <MasterHeader />
         <main>
-          <Grid columns={2} divided>
+          <Grid columns={2}>
             <Grid.Column>
               <Header as="h1">Results</Header>
               {
