@@ -12,9 +12,9 @@ import './Home.css';
 
 class HomeContainer extends Component {
   componentDidUpdate = () => {
-    const { history, shouldRedirect } = this.props;
+    const { history, shouldRedirect, searchValue } = this.props;
     if (shouldRedirect) {
-      history.push('/results');
+      history.push(`/results?q=${encodeURIComponent(searchValue)}`);
     }
   };
 

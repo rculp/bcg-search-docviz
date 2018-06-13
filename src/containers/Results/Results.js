@@ -24,7 +24,7 @@ class ResultsContainer extends Component {
   renderTreeRefiner = box => (
     <div key={uuid()}>
       <Header as="h2">{box.display}</Header>
-      Tree Refiner - Sinequa doesn&apos;t seem to return the actual items. Possibly need to make another API call?
+      <div>Tree Refiner - Sinequa doesn&apos;t seem to return the actual items. Possibly need to make another API call?</div>
     </div>
   );
 
@@ -45,34 +45,34 @@ class ResultsContainer extends Component {
       <Page id="results">
         <MasterHeader />
         <main>
-          <Grid columns={2}>
-            <Grid.Column>
-              <Header as="h1">Results</Header>
-              {
-                results.Result.Docs.length <= 0 &&
-                <Message header="No Results Found" content="Please try a different search." />
-              }
-              {
-                results.Result.Docs.length > 0 &&
-                results.Result.Docs.map(doc => <div key={uuid()}>{doc.filename}</div>)
-              }
-            </Grid.Column>
-            <Grid.Column>
-              <Header as="h1">Refiners</Header>
-              {
-                results.Result.Boxes.map((box) => {
-                  if (box.type === 'TagCloud') {
-                    return this.renderTagCloudRefiner(box);
-                  } else if (box.type === 'Tree') {
-                    return this.renderTreeRefiner(box);
-                  } else if (box.type === 'List') {
-                    return this.renderListRefiner(box);
-                  }
-                  return <div>Unrecognized refiner type</div>;
-                })
-              }
-            </Grid.Column>
-          </Grid>
+          {
+            results.Result.Docs.length <= 0 &&
+            <Message header="No Results Found" content="Please try a different search." />
+          }
+          {
+            results.Result.Docs.length > 0 &&
+            <Grid columns={2}>
+              <Grid.Column>
+                <Header as="h1">Results</Header>
+                { results.Result.Docs.map(doc => <div key={uuid()}>{doc.filename}</div>) }
+              </Grid.Column>
+              <Grid.Column>
+                <Header as="h1">Refiners</Header>
+                {
+                  results.Result.Boxes.map((box) => {
+                    if (box.type === 'TagCloud') {
+                      return this.renderTagCloudRefiner(box);
+                    } else if (box.type === 'Tree') {
+                      return this.renderTreeRefiner(box);
+                    } else if (box.type === 'List') {
+                      return this.renderListRefiner(box);
+                    }
+                    return <div key={uuid()}>Unrecognized refiner type</div>;
+                  })
+                }
+              </Grid.Column>
+            </Grid>
+          }
         </main>
         <Footer />
       </Page>
