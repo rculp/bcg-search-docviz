@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -12,28 +12,21 @@ import Page from 'components/Page/Page';
 
 import './ResultsContainer.css';
 
-class ResultsContainer extends Component {
-  constructor(props) {
-    super(props);
-    const { results, history } = this.props;
-    if (!results.Result) {
-      history.push('/');
-    }
+const ResultsContainer = ({ history, results }) => {
+  if (!results.Result) {
+    history.push('/');
+    return null;
   }
-
-  render = () => {
-    const { results } = this.props;
-    return (
-      <Page id="results">
-        <Header />
-        <main>
-          { results.Result.Docs.map(doc => <div key={uuid()}>{doc.filename}</div>) }
-        </main>
-        <Footer />
-      </Page>
-    );
-  };
-}
+  return (
+    <Page id="results">
+      <Header />
+      <main>
+        { results.Result.Docs.map(doc => <div key={uuid()}>{doc.filename}</div>) }
+      </main>
+      <Footer />
+    </Page>
+  );
+};
 
 const mapStateToProps = state => ({
   results: searchSelectors.getResults(state)

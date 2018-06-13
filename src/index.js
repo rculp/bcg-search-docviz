@@ -36,7 +36,7 @@ const store = createStore(
       routerMiddleware(history), // Enables dispatching actions
       promiseMiddleware(), // Enables actions to return promises
       thunkMiddleware, // Enables actions to return functions
-      createLogger({ diff: true }) // Must be at bottom
+      createLogger({ diff: true, collapsed: true }) // Must be at bottom
     )
   )
 );
