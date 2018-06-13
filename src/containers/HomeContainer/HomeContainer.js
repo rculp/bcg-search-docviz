@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Form, Input, Button } from 'semantic-ui-react';
+import { Form, Input, Button, Message } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -18,6 +18,11 @@ class HomeContainer extends Component {
     }
   };
 
+  componentWillUnmount = () => {
+    const { actions: { reset } } = this.props;
+    reset();
+  };
+
   fetchResults = () => {
     const { actions: { search }, searchValue } = this.props;
     search(searchValue);
@@ -29,7 +34,7 @@ class HomeContainer extends Component {
   };
 
   render = () => {
-    const { searchValue, loading } = this.props;
+    const { searchValue, loading, error } = this.props;
     return (
       <Page id="home">
         <main>
@@ -37,15 +42,27 @@ class HomeContainer extends Component {
           <Form>
             <Form.Field>
               <Input
+                size="massive"
                 placeholder="Search..."
                 id="query"
                 loading={loading}
+                disabled={loading}
                 value={searchValue}
                 onChange={this.handleChange}
+                icon="search"
+                iconPosition="left"
+                label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
+                labelPosition="right"
               />
             </Form.Field>
-            <Button type="submit" onClick={this.fetchResults}>Submit</Button>
           </Form>
+          { error &&
+            <Message
+              error
+              header="Search Failed"
+              content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
+            />
+          }
         </main>
       </Page>
     );

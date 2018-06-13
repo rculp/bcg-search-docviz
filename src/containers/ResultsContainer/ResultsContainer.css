@@ -1,5 +1,3 @@
-.page {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+#results {
+  height: 100%;
 }
