@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Header } from 'semantic-ui-react';
 
@@ -10,5 +11,11 @@ const RefinerTree = ({ box }) => (
     <div>Tree Refiner - Sinequa doesn&apos;t seem to return the actual items. Possibly need to make another API call?</div>
   </div>
 );
+
+RefinerTree.propTypes = {
+  box: PropTypes.shape({
+    display: PropTypes.string
+  }).isRequired
+};
 
 export default RefinerTree;

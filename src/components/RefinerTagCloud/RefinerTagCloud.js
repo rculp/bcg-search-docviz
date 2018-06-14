@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import uuid from 'uuid/v1';
 
 import { Header } from 'semantic-ui-react';
@@ -13,5 +14,14 @@ const RefinerTagCloud = ({ box }) => (
     </ul>
   </div>
 );
+
+RefinerTagCloud.propTypes = {
+  box: PropTypes.shape({
+    display: PropTypes.string,
+    items: PropTypes.shape({
+      Name: PropTypes.string
+    })
+  }).isRequired
+};
 
 export default RefinerTagCloud;

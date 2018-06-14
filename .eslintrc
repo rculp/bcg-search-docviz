@@ -6,7 +6,6 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, {"extensions": [".js"]}],
-    "react/prop-types": [2, { "skipUndeclared": true }],
     "jsx-a11y/anchor-is-valid": [ 2, {
       "components": [ "Link" ],
       "specialLink": [ "to" ]
@@ -19,6 +18,18 @@
     "comma-dangle": 0,
     "max-len": 0
   },
+  "overrides": [
+    // Containers are not consumable components. Redux attaches many props from the store via mapStateToProps in
+    // the connect() method. Since these props do not need to be explicitly added, they should not be validated
+    // (programmer has no control over them and doesn't always know their shape). Avoids linters having a fit.
+    // https://github.com/yannickcr/eslint-plugin-react/issues/553
+    {
+      "files": ["src/containers/**/*.js"],
+      "rules": {
+        "react/prop-types": false
+      }
+    }
+  ],
   "settings": {
     "import/resolver": {
       "node": {

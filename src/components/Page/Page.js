@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Page.css';
 
@@ -7,5 +8,14 @@ const Page = ({ id, children }) => (
     {children}
   </div>
 );
+
+Page.propTypes = {
+  id: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
+
+Page.defaultProps = {
+  id: null
+};
 
 export default Page;
