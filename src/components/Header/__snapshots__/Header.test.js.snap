@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`() =>
-{/* istanbul ignore next */cov_1vdepvz8es.f[0]++;cov_1vdepvz8es.s[1]++;return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'header', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 6 }, __self: undefined }, /* istanbul ignore next */'Minerva'));} renders and matches our snapshot 1`] = `
+_react2.default.createElement('header', { __source: { fileName: _jsxFileName, lineNumber: 6 }, __self: undefined }, 'Minerva') renders and matches our snapshot 1`] = `
 <header>
   Minerva
 </header>
