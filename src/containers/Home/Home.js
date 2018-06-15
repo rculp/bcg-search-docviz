@@ -4,7 +4,7 @@ import { Form, Input, Button, Message } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions as searchActions, selectors as searchSelectors } from 'redux/search';
+import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 
 import Page from 'components/Page/Page';
 

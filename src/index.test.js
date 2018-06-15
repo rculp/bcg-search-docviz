@@ -1,5 +1,8 @@
-describe('A dummy test', () => {
-  it('should run when changed', () => {
-    expect(false).toEqual(true);
+import React from 'react';
+import { shallow } from 'enzyme';
+
+describe('App init file', () => {
+  it('passes children', () => {
+
   });
 });

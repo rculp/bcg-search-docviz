@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions as searchActions, selectors as searchSelectors } from 'redux/search';
+import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import uuid from 'uuid/v1';
 import ReactHtmlParser from 'react-html-parser';
 import { Header, Message, Grid } from 'semantic-ui-react';
