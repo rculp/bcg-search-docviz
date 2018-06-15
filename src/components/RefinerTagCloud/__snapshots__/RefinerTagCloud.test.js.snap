@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Refiner Tag Cloud renders and matches our snapshot 1`] = `
+<div
+  className="refiner-tag-cloud"
+>
+  <Header
+    as="h2"
+  >
+    displayName
+  </Header>
+  <ul>
+    <li
+      key="1"
+    >
+      name1
+    </li>
+    <li
+      key="1"
+    >
+      name2
+    </li>
+    <li
+      key="1"
+    >
+      name3
+    </li>
+  </ul>
+</div>
+`;

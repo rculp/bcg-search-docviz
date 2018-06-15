@@ -3,30 +3,17 @@ import { shallow } from 'enzyme';
 
 import Page from './Page';
 
-describe(Page, () => {
-  let props;
-
-  beforeEach(() => {
-    props = {
-      test: undefined
-    };
-  });
+describe('Page', () => {
+  const props = {
+    id: 'test-page'
+  };
 
   it('renders and matches our snapshot', () => {
     const component = shallow(
-      <Page>
+      <Page {...props}>
         <div></div>
       </Page>
     );
     expect(component).toMatchSnapshot();
-  });
-
-  it('passes children', () => {
-    const component = shallow(
-      <Page {...props}>
-        <div>Test</div>
-      </Page>
-    );
-    expect(component.contains(<div>Test</div>)).toEqual(true);
   });
 });
