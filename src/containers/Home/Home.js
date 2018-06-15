@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Form, Input, Button } from 'semantic-ui-react';
+import { Form, Input, Button, Message } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,14 +8,19 @@ import { actions as searchActions, selectors as searchSelectors } from 'redux/se
 
 import Page from 'components/Page/Page';
 
-import './HomeContainer.css';
+import './Home.css';
 
 class HomeContainer extends Component {
   componentDidUpdate = () => {
-    const { history, fulfilled } = this.props;
-    if (fulfilled) {
-      history.push('/results');
+    const { history, shouldRedirect, searchValue } = this.props;
+    if (shouldRedirect) {
+      history.push(`/results?q=${encodeURIComponent(searchValue)}`);
     }
+  };
+
+  componentWillUnmount = () => {
+    const { actions: { reset } } = this.props;
+    reset();
   };
 
   fetchResults = () => {
@@ -29,7 +34,7 @@ class HomeContainer extends Component {
   };
 
   render = () => {
-    const { searchValue, loading } = this.props;
+    const { searchValue, loading, error } = this.props;
     return (
       <Page id="home">
         <main>
@@ -37,15 +42,27 @@ class HomeContainer extends Component {
           <Form>
             <Form.Field>
               <Input
+                size="massive"
                 placeholder="Search..."
                 id="query"
                 loading={loading}
+                disabled={loading}
                 value={searchValue}
                 onChange={this.handleChange}
+                icon="search"
+                iconPosition="left"
+                label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
+                labelPosition="right"
               />
             </Form.Field>
-            <Button type="submit" onClick={this.fetchResults}>Submit</Button>
           </Form>
+          { error &&
+            <Message
+              error
+              header="Search Failed"
+              content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
+            />
+          }
         </main>
       </Page>
     );
@@ -56,7 +73,7 @@ const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state),
   loading: searchSelectors.getLoading(state),
   error: searchSelectors.getError(state),
-  fulfilled: searchSelectors.getFulfilled(state)
+  shouldRedirect: searchSelectors.getShouldRedirect(state)
 });
 
 const mapDispatchToProps = dispatch => ({

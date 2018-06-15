@@ -1,5 +1,11 @@
-.page {
+#home {
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#home h2 {
+  font-size: 28px;
   text-align: center;
 }

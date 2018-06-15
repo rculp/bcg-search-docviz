@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`() =>
+_react2.default.createElement('header', { __source: { fileName: _jsxFileName, lineNumber: 6 }, __self: undefined }, 'Minerva') renders and matches our snapshot 1`] = `
+<header>
+  Minerva
+</header>
+`;
+
 exports[`class Header extends _react.Component {
   render() {
     return (

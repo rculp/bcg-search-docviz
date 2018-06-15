@@ -2,6 +2,9 @@
 // TODO redux-immutable-state-invariant - throw error if not immutable in dev
 // TODO reselect                        - efficient redux selectors
 
+import 'semantic-ui-css/semantic.min.css';
+import 'index.css';
+
 import registerServiceWorker from 'registerServiceWorker';
 
 import React from 'react';
@@ -18,11 +21,8 @@ import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import { name as searchReducerName, reducer as searchReducer } from 'redux/search';
 
-import HomeContainer from 'containers/HomeContainer/HomeContainer';
-import ResultsContainer from 'containers/ResultsContainer/ResultsContainer';
-
-import 'semantic-ui-css/semantic.min.css';
-import 'index.css';
+import Home from 'containers/Home/Home';
+import Results from 'containers/Results/Results';
 
 const history = createBrowserHistory();
 const store = createStore(
@@ -36,7 +36,7 @@ const store = createStore(
       routerMiddleware(history), // Enables dispatching actions
       promiseMiddleware(), // Enables actions to return promises
       thunkMiddleware, // Enables actions to return functions
-      createLogger({}) // Must be at bottom
+      createLogger({ diff: true, collapsed: true }) // Must be at bottom
     )
   )
 );
@@ -45,8 +45,8 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={HomeContainer} />
-        <Route path="/results" component={ResultsContainer} />
+        <Route exact path="/" component={Home} />
+        <Route path="/results" component={Results} />
         <Redirect from="*" to="/" />
       </Switch>
     </ConnectedRouter>
