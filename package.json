@@ -53,7 +53,8 @@
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "collectCoverageFrom": ["src/**/*.js", "!src/registerServiceWorker.js"]
   },
   "proxy": "http://172.22.77.4"
 }
