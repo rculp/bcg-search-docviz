@@ -17,7 +17,7 @@ import Page from 'components/Page/Page';
 
 import './Results.css';
 
-const ResultsContainer = ({ history, results }) => {
+export const ResultsContainer = ({ history, results }) => {
   if (!results.Result) {
     history.push('/');
     return null;

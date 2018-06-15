@@ -4,7 +4,7 @@ import React from 'react';
 
 import Footer from './Footer';
 
-describe(Footer, () => {
+describe('Footer', () => {
   it('renders and matches our snapshot', () => {
     const component = shallow(
       <Footer />

@@ -1,5 +1,14 @@
-describe('A dummy test', () => {
-  it('should pass', () => {
-    expect(true).toEqual(true);
+import { shallow } from 'enzyme';
+
+import React from 'react';
+
+import { ResultsContainer } from './Results';
+
+describe('Home', () => {
+  it('renders and matches our snapshot', () => {
+    const component = shallow(
+      <ResultsContainer />
+    );
+    expect(component).toMatchSnapshot();
   });
 });

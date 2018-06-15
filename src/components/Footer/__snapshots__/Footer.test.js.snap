@@ -6,3 +6,9 @@ _react2.default.createElement('footer', { __source: { fileName: _jsxFileName, li
   Footer
 </footer>
 `;
+
+exports[`Footer renders and matches our snapshot 1`] = `
+<footer>
+  Footer
+</footer>
+`;

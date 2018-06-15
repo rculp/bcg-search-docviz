@@ -6,3 +6,9 @@ _react2.default.createElement('header', { __source: { fileName: _jsxFileName, li
   Minerva
 </header>
 `;
+
+exports[`Header renders and matches our snapshot 1`] = `
+<header>
+  Minerva
+</header>
+`;

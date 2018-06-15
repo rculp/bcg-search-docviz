@@ -10,7 +10,7 @@ import Page from 'components/Page/Page';
 
 import './Home.css';
 
-class HomeContainer extends Component {
+export class HomeContainer extends Component {
   componentDidUpdate = () => {
     const { history, shouldRedirect, searchValue } = this.props;
     if (shouldRedirect) {
