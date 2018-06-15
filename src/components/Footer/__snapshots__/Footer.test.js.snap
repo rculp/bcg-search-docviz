@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`() =>
-{/* istanbul ignore next */cov_27tfdhzza6.f[0]++;cov_27tfdhzza6.s[1]++;return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'footer', /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 6 }, __self: undefined }, /* istanbul ignore next */'Footer'));} renders and matches our snapshot 1`] = `
+_react2.default.createElement('footer', { __source: { fileName: _jsxFileName, lineNumber: 6 }, __self: undefined }, 'Footer') renders and matches our snapshot 1`] = `
 <footer>
   Footer
 </footer>
