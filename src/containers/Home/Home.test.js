@@ -1,3 +1,5 @@
-/**
- * Created by King Kevin on 6/14/2018.
- */
+describe('A dummy test', () => {
+  it('should pass', () => {
+    expect(true).toEqual(true);
+  });
+});
