@@ -3,9 +3,12 @@ import config from 'config';
 
 export const name = 'search';
 
-const RESET = 'RESET';
-const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
-const API_SEARCH_PROFILE = 'API_SEARCH_PROFILE';
+export const RESET = 'RESET';
+export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
+export const API_SEARCH_PROFILE = 'API_SEARCH_PROFILE';
+export const API_SEARCH_PROFILE_PENDING = `${API_SEARCH_PROFILE}_${PENDING}`;
+export const API_SEARCH_PROFILE_REJECTED = `${API_SEARCH_PROFILE}_${REJECTED}`;
+export const API_SEARCH_PROFILE_FULFILLED = `${API_SEARCH_PROFILE}_${FULFILLED}`;
 
 const initialState = {
   searchValue: '',
@@ -20,7 +23,7 @@ export const actions = {
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
   search: payload => ({
     type: API_SEARCH_PROFILE,
-    payload: fetch(config.API_URL.SEARCH(encodeURIComponent(payload))).then(res => res.json())
+    payload: fetch(config.API_URL.SEARCH(payload)).then(res => res.json())
   })
 };
 
@@ -44,12 +47,12 @@ export function reducer(state = initialState, action) {
         ...state,
         searchValue: action.payload
       };
-    case `${API_SEARCH_PROFILE}_${PENDING}`:
+    case API_SEARCH_PROFILE_PENDING:
       return {
         ...state,
         loading: true
       };
-    case `${API_SEARCH_PROFILE}_${REJECTED}`:
+    case API_SEARCH_PROFILE_REJECTED:
       return {
         ...state,
         loading: false,
@@ -57,7 +60,7 @@ export function reducer(state = initialState, action) {
         shouldRedirect: false,
         results: {}
       };
-    case `${API_SEARCH_PROFILE}_${FULFILLED}`:
+    case API_SEARCH_PROFILE_FULFILLED:
       return {
         ...state,
         loading: false,
