@@ -1,4 +1,5 @@
 import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware';
+import config from 'config';
 
 export const name = 'search';
 
@@ -19,9 +20,7 @@ export const actions = {
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
   search: payload => ({
     type: API_SEARCH_PROFILE,
-    payload:
-      fetch(`http://ac0d6759772e911e8929102ebb5f786c-2146110952.eu-central-1.elb.amazonaws.com:9053/search?q=${encodeURIComponent(payload)}`)
-        .then(res => res.json())
+    payload: fetch(config.API_URL.SEARCH(encodeURIComponent(payload))).then(res => res.json())
   })
 };
 
