@@ -5,15 +5,15 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { store, history } from 'redux/store';
 
-import Home from 'containers/Home/Home';
-import Results from 'containers/Results/Results';
+import HomeContainer from 'containers/Home/Home';
+import ResultsContainer from 'containers/Results/Results';
 
 const App = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/results" component={Results} />
+        <Route exact path="/" component={HomeContainer} />
+        <Route path="/results" component={ResultsContainer} />
         <Redirect from="*" to="/" />
       </Switch>
     </ConnectedRouter>

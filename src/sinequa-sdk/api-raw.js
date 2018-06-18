@@ -1,6 +1,6 @@
 //universal body key value pairs
 //TODO put in config
-var endpoint = '/rest';
+var endpoint = '/xrest';
 var httpMethod = 'POST';
 var commonBody = {user: 'api', password: 'api', profile: 'Default BCG', pretty: true, output: 'json'};
 
