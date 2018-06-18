@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import uuid from 'uuid/v1'; jest.mock('uuid/v1', () => (jest.fn(() => 1)));
+import uuid from 'uuid/v1';
 
 import React from 'react';
 import configureStore from 'redux-mock-store';
@@ -46,7 +46,8 @@ describe('Results', () => {
   let store;
 
   beforeEach(() => {
-    mockHistory.push.mockReset();
+    jest.resetAllMocks();
+    jest.mock('uuid/v1', () => (jest.fn(() => 1)));
     store = mockStore(initialState_full);
   });
 

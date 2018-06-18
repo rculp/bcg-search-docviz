@@ -11,17 +11,17 @@ exports[`Refiner Tag Cloud renders and matches our snapshot 1`] = `
   </Header>
   <ul>
     <li
-      key="1"
+      key="1c4e0e80-7322-11e8-9dc6-b502906aa596"
     >
       name1
     </li>
     <li
-      key="1"
+      key="1c4e3590-7322-11e8-9dc6-b502906aa596"
     >
       name2
     </li>
     <li
-      key="1"
+      key="1c4e3591-7322-11e8-9dc6-b502906aa596"
     >
       name3
     </li>

@@ -24,7 +24,7 @@ exports[`Results renders and matches our snapshot 1`] = `
               "type": "TagCloud",
             }
           }
-          key="1"
+          key="1c26fe80-7322-11e8-a078-cff0db81c904"
         />
         <RefinerTree
           box={
@@ -32,7 +32,7 @@ exports[`Results renders and matches our snapshot 1`] = `
               "type": "Tree",
             }
           }
-          key="1"
+          key="1c26fe81-7322-11e8-a078-cff0db81c904"
         />
         <RefinerList
           box={
@@ -40,10 +40,10 @@ exports[`Results renders and matches our snapshot 1`] = `
               "type": "List",
             }
           }
-          key="1"
+          key="1c26fe82-7322-11e8-a078-cff0db81c904"
         />
         <div
-          key="1"
+          key="1c26fe83-7322-11e8-a078-cff0db81c904"
         >
           Unrecognized refiner type
         </div>
@@ -58,7 +58,7 @@ exports[`Results renders and matches our snapshot 1`] = `
         </Header>
         <Grid
           columns={2}
-          key="1"
+          key="1c274ca0-7322-11e8-a078-cff0db81c904"
         >
           <GridColumn>
             filename1

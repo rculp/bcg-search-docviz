@@ -2,6 +2,8 @@ import { shallow, mount } from 'enzyme';
 
 import React from 'react';
 import configureStore from 'redux-mock-store'
+import { Input } from 'semantic-ui-react';
+
 
 import ConnectedHomeContainer, { HomeContainer } from './Home';
 
@@ -39,15 +41,10 @@ describe('Home', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('redirects', () => {
-    store = mockStore({
-      search: {
-        shouldRedirect: true
-      }
-    });
-
-    const component = shallow(
-      <ConnectedHomeContainer store={store}/>
+  it('goes through lifecycle methods', () => {
+    const component = mount(
+      <HomeContainer />
     );
+    expect(component.find(Input));
   });
 });
