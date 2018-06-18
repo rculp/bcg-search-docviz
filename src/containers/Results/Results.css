@@ -1,5 +1,12 @@
 #results {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  min-height: 100vh;
+}
+
+#results main {
+  flex: 1 1 auto;
 }
 
 #results h2 {
