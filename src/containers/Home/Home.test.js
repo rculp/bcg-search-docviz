@@ -1,13 +1,19 @@
 import { shallow, mount } from 'enzyme';
+import { API_URL } from 'config';
 
 import React from 'react';
 import configureStore from 'redux-mock-store'
-import { Input } from 'semantic-ui-react';
+import { Input, Button, Message } from 'semantic-ui-react';
 
 import ConnectedHomeContainer, { HomeContainer } from './Home';
 
 describe('Home', () => {
   const mockStore = configureStore();
+  const mockActions = {
+    search: jest.fn(),
+    changeSearchValue: jest.fn(),
+    reset: jest.fn()
+  };
   const initialState = {
     search: {
       searchValue: '',
@@ -16,9 +22,12 @@ describe('Home', () => {
       shouldRedirect: false
     }
   };
+
+  const mockHistory = {push: jest.fn()};
   let store;
 
   beforeEach(() => {
+    jest.clearAllMocks();
     store = mockStore(initialState);
   });
 
@@ -40,12 +49,43 @@ describe('Home', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('goes through lifecycle methods', () => {
-    const component = mount(
-      <HomeContainer />
+  it('shows error message error is set', () => {
+    const component = shallow(
+      <HomeContainer error={true}/>
     );
-    //const componentDidUpdateSpy = jest.spyOn(component.prototype, 'componentDidUpdate');
-    //expect(componentDidUpdateSpy).toHaveBeenCalled();
-    expect(component.find(Input).simulate('change', {value: 'test'}));
+    expect(component.find(Message).props().header).toEqual('Search Failed');
+  });
+
+  it('should fetch results when submit button is clicked', () => {
+    const component = mount(
+      <HomeContainer actions={mockActions} searchValue="testSearchValue" />
+    );
+    component.find(Button).simulate('click');
+    expect(mockActions.search).toHaveBeenCalledWith('testSearchValue');
+  });
+
+  it('should change search value when input value changes', () => {
+    const mockEvent = {
+      target: {
+        value: 'test'
+      }
+    };
+    const component = shallow(
+      <HomeContainer actions={mockActions}/>
+    );
+    component.find(Input).simulate('change', mockEvent);
+    expect(mockActions.changeSearchValue).toHaveBeenCalledWith('test');
+  });
+
+  xit('lifecycle methods', () => {
+    const cdu = jest.fn();
+    const component = mount(
+      <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={false} searchValue={'sss'} />
+    );
+    component.props().componentDidUpdate();
+    component.props().componentWillUnmount();
+
+    expect(mockHistory.push).toHaveBeenCalledWith(API_URL('sss'));
+    expect(mockActions.reset).toHaveBeenCalled();
   });
 });
