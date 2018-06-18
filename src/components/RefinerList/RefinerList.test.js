@@ -1,3 +1,5 @@
+jest.mock('uuid/v1', () => (jest.fn(() => 1)));
+
 import React from 'react';
 import { shallow } from 'enzyme';
 import uuid from 'uuid/v1';
@@ -5,6 +7,7 @@ import uuid from 'uuid/v1';
 import RefinerList from './RefinerList';
 
 describe('Refiner List', () => {
+
   const props = {
     box: {
       display: 'displayName',
@@ -17,8 +20,7 @@ describe('Refiner List', () => {
   };
 
   beforeEach(() => {
-    jest.resetAllMocks();
-    jest.mock('uuid/v1', () => (jest.fn(() => 1)));
+    jest.clearAllMocks();
   });
 
   it('renders and matches our snapshot', () => {

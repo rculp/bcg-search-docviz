@@ -1,3 +1,5 @@
+jest.mock('uuid/v1', () => (jest.fn(() => 1)));
+
 import { shallow } from 'enzyme';
 import uuid from 'uuid/v1';
 
@@ -46,8 +48,7 @@ describe('Results', () => {
   let store;
 
   beforeEach(() => {
-    jest.resetAllMocks();
-    jest.mock('uuid/v1', () => (jest.fn(() => 1)));
+    jest.clearAllMocks();
     store = mockStore(initialState_full);
   });
 

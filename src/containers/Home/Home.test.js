@@ -4,7 +4,6 @@ import React from 'react';
 import configureStore from 'redux-mock-store'
 import { Input } from 'semantic-ui-react';
 
-
 import ConnectedHomeContainer, { HomeContainer } from './Home';
 
 describe('Home', () => {
@@ -45,6 +44,8 @@ describe('Home', () => {
     const component = mount(
       <HomeContainer />
     );
-    expect(component.find(Input));
+    //const componentDidUpdateSpy = jest.spyOn(component.prototype, 'componentDidUpdate');
+    //expect(componentDidUpdateSpy).toHaveBeenCalled();
+    expect(component.find(Input).simulate('change', {value: 'test'}));
   });
 });
