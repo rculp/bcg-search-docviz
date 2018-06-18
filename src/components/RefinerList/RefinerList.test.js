@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import uuid from 'uuid/v1';
-jest.mock('uuid/v1', () => (jest.fn(() => 1)));
+import uuid from 'uuid/v1'; jest.mock('uuid/v1', () => (jest.fn(() => 1)));
 
 import RefinerList from './RefinerList';
 

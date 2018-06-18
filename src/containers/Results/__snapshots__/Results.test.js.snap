@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results renders and matches our snapshot 1`] = `
+<Page
+  id="results"
+>
+  <Header />
+  <main>
+    <Grid
+      celled={true}
+      columns={2}
+    >
+      <GridColumn
+        width={4}
+      >
+        <Header
+          as="h1"
+        >
+          Refiners
+        </Header>
+        <RefinerTagCloud
+          box={
+            Object {
+              "type": "TagCloud",
+            }
+          }
+          key="1"
+        />
+        <RefinerTree
+          box={
+            Object {
+              "type": "Tree",
+            }
+          }
+          key="1"
+        />
+        <RefinerList
+          box={
+            Object {
+              "type": "List",
+            }
+          }
+          key="1"
+        />
+        <div
+          key="1"
+        >
+          Unrecognized refiner type
+        </div>
+      </GridColumn>
+      <GridColumn
+        width={12}
+      >
+        <Header
+          as="h1"
+        >
+          Results
+        </Header>
+        <Grid
+          columns={2}
+          key="1"
+        >
+          <GridColumn>
+            filename1
+          </GridColumn>
+          <GridColumn>
+            <b
+              key="0"
+            >
+              test
+            </b>
+          </GridColumn>
+        </Grid>
+      </GridColumn>
+    </Grid>
+  </main>
+  <Footer />
+</Page>
+`;

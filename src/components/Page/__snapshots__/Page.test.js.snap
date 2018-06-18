@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page renders and matches our snapshot 1`] = `
+<div
+  className="page"
+  id="test-page"
+>
+  <div />
+</div>
+`;
