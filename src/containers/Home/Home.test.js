@@ -77,15 +77,39 @@ describe('Home', () => {
     expect(mockActions.changeSearchValue).toHaveBeenCalledWith('test');
   });
 
-  xit('lifecycle methods', () => {
-    const cdu = jest.fn();
-    const component = mount(
-      <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={false} searchValue={'sss'} />
-    );
-    component.props().componentDidUpdate();
-    component.props().componentWillUnmount();
+  it('should reset when unmounted', () => {
+    jest.spyOn(HomeContainer.prototype, 'componentWillUnmount');
 
-    expect(mockHistory.push).toHaveBeenCalledWith(API_URL('sss'));
+    const component = shallow(
+      <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={false} searchValue={'testSearchValue'} />
+    );
+
+    component.instance().componentWillUnmount();
+
     expect(mockActions.reset).toHaveBeenCalled();
+  });
+
+  it('redirects to results page if store contains redirect flag', () => {
+    jest.spyOn(HomeContainer.prototype, 'componentDidUpdate');
+
+    const component = shallow(
+      <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={true} searchValue={'testSearchValue'} />
+    );
+
+    component.instance().componentDidUpdate();
+
+    expect(mockHistory.push).toHaveBeenCalledWith(API_URL.SEARCH('testSearchValue'));
+  });
+
+  it('does not redirect if store doesn not contain redirect flag', () => {
+    jest.spyOn(HomeContainer.prototype, 'componentDidUpdate');
+
+    const component = shallow(
+      <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={false} searchValue={'testSearchValue'} />
+    );
+
+    component.instance().componentDidUpdate();
+
+    expect(mockHistory.push).not.toHaveBeenCalled();
   });
 });

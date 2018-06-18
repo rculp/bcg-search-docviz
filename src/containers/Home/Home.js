@@ -12,17 +12,17 @@ import Page from 'components/Page/Page';
 import './Home.css';
 
 export class HomeContainer extends Component {
-  componentDidUpdate = () => {
+  componentDidUpdate() {
     const { history, shouldRedirect, searchValue } = this.props;
     if (shouldRedirect) {
-      history.push(API_URL(searchValue));
+      history.push(API_URL.SEARCH(searchValue));
     }
-  };
+  }
 
-  componentWillUnmount = () => {
+  componentWillUnmount() {
     const { actions: { reset } } = this.props;
     reset();
-  };
+  }
 
   fetchResults = () => {
     const { actions: { search }, searchValue } = this.props;
