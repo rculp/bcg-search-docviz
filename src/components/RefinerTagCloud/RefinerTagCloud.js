@@ -18,9 +18,9 @@ const RefinerTagCloud = ({ box }) => (
 RefinerTagCloud.propTypes = {
   box: PropTypes.shape({
     display: PropTypes.string,
-    items: PropTypes.shape({
-      Name: PropTypes.string
-    })
+    items: PropTypes.arrayOf(PropTypes.shape(
+      { Name: PropTypes.string }
+    ))
   }).isRequired
 };
 

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Refiner List renders and matches our snapshot 1`] = `
+<div
+  className="refiner-tree"
+>
+  <Header
+    as="h2"
+  >
+    displayName
+  </Header>
+  <div>
+    Tree Refiner - Sinequa doesn't seem to return the actual items. Possibly need to make another API call?
+  </div>
+</div>
+`;
