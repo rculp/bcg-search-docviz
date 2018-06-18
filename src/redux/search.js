@@ -1,4 +1,3 @@
-import sdk from 'sinequa-sdk';
 import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware';
 
 export const name = 'search';
@@ -20,7 +19,9 @@ export const actions = {
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
   search: payload => ({
     type: API_SEARCH_PROFILE,
-    payload: sdk.search.basicQuery(payload)
+    payload:
+      fetch(`http://ac0d6759772e911e8929102ebb5f786c-2146110952.eu-central-1.elb.amazonaws.com:9053/search?q=${encodeURIComponent(payload)}`)
+        .then(res => res.json())
   })
 };
 

@@ -54,6 +54,5 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
-  },
-  "proxy": "http://172.22.77.4"
+  }
 }
