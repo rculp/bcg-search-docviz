@@ -5,6 +5,7 @@ import { Form, Input, Button, Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
+import { API_URL } from 'config';
 
 import Page from 'components/Page/Page';
 
@@ -14,7 +15,7 @@ export class HomeContainer extends Component {
   componentDidUpdate = () => {
     const { history, shouldRedirect, searchValue } = this.props;
     if (shouldRedirect) {
-      history.push(`/results?q=${encodeURIComponent(searchValue)}`);
+      history.push(API_URL(searchValue));
     }
   };
 

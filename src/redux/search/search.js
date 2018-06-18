@@ -1,5 +1,5 @@
 import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware';
-import config from 'config';
+import { SERVER_URL, API_URL } from 'config';
 
 export const name = 'search';
 
@@ -23,7 +23,7 @@ export const actions = {
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
   search: payload => ({
     type: API_SEARCH_PROFILE,
-    payload: fetch(config.API_URL.SEARCH(payload)).then(res => res.json())
+    payload: fetch(SERVER_URL(API_URL.SEARCH(payload))).then(res => res.json())
   })
 };
 

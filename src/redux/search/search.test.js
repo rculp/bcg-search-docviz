@@ -3,6 +3,7 @@ import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import config from 'config';
 import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware';
+import { SERVER_URL, API_URL } from 'config';
 
 const initialState = {
   searchValue: '',
@@ -25,7 +26,7 @@ describe('Search', () => {
 
   it('asynchronous action creators should make correct API calls', () => {
     fetchMock
-      .getOnce(config.API_URL.SEARCH('green energy'), '{"json": "stringified"}')
+      .getOnce(SERVER_URL(API_URL.SEARCH('green energy')), '{"json": "stringified"}')
       .catch((response) => {
         expect(response).toEqual({json: 'stringified'});
         expect(response).not.toEqual('{"json": "stringified"}');
