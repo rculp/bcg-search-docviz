@@ -9,7 +9,7 @@ import { API_URL } from 'config';
 
 import Page from 'components/Page/Page';
 
-import './Home.css';
+import './Home.scss';
 
 export class HomeContainer extends Component {
   componentDidUpdate = () => {
