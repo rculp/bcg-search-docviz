@@ -4,7 +4,7 @@ const rewireStylelint = require('react-app-rewire-stylelint');
 module.exports = function override(config, env) {
   config = rewireEslint(config, env);
   config = rewireStylelint.withLoaderOptions({
-    files: ['src/**/*.css']
+    files: ['src/**/*.scss']
   })(config, env);
 
   return config;
