@@ -15,7 +15,7 @@ export class HomeContainer extends Component {
   componentDidUpdate = () => {
     const { history, shouldRedirect, searchValue } = this.props;
     if (shouldRedirect) {
-      history.push(API_URL.SEARCH(searchValue));
+      history.push(API_URL.RESULTS_PAGE(searchValue));
     }
   };
 
