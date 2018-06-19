@@ -78,8 +78,6 @@ describe('Home', () => {
   });
 
   it('should reset when unmounted', () => {
-    jest.spyOn(HomeContainer.prototype, 'componentWillUnmount');
-
     const component = shallow(
       <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={false} searchValue={'testSearchValue'} />
     );
@@ -90,8 +88,6 @@ describe('Home', () => {
   });
 
   it('redirects to results page if store contains redirect flag', () => {
-    jest.spyOn(HomeContainer.prototype, 'componentDidUpdate');
-
     const component = shallow(
       <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={true} searchValue={'testSearchValue'} />
     );
@@ -102,8 +98,6 @@ describe('Home', () => {
   });
 
   it('does not redirect if store doesn not contain redirect flag', () => {
-    jest.spyOn(HomeContainer.prototype, 'componentDidUpdate');
-
     const component = shallow(
       <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={false} searchValue={'testSearchValue'} />
     );
