@@ -4,7 +4,7 @@ import uuid from 'uuid/v1';
 
 import { Header } from 'semantic-ui-react';
 
-import './RefinerList.css';
+import './RefinerList.scss';
 
 const RefinerList = ({ box }) => (
   <div className="refiner-list">
