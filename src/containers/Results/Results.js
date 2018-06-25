@@ -7,7 +7,6 @@ import uuid from 'uuid/v1';
 import ReactHtmlParser from 'react-html-parser';
 import { Header, Message, Grid } from 'semantic-ui-react';
 
-import MasterHeader from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import RefinerTagCloud from 'components/RefinerTagCloud/RefinerTagCloud';
 import RefinerTree from 'components/RefinerTree/RefinerTree';
@@ -24,7 +23,6 @@ export const ResultsContainer = ({ history, results }) => {
   }
   return (
     <Page id="results">
-      <MasterHeader />
       <main>
         {
           results.Result.Docs.length <= 0 &&
