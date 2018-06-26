@@ -1,0 +1,14 @@
+$icons-font-path: '../node_modules/semantic-ui-sass/icons';
+$flags-image-path: '../node_modules/semantic-ui-sass/images';
+
+@import "../node_modules/semantic-ui-sass/semantic-ui";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#root {
+  height: 100%;
+}

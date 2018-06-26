@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Header } from 'semantic-ui-react';
 
-import './RefinerTree.css';
+import './RefinerTree.scss';
 
 const RefinerTree = ({ box }) => (
   <div className="refiner-tree">

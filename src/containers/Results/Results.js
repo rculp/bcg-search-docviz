@@ -14,7 +14,7 @@ import RefinerList from 'components/RefinerList/RefinerList';
 
 import Page from 'components/Page/Page';
 
-import './Results.css';
+import './Results.scss';
 
 export const ResultsContainer = ({ history, results }) => {
   if (!results.Result) {

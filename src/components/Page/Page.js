@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import BcgHeader from 'components/BcgHeader/BcgHeader';
-import './Page.css';
+import './Page.scss';
+
 
 const Page = ({ id, children }) => (
   <div id={id} className="page">

@@ -1,5 +1,4 @@
-import 'semantic-ui-css/semantic.min.css';
-import 'index.css';
+import 'index.scss';
 
 import registerServiceWorker from 'registerServiceWorker';
 

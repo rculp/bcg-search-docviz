@@ -1,5 +1,5 @@
 import { shallow, mount } from 'enzyme';
-import { API_URL } from 'config';
+import { UI_URL } from 'config';
 
 import React from 'react';
 import configureStore from 'redux-mock-store'
@@ -94,7 +94,7 @@ describe('Home', () => {
 
     component.instance().componentDidUpdate();
 
-    expect(mockHistory.push).toHaveBeenCalledWith(API_URL.SEARCH('testSearchValue'));
+    expect(mockHistory.push).toHaveBeenCalledWith(UI_URL.RESULTS('testSearchValue'));
   });
 
   it('does not redirect if store doesn not contain redirect flag', () => {

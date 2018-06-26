@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './BcgHeader.css';
+import './BcgHeader.scss';
 
 const BcgHeader = () => (
   <header className="bcg-header">Minerva</header>

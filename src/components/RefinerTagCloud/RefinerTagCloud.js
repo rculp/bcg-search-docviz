@@ -4,7 +4,7 @@ import uuid from 'uuid/v1';
 
 import { Header } from 'semantic-ui-react';
 
-import './RefinerTagCloud.css';
+import './RefinerTagCloud.scss';
 
 const RefinerTagCloud = ({ box }) => (
   <div className="refiner-tag-cloud">
