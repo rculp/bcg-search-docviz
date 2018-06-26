@@ -4,16 +4,15 @@ $flags-image-path: '../node_modules/semantic-ui-sass/images';
 @import '../node_modules/semantic-ui-sass/semantic-ui';
 @import '../node_modules/reset-css/sass/reset';
 
-@import 'global-styles/layout/grid';
-@import 'global-styles/layout/responsive';
+@import 'global-styles/grid/variables';
+@import 'global-styles/responsive/variables';
 
-@import 'global-styles/colors/colors-base';
-@import 'global-styles/colors/colors-declarations';
+@import 'global-styles/colors/variables';
+@import 'global-styles/colors/declarations';
 
-@import 'global-styles/typography/fonts';
-@import 'global-styles/typography/typography-variables';
-@import 'global-styles/typography/typography-utilities';
-@import 'global-styles/typography/typography-declarations';
+@import 'global-styles/typography/utilities';
+@import 'global-styles/typography/variables';
+@import 'global-styles/typography/declarations';
 
 body {
   background-color: $color-bg-lightest;
