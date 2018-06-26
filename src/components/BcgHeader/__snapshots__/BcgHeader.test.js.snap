@@ -2,8 +2,12 @@
 
 exports[`BcgHeader renders and matches our snapshot 1`] = `
 <header
-  className="bcg-header"
+  className="bcg-header ui fixed menu"
 >
-  Minerva
+  <div
+    className="logo"
+  >
+    M
+  </div>
 </header>
 `;
