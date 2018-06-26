@@ -1,14 +1,3 @@
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1.6rem;
-  font-family: $font-family-serif;
-  line-height: $type-line-height-default;
-  color: $color-typo-darkest;
-}
-
 // ==========================================================
 // Display typography declarations
 // ==========================================================
@@ -439,37 +428,4 @@ body {
 
 .label-small-light-upper {
   @extend %label-small-light-upper;
-}
-
-// Base text declarations
-
-h1 {
-  @extend %heading-large-serif-bold;
-}
-
-h2 {
-  @extend %heading-large-sans-normal;
-}
-
-h3 {
-  @extend %heading-regular-sans-normal;
-}
-
-h4 {
-  @extend %heading-regular-serif-bold;
-}
-
-h5 {
-  @extend %heading-small-serif-bold;
-}
-
-h6 {
-  @extend %heading-small-sans-bold;
-}
-
-p,
-ol,
-ul,
-li {
-  @extend %body-regular-normal;
 }
