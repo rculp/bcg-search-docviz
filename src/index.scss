@@ -1,7 +1,20 @@
 $icons-font-path: '../node_modules/semantic-ui-sass/icons';
 $flags-image-path: '../node_modules/semantic-ui-sass/images';
 
-@import "../node_modules/semantic-ui-sass/semantic-ui";
+@import '../node_modules/semantic-ui-sass/semantic-ui';
+
+@import '../node_modules/reset-css/sass/reset';
+
+@import 'styles/layout/grid';
+@import 'styles/layout/responsive';
+
+@import 'styles/colors/colors-base';
+@import 'styles/colors/colors-declarations';
+
+@import 'styles/typography/fonts';
+@import 'styles/typography/typography-variables';
+@import 'styles/typography/typography-utilities';
+@import 'styles/typography/typography-declarations';
 
 body {
   margin: 0;

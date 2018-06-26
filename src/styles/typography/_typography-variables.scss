@@ -78,19 +78,19 @@ $body-font-weight-regular: 400;
 $body-font-weight-light: 300;
 
 $body-lead-font-config: (
-    xs: (font-size: 2.0rem, line-height: $body-line-height-default),
-    sm: (font-size: 2.2rem, line-height: $body-line-height-default),
-    md: (font-size: 2.2rem, line-height: $body-line-height-default),
-    lg: (font-size: 2.4rem, line-height: $body-line-height-default),
-    xl: (font-size: 2.4rem, line-height: $body-line-height-default)
+  xs: (font-size: 2.0rem, line-height: $body-line-height-default),
+  sm: (font-size: 2.2rem, line-height: $body-line-height-default),
+  md: (font-size: 2.2rem, line-height: $body-line-height-default),
+  lg: (font-size: 2.4rem, line-height: $body-line-height-default),
+  xl: (font-size: 2.4rem, line-height: $body-line-height-default)
 );
 
 $body-large-font-config: (
-    xs: (font-size: 1.8rem, line-height: $body-line-height-default),
-    sm: (font-size: 1.8rem, line-height: $body-line-height-default),
-    md: (font-size: 1.8rem, line-height: $body-line-height-default),
-    lg: (font-size: 2.08rem, line-height: $body-line-height-default),
-    xl: (font-size: 2.0rem, line-height: $body-line-height-default)
+  xs: (font-size: 1.8rem, line-height: $body-line-height-default),
+  sm: (font-size: 1.8rem, line-height: $body-line-height-default),
+  md: (font-size: 1.8rem, line-height: $body-line-height-default),
+  lg: (font-size: 2.08rem, line-height: $body-line-height-default),
+  xl: (font-size: 2.0rem, line-height: $body-line-height-default)
 );
 
 $body-regular-font-config: (
@@ -108,7 +108,6 @@ $body-small-font-config: (
   lg: (font-size: 1.4rem, line-height: $body-line-height-default),
   xl: (font-size: 1.4rem, line-height: $body-line-height-default)
 );
-
 
 // ==========================================================
 // Variables and config for label typography declarations
@@ -136,4 +135,3 @@ $label-small-font-config: (
   lg: (font-size: 1.2rem, line-height: $body-line-height-default),
   xl: (font-size: 1.2rem, line-height: $body-line-height-default)
 );
-  

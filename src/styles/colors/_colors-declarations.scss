@@ -64,16 +64,15 @@ $color-typo-green: $bcg-green;
 $color-typo-blue-green: $bcg-green--blue-green;
 $color-typo-light-green: $bcg-green--light;
 
-
 // ==================================
 // State colour declarations
 // ==================================
 
 $color-error: #d50000 !default;
-$color-positive: #4CAF50 !default;
-$color-warning: #FF9800 !default;
-$color-info: #00BCD4 !default;
+$color-positive: #4caf50 !default;
+$color-warning: #ff9800 !default;
+$color-info: #00bcd4 !default;
 
 body {
-    background-color: $color-bg-lightest;
+  background-color: $color-bg-lightest;
 }

@@ -1,3 +1,9 @@
 {
-  "extends": "stylelint-config-standard"
+  "extends": "stylelint-config-sass-guidelines",
+  "rules": {
+    "order/properties-alphabetical-order": null,
+    "selector-max-id": 1,
+    "color-hex-length": "long",
+    "number-no-trailing-zeros": null
+  }
 }

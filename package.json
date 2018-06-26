@@ -17,6 +17,7 @@
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.3.0",
+    "reset-css": "^4.0.1",
     "semantic-ui-react": "^0.81.1",
     "semantic-ui-sass": "^2.2.11",
     "uuid": "^3.2.1"
@@ -40,7 +41,7 @@
     "redux-mock-store": "^1.5.3",
     "sass-loader": "^7.0.3",
     "stylelint": "^9.2.1",
-    "stylelint-config-standard": "^18.2.0"
+    "stylelint-config-sass-guidelines": "^5.0.0"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src react-app-rewired start",
