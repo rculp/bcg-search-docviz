@@ -1,0 +1,23 @@
+.section {
+    margin: calc(40px + 56px) 0 40px 0;
+    border-top: 1px solid $color-border-light;
+}
+
+.section__title {
+    @extend %heading-large-sans-bold;
+    color: $color-typo-light;
+    margin: 40px 0 24px 0;
+}
+
+.section__subtitle {
+    @extend %label-regular-bold-upper;
+    color: $color-typo-blue-green;
+    margin: 32px 0;
+}
+
+.section__heading {
+    @extend %label-small-light-upper;
+    text-transform: uppercase;
+    color: $color-typo-gray;
+    margin: 32px 0 8px 0;
+}

@@ -1,0 +1,45 @@
+.nav-vertical {
+    position: relative;
+    top: calc(16px + 56px);
+    @include media-breakpoint-up(md) {
+        position: fixed;
+        top: calc(40px + 56px);
+    }
+}
+
+.nav__list {
+    display: flex;
+    @include media-breakpoint-up(md) {
+        flex-direction: column;
+    }
+}
+
+.nav__list-item {
+    margin: 0 16px 0 0;
+    @include media-breakpoint-up(md) {
+        margin: 0;
+    }
+}
+
+.nav__list-link {
+    @extend %label-regular-bold-upper;
+    text-decoration: none;
+    color: $color-typo-gray;
+    transition: all 0.3s;
+    &:hover {
+        color: $color-typo-dark;
+    }
+}
+
+
+.nav__list-item--is-active {
+    .nav__list-link {
+        @extend %label-regular-bold-upper;
+        color: $color-typo-blue-green;
+    }
+}
+
+.nav__list-link--is-active {
+    @extend %label-regular-bold-upper;
+    color: $color-typo-blue-green;
+}

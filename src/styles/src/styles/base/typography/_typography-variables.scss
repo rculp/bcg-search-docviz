@@ -1,0 +1,139 @@
+$font-family-sans: 'BCG-Henderson-Sans';
+$font-family-serif: 'BCG-Henderson-Serif';
+
+$type-line-height-default: 1.5;
+
+// ==========================================================
+// Variables and config for display typography declarations
+// ==========================================================
+
+$display-line-height-default: 1.25;
+$display-font-weight-bold: 700;
+$display-font-weight-normal: 400;
+
+$display-large-font-config: (
+  xs: (font-size: 6.8rem, line-height: $display-line-height-default),
+  sm: (font-size: 6.8rem, line-height: $display-line-height-default),
+  md: (font-size: 7.2rem, line-height: $display-line-height-default),
+  lg: (font-size: 7.6rem, line-height: $display-line-height-default),
+  xl: (font-size: 7.6rem, line-height: $display-line-height-default)
+);
+
+$display-regular-font-config: (
+  xs: (font-size: 4.8rem, line-height: $display-line-height-default),
+  sm: (font-size: 4.8rem, line-height: $display-line-height-default),
+  md: (font-size: 5.2rem, line-height: $display-line-height-default),
+  lg: (font-size: 5.4rem, line-height: $display-line-height-default),
+  xl: (font-size: 5.4rem, line-height: $display-line-height-default)
+);
+
+// ==========================================================
+// Variables and config for heading typography declarations
+// ==========================================================
+
+$heading-line-height-default: 1.25;
+$heading-font-weight-bold: 700;
+$heading-font-weight-normal: 400;
+$heading-font-weight-light: 300;
+
+$heading-large-font-config: (
+  xs: (font-size: 4.2rem, line-height: $heading-line-height-default),
+  sm: (font-size: 4.2rem, line-height: $heading-line-height-default),
+  md: (font-size: 4.4rem, line-height: $heading-line-height-default),
+  lg: (font-size: 4.8rem, line-height: $heading-line-height-default),
+  xl: (font-size: 4.8rem, line-height: $heading-line-height-default)
+);
+
+$heading-regular-font-config: (
+  xs: (font-size: 2.8rem, line-height: $heading-line-height-default),
+  sm: (font-size: 2.8rem, line-height: $heading-line-height-default),
+  md: (font-size: 3.2rem, line-height: $heading-line-height-default),
+  lg: (font-size: 3.6rem, line-height: $heading-line-height-default),
+  xl: (font-size: 3.6rem, line-height: $heading-line-height-default)
+);
+
+$heading-small-font-config: (
+  xs: (font-size: 2.2rem, line-height: $heading-line-height-default),
+  sm: (font-size: 2.4rem, line-height: $heading-line-height-default),
+  md: (font-size: 2.4rem, line-height: $heading-line-height-default),
+  lg: (font-size: 2.8rem, line-height: $heading-line-height-default),
+  xl: (font-size: 2.8rem, line-height: $heading-line-height-default)
+);
+
+$heading-extra-small-font-config: (
+  xs: (font-size: 2.0rem, line-height: $heading-line-height-default),
+  sm: (font-size: 2.2rem, line-height: $heading-line-height-default),
+  md: (font-size: 2.2rem, line-height: $heading-line-height-default),
+  lg: (font-size: 2.4rem, line-height: $heading-line-height-default),
+  xl: (font-size: 2.4rem, line-height: $heading-line-height-default)
+);
+
+// ==========================================================
+// Variables and config for body typography declarations
+// ==========================================================
+
+$body-line-height-default: 1.5;
+$body-font-weight-bold: 700;
+$body-font-weight-regular: 400;
+$body-font-weight-light: 300;
+
+$body-lead-font-config: (
+    xs: (font-size: 2.0rem, line-height: $body-line-height-default),
+    sm: (font-size: 2.2rem, line-height: $body-line-height-default),
+    md: (font-size: 2.2rem, line-height: $body-line-height-default),
+    lg: (font-size: 2.4rem, line-height: $body-line-height-default),
+    xl: (font-size: 2.4rem, line-height: $body-line-height-default)
+);
+
+$body-large-font-config: (
+    xs: (font-size: 1.8rem, line-height: $body-line-height-default),
+    sm: (font-size: 1.8rem, line-height: $body-line-height-default),
+    md: (font-size: 1.8rem, line-height: $body-line-height-default),
+    lg: (font-size: 2.08rem, line-height: $body-line-height-default),
+    xl: (font-size: 2.0rem, line-height: $body-line-height-default)
+);
+
+$body-regular-font-config: (
+  xs: (font-size: 1.4rem, line-height: $body-line-height-default),
+  sm: (font-size: 1.4rem, line-height: $body-line-height-default),
+  md: (font-size: 1.6rem, line-height: $body-line-height-default),
+  lg: (font-size: 1.6rem, line-height: $body-line-height-default),
+  xl: (font-size: 1.6rem, line-height: $body-line-height-default)
+);
+
+$body-small-font-config: (
+  xs: (font-size: 1.2rem, line-height: $body-line-height-default),
+  sm: (font-size: 1.2rem, line-height: $body-line-height-default),
+  md: (font-size: 1.4rem, line-height: $body-line-height-default),
+  lg: (font-size: 1.4rem, line-height: $body-line-height-default),
+  xl: (font-size: 1.4rem, line-height: $body-line-height-default)
+);
+
+
+// ==========================================================
+// Variables and config for label typography declarations
+// ==========================================================
+
+$label-line-height-default: 1.5;
+$label-font-weight-bold: 700;
+$label-font-weight-regular: 400;
+$label-font-weight-light: 300;
+$label-regular-upper-letter-spacing: 1.75px;
+$label-small-upper-letter-spacing: 1.25px;
+
+$label-regular-font-config: (
+  xs: (font-size: 1.2rem, line-height: $body-line-height-default),
+  sm: (font-size: 1.2rem, line-height: $body-line-height-default),
+  md: (font-size: 1.4rem, line-height: $body-line-height-default),
+  lg: (font-size: 1.4rem, line-height: $body-line-height-default),
+  xl: (font-size: 1.4rem, line-height: $body-line-height-default)
+);
+
+$label-small-font-config: (
+  xs: (font-size: 1.0rem, line-height: $body-line-height-default),
+  sm: (font-size: 1.0rem, line-height: $body-line-height-default),
+  md: (font-size: 1.2rem, line-height: $body-line-height-default),
+  lg: (font-size: 1.2rem, line-height: $body-line-height-default),
+  xl: (font-size: 1.2rem, line-height: $body-line-height-default)
+);
+  
