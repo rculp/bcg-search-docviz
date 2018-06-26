@@ -2,19 +2,18 @@ $icons-font-path: '../node_modules/semantic-ui-sass/icons';
 $flags-image-path: '../node_modules/semantic-ui-sass/images';
 
 @import '../node_modules/semantic-ui-sass/semantic-ui';
-
 @import '../node_modules/reset-css/sass/reset';
 
-@import 'styles/layout/grid';
-@import 'styles/layout/responsive';
+@import 'global-styles/layout/grid';
+@import 'global-styles/layout/responsive';
 
-@import 'styles/colors/colors-base';
-@import 'styles/colors/colors-declarations';
+@import 'global-styles/colors/colors-base';
+@import 'global-styles/colors/colors-declarations';
 
-@import 'styles/typography/fonts';
-@import 'styles/typography/typography-variables';
-@import 'styles/typography/typography-utilities';
-@import 'styles/typography/typography-declarations';
+@import 'global-styles/typography/fonts';
+@import 'global-styles/typography/typography-variables';
+@import 'global-styles/typography/typography-utilities';
+@import 'global-styles/typography/typography-declarations';
 
 body {
   background-color: $color-bg-lightest;
