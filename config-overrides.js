@@ -1,6 +1,6 @@
+const rewired = require('react-app-rewired');
 const rewireEslint = require('react-app-rewire-eslint');
 const rewireStylelint = require('react-app-rewire-stylelint');
-const rewired = require('react-app-rewired');
 
 function rewireSass(config, env) {
     const cssLoader = rewired.getLoader(
@@ -19,12 +19,21 @@ function rewireSass(config, env) {
     return config;
 }
 
+function rewireReactHotLoader(config, env) {
+  if (env === 'production') {
+    return config;
+  }
+
+  return rewired.injectBabelPlugin(['react-hot-loader/babel'], config);
+}
+
 module.exports = function override(config, env) {
   config = rewireEslint(config, env);
   config = rewireStylelint.withLoaderOptions({
     files: ['src/**/*.scss']
   })(config, env);
   config = rewireSass(config, env);
+  config = rewireReactHotLoader(config, env);
   
   return config;
 };
