@@ -35,10 +35,10 @@ export const ResultsContainer = ({ history, results }) => {
         {
           results.Result.Docs.length > 0 &&
           <div>
-            <Card fluid>
+            <Card fluid color="green">
               <Card.Content>
-                <Card.Meta className="practiceAreas">Industrial Goods &bull; Technology Advantage</Card.Meta>
-                <Card.Meta className="matchPercentage">83% Match</Card.Meta>
+                <Card.PracticeArea>Industrial Goods &bull; Technology Advantage</Card.PracticeArea>
+                <Card.MatchPercentage>83% Match</Card.MatchPercentage>
                 <Card.Header>Digital trends as an enabler for digital transformation: How can TA support you on Digital transformation?</Card.Header>
                 <Card.Meta>UPDATED: 12 OCT 2018</Card.Meta>
                 <Card.Description>With the advent of AI and Intelligent Automation capabilies, the possibilites for digital transformation to create a shift in healthcare providers mindsets is proving a challenge to conventional regulation…</Card.Description>
