@@ -2,12 +2,12 @@ import { shallow } from 'enzyme';
 
 import React from 'react';
 
-import Footer from './Footer';
+import Card from './Card';
 
-describe('Footer', () => {
+describe('Card', () => {
   it('renders and matches our snapshot', () => {
     const component = shallow(
-      <Footer />
+      <Card />
     );
     expect(component).toMatchSnapshot();
   });

@@ -6,72 +6,76 @@ exports[`Results renders and matches our snapshot 1`] = `
 >
   <Header />
   <main>
-    <Grid
-      celled={true}
-      columns={2}
-    >
-      <GridColumn
-        width={4}
-      >
-        <Header
-          as="h1"
+    <Grid>
+      <Row>
+        <Col
+          xs={4}
         >
-          Refiners
-        </Header>
-        <RefinerTagCloud
-          box={
-            Object {
-              "type": "TagCloud",
+          <Header
+            as="h1"
+          >
+            Refiners
+          </Header>
+          <RefinerTagCloud
+            box={
+              Object {
+                "type": "TagCloud",
+              }
             }
-          }
-          key="1"
-        />
-        <RefinerTree
-          box={
-            Object {
-              "type": "Tree",
+            key="1"
+          />
+          <RefinerTree
+            box={
+              Object {
+                "type": "Tree",
+              }
             }
-          }
-          key="1"
-        />
-        <RefinerList
-          box={
-            Object {
-              "type": "List",
+            key="1"
+          />
+          <RefinerList
+            box={
+              Object {
+                "type": "List",
+              }
             }
-          }
-          key="1"
-        />
-        <div
-          key="1"
+            key="1"
+          />
+          <div
+            key="1"
+          >
+            Unrecognized refiner type
+          </div>
+        </Col>
+        <Col
+          xs={8}
         >
-          Unrecognized refiner type
-        </div>
-      </GridColumn>
-      <GridColumn
-        width={12}
-      >
-        <Header
-          as="h1"
-        >
-          Results
-        </Header>
-        <Grid
-          columns={2}
-          key="1"
-        >
-          <GridColumn>
-            filename1
-          </GridColumn>
-          <GridColumn>
-            <b
-              key="0"
-            >
-              test
-            </b>
-          </GridColumn>
-        </Grid>
-      </GridColumn>
+          <Header
+            as="h1"
+          >
+            Results
+          </Header>
+          <Grid
+            key="1"
+          >
+            <Row>
+              <Col
+                xs={6}
+              >
+                filename1
+              </Col>
+              <Col
+                xs={6}
+              >
+                <b
+                  key="0"
+                >
+                  test
+                </b>
+              </Col>
+            </Row>
+          </Grid>
+        </Col>
+      </Row>
     </Grid>
   </main>
   <Footer />

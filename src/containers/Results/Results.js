@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import uuid from 'uuid/v1';
 import ReactHtmlParser from 'react-html-parser';
-import { Header, Message, Grid } from 'semantic-ui-react';
+import { Header, Message } from 'semantic-ui-react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import MasterHeader from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -32,37 +33,41 @@ export const ResultsContainer = ({ history, results }) => {
         }
         {
           results.Result.Docs.length > 0 &&
-          <Grid celled columns={2}>
-            <Grid.Column width={4}>
-              <Header as="h1">Refiners</Header>
-              {
-                results.Result.Boxes.map((box) => {
-                  if (box.type === 'TagCloud') {
-                    return <RefinerTagCloud key={uuid()} box={box} />;
-                  } else if (box.type === 'Tree') {
-                    return <RefinerTree key={uuid()} box={box} />;
-                  } else if (box.type === 'List') {
-                    return <RefinerList key={uuid()} box={box} />;
-                  }
-                  return <div key={uuid()}>Unrecognized refiner type</div>;
-                })
-              }
-            </Grid.Column>
-            <Grid.Column width={12}>
-              <Header as="h1">Results</Header>
-              {
-                results.Result.Docs.map(doc => (
-                  <Grid columns={2} key={uuid()}>
-                    <Grid.Column>
-                      {doc.filename}
-                    </Grid.Column>
-                    <Grid.Column>
-                      { ReactHtmlParser(doc.largesummaryhtml) }
-                    </Grid.Column>
-                  </Grid>
-                ))
-              }
-            </Grid.Column>
+          <Grid>
+            <Row>
+              <Col xs={4}>
+                <Header as="h1">Refiners</Header>
+                {
+                  results.Result.Boxes.map((box) => {
+                    if (box.type === 'TagCloud') {
+                      return <RefinerTagCloud key={uuid()} box={box} />;
+                    } else if (box.type === 'Tree') {
+                      return <RefinerTree key={uuid()} box={box} />;
+                    } else if (box.type === 'List') {
+                      return <RefinerList key={uuid()} box={box} />;
+                    }
+                    return <div key={uuid()}>Unrecognized refiner type</div>;
+                  })
+                }
+              </Col>
+              <Col xs={8}>
+                <Header as="h1">Results</Header>
+                {
+                  results.Result.Docs.map(doc => (
+                    <Grid key={uuid()}>
+                      <Row>
+                        <Col xs={6}>
+                          {doc.filename}
+                        </Col>
+                        <Col xs={6}>
+                          { ReactHtmlParser(doc.largesummaryhtml) }
+                        </Col>
+                      </Row>
+                    </Grid>
+                  ))
+                }
+              </Col>
+            </Row>
           </Grid>
         }
       </main>

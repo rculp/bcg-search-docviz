@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card as SemanticCard } from 'semantic-ui-react';
 import './Card.scss';
 
-const Card = (props) => (
-  <Card {...props}>Card</Card>
+const Card = props => (
+  <SemanticCard {...props}>Card</SemanticCard>
 );
 
-export default Footer;
+export default Card;
