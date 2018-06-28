@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
-import { Form, Input, Button, Message } from 'semantic-ui-react';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import { UI_URL } from 'config';
 
 import Page from 'components/Page/Page';
+import Form from 'components/Form/Form';
+import Input from 'components/Input/Input';
+import Button from 'components/Button/Button';
+import Message from 'components/Message/Message';
 
 import './Home.scss';
 

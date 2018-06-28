@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import BcgHeader from 'components/BcgHeader/BcgHeader';
+import Header from 'components/Header/Header';
 import './Page.scss';
 
 
 const Page = ({ id, children }) => (
   <div id={id} className="page">
-    <BcgHeader />
+    <Header />
     {children}
   </div>
 );

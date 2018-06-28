@@ -2,12 +2,12 @@ import { shallow } from 'enzyme';
 
 import React from 'react';
 
-import BcgHeader from './BcgHeader';
+import Input from './Input';
 
-describe('BcgHeader', () => {
+describe('Input', () => {
   it('renders and matches our snapshot', () => {
     const component = shallow(
-      <BcgHeader />
+      <Input />
     );
     expect(component).toMatchSnapshot();
   });

@@ -4,6 +4,7 @@
     "order/properties-alphabetical-order": null,
     "selector-max-id": 1,
     "color-hex-length": "long",
-    "number-no-trailing-zeros": null
+    "number-no-trailing-zeros": null,
+    "selector-class-pattern": null
   }
 }
