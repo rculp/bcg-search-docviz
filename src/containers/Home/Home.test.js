@@ -2,10 +2,12 @@ import { shallow, mount } from 'enzyme';
 import { UI_URL } from 'config';
 
 import React from 'react';
-import configureStore from 'redux-mock-store'
-import { Input, Button, Message } from 'semantic-ui-react';
+import configureStore from 'redux-mock-store';
 
 import ConnectedHomeContainer, { HomeContainer } from './Home';
+import Input from 'components/Input/Input';
+import Button from 'components/Button/Button';
+import Message from 'components/Message/Message';
 
 describe('Home', () => {
   const mockStore = configureStore();
