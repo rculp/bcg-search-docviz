@@ -1,7 +1,8 @@
 .ui.card {
-  &.green {
+  &.green,
+  &.green:hover {
     border-top: 4px solid #3fad93;
-    box-shadow: none;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
   }
 
   .practiceAreas {

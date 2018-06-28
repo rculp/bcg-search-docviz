@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid } from 'react-flexbox-grid';
 
 import Nav from 'components/Nav/Nav';
+import Footer from 'components/Footer/Footer';
 import './Page.scss';
 
 const Page = ({ id, children }) => (
@@ -15,6 +16,9 @@ const Page = ({ id, children }) => (
         {children}
       </Grid>
     </main>
+    <footer>
+      <Footer />
+    </footer>
   </div>
 );
 
