@@ -5,9 +5,9 @@ import uuid from 'uuid/v1';
 
 import React from 'react';
 import configureStore from 'redux-mock-store';
-import { Message } from 'semantic-ui-react';
 
 import ConnectedResultsContainer, { ResultsContainer } from './Results';
+import Message from 'components/Message/Message';
 
 describe('Results', () => {
   const mockStore = configureStore();

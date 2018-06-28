@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import uuid from 'uuid/v1';
 import ReactHtmlParser from 'react-html-parser';
-import { Form, Input, Button, Message } from 'semantic-ui-react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import Heading from 'components/Heading/Heading';
@@ -14,6 +13,11 @@ import RefinerTagCloud from 'components/RefinerTagCloud/RefinerTagCloud';
 import RefinerTree from 'components/RefinerTree/RefinerTree';
 import RefinerList from 'components/RefinerList/RefinerList';
 import Card from 'components/Card/Card';
+import Form from 'components/Form/Form';
+import Input from 'components/Input/Input';
+import Button from 'components/Button/Button';
+import Message from 'components/Message/Message';
+
 
 import Page from 'components/Page/Page';
 
