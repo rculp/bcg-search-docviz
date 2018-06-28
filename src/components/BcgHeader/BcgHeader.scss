@@ -1,6 +1,13 @@
-//My overrides, need to put somewhere more global
+@import 'src/global-styles/responsive/utilities';
+@import 'src/global-styles/responsive/variables';
+
+@import 'src/global-styles/colors/variables';
+@import 'src/global-styles/colors/declarations';
+
+@import 'src/global-styles/typography/variables';
+
 .ui.menu {
-  border: none;
+  border: 0;
   box-shadow: none;
 }
 
@@ -10,18 +17,26 @@
   font-weight: bold;
   text-align: center;
 
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    height: 48px;
+  }
+
   .logo {
+    font-family: $font-family-sans;
+    font-size: 2.8rem;
     width: 56px;
     height: 56px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #00532f;
-    font-family: HendersonBCGSans-Bold, Arial, Helvetica, sans-serif;
-    font-size: 28px;
-    color: #fff;
-    letter-spacing: 0;
+    background-color: $color-brand-dark-green;
+    color: $white;
     text-align: center;
-    line-height: 35px;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      width: 48px;
+      height: 48px;
+      font-size: 2.2rem;
+    }
   }
 }

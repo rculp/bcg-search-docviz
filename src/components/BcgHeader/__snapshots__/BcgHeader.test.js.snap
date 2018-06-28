@@ -4,10 +4,20 @@ exports[`BcgHeader renders and matches our snapshot 1`] = `
 <header
   className="bcg-header ui fixed menu"
 >
-  <div
-    className="logo"
-  >
-    M
-  </div>
+  <Grid>
+    <GridColumn
+      width={12}
+    >
+      <a
+        href="/"
+      >
+        <div
+          className="logo"
+        >
+          M
+        </div>
+      </a>
+    </GridColumn>
+  </Grid>
 </header>
 `;
