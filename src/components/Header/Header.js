@@ -1,18 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { UI_URL } from 'config';
 import Menu from 'components/Menu/Menu';
-import { Row, Col } from 'react-flexbox-grid';
 import './Header.scss';
 
 const Header = () => (
-  <Menu fixed="top" className="page-header">
-    <Row>
-      <Col xs={12}>
-        <a href="/">
-          <div className="logo">M</div>
-        </a>
-      </Col>
-    </Row>
-  </Menu>
+  <header>
+    <Menu>
+      <Link to={UI_URL.HOME}>
+        <div className="logo">M</div>
+      </Link>
+    </Menu>
+  </header>
 );
 
 export default Header;

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Header from 'components/Header/Header';
 import './Page.scss';
 
-
 const Page = ({ id, children }) => (
   <div id={id} className="page">
     <Header />
