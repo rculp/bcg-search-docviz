@@ -5,7 +5,7 @@ exports[`Page renders and matches our snapshot 1`] = `
   className="page"
   id="test-page"
 >
-  <BcgHeader />
+  <Header />
   <div />
 </div>
 `;
