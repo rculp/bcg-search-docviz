@@ -13,11 +13,7 @@ import RefinerTagCloud from 'components/RefinerTagCloud/RefinerTagCloud';
 import RefinerTree from 'components/RefinerTree/RefinerTree';
 import RefinerList from 'components/RefinerList/RefinerList';
 import Card from 'components/Card/Card';
-import Form from 'components/Form/Form';
-import Input from 'components/Input/Input';
-import Button from 'components/Button/Button';
 import Message from 'components/Message/Message';
-
 
 import Page from 'components/Page/Page';
 
@@ -38,19 +34,6 @@ export const ResultsContainer = ({ history, results }) => {
         {
           results.Result.Docs.length > 0 &&
           <div>
-            <Form>
-              <Form.Field>
-                <Input
-                  size="massive"
-                  placeholder="Search..."
-                  id="query"
-                  icon="search"
-                  iconPosition="left"
-                  label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
-                  labelPosition="right"
-                />
-              </Form.Field>
-            </Form>
             <Heading>Showing 1 - 20 of 432 results found</Heading>
             <Card fluid color="green">
               <Card.Content>

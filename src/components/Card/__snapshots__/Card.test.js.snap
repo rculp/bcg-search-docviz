@@ -1,7 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card renders and matches our snapshot 1`] = `
-<Card>
-  Card
-</Card>
+<div
+  className="ui card"
+  onClick={[Function]}
+/>
+`;
+
+exports[`Card renders and matches our snapshot 2`] = `
+<span
+  className="practiceAreas"
+>
+  Area
+</span>
+`;
+
+exports[`Card renders and matches our snapshot 3`] = `
+<span
+  className="matchPercentage"
+>
+  100%
+</span>
 `;
