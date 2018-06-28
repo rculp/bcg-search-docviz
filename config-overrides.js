@@ -27,4 +27,4 @@ module.exports = function override(config, env) {
   config = rewireSass(config, env);
   
   return config;
-}
+};

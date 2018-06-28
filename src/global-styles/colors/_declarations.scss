@@ -1,0 +1,74 @@
+// ==================================
+// Brand color declarations
+// ==================================
+
+$color-brand-dark-green: $bcg-green--dark;
+$color-brand-green: $bcg-green;
+$color-brand-blue-green: $bcg-green--blue-green;
+$color-brand-light-green: $bcg-green--light;
+
+// =================================
+// Accent color declarations
+// =================================
+
+$color-accent-a: $bcg-yellow;
+
+// =================================
+// Background color declarations
+// =================================
+
+// Background grayscale
+$color-bg-white: $white;
+$color-bg-black: $black;
+$color-bg-dark: $gray--darker;
+$color-bg-light: $gray;
+$color-bg-lighter: $gray--light;
+$color-bg-lightest: $gray--lightest;
+
+// Background brand
+$color-bg-dark-green: $bcg-green--dark;
+$color-bg-green: $bcg-green;
+$color-bg-blue-green: $bcg-green--blue-green;
+$color-bg-light-green: $bcg-green--light;
+
+// =================================
+// Border color declarations
+// =================================
+
+// Border grayscale
+$color-border-white: $white;
+$color-border-black: $black;
+$color-border-dark: $gray--darker;
+$color-border-light: $gray;
+$color-border-lighter: $gray--light;
+$color-border-lightest: $gray--lightest;
+
+// Border brand
+$color-border-dark-green: $bcg-green--dark;
+$color-border-green: $bcg-green;
+$color-border-blue-green: $bcg-green--blue-green;
+$color-border-light-green: $bcg-green--light;
+
+// ==================================
+// Typo color declarations
+// ==================================
+
+$color-typo-black: $black;
+$color-typo-darkest: $gray--darkest;
+$color-typo-dark: $gray--darker;
+$color-typo-gray: $gray--dark;
+$color-typo-light: $gray;
+$color-typo-white: $white;
+$color-typo-dark-green: $bcg-green--dark;
+$color-typo-green: $bcg-green;
+$color-typo-blue-green: $bcg-green--blue-green;
+$color-typo-light-green: $bcg-green--light;
+
+// ==================================
+// State colour declarations
+// ==================================
+
+$color-error: #d50000 !default;
+$color-positive: #4caf50 !default;
+$color-warning: #ff9800 !default;
+$color-info: #00bcd4 !default;
