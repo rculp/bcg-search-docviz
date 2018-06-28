@@ -1,0 +1,27 @@
+//My overrides, need to put somewhere more global
+.ui.menu {
+  border: none;
+  box-shadow: none;
+}
+
+.bcg-header {
+  width: 100%;
+  height: 56px;
+  font-weight: bold;
+  text-align: center;
+
+  .logo {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00532f;
+    font-family: HendersonBCGSans-Bold, Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 35px;
+  }
+}

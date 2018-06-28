@@ -4,7 +4,6 @@ exports[`Results renders and matches our snapshot 1`] = `
 <Page
   id="results"
 >
-  <Header />
   <main>
     <Grid>
       <Row>
