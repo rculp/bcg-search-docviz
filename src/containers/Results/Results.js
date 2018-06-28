@@ -5,10 +5,10 @@ import { bindActionCreators } from 'redux';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import uuid from 'uuid/v1';
 import ReactHtmlParser from 'react-html-parser';
-import { Header, Message } from 'semantic-ui-react';
+import { Form, Input, Button, Message } from 'semantic-ui-react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-import MasterHeader from 'components/Header/Header';
+import Heading from 'components/Heading/Heading';
 import Footer from 'components/Footer/Footer';
 import RefinerTagCloud from 'components/RefinerTagCloud/RefinerTagCloud';
 import RefinerTree from 'components/RefinerTree/RefinerTree';
@@ -26,7 +26,6 @@ export const ResultsContainer = ({ history, results }) => {
   }
   return (
     <Page id="results">
-      <MasterHeader />
       <main>
         {
           results.Result.Docs.length <= 0 &&
@@ -35,6 +34,20 @@ export const ResultsContainer = ({ history, results }) => {
         {
           results.Result.Docs.length > 0 &&
           <div>
+            <Form>
+              <Form.Field>
+                <Input
+                  size="massive"
+                  placeholder="Search..."
+                  id="query"
+                  icon="search"
+                  iconPosition="left"
+                  label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
+                  labelPosition="right"
+                />
+              </Form.Field>
+            </Form>
+            <Heading>Showing 1 - 20 of 432 results found</Heading>
             <Card fluid color="green">
               <Card.Content>
                 <Card.PracticeArea>Industrial Goods &bull; Technology Advantage</Card.PracticeArea>
@@ -47,7 +60,7 @@ export const ResultsContainer = ({ history, results }) => {
             <Grid>
               <Row>
                 <Col xs={4}>
-                  <Header as="h1">Refiners</Header>
+                  <Heading as="h1">Refiners</Heading>
                   {
                     results.Result.Boxes.map((box) => {
                       if (box.type === 'TagCloud') {
@@ -62,7 +75,7 @@ export const ResultsContainer = ({ history, results }) => {
                   }
                 </Col>
                 <Col xs={8}>
-                  <Header as="h1">Results</Header>
+                  <Heading as="h1">Results</Heading>
                   {
                     results.Result.Docs.map(doc => (
                       <Grid key={uuid()}>
