@@ -40,33 +40,31 @@ export class HomeContainer extends Component {
     const { searchValue, loading, error } = this.props;
     return (
       <Page id="home">
-        <main>
-          <h2>Sinequa Search</h2>
-          <Form>
-            <Form.Field>
-              <Input
-                size="massive"
-                placeholder="Search..."
-                id="query"
-                loading={loading}
-                disabled={loading}
-                value={searchValue}
-                onChange={this.handleChange}
-                icon="search"
-                iconPosition="left"
-                label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
-                labelPosition="right"
-              />
-            </Form.Field>
-          </Form>
-          { error &&
-            <Message
-              error
-              header="Search Failed"
-              content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
+        <h2>Sinequa Search</h2>
+        <Form>
+          <Form.Field>
+            <Input
+              size="massive"
+              placeholder="Search..."
+              id="query"
+              loading={loading}
+              disabled={loading}
+              value={searchValue}
+              onChange={this.handleChange}
+              icon="search"
+              iconPosition="left"
+              label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
+              labelPosition="right"
             />
-          }
-        </main>
+          </Form.Field>
+        </Form>
+        { error &&
+          <Message
+            error
+            header="Search Failed"
+            content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
+          />
+        }
       </Page>
     );
   };

@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Grid } from 'react-flexbox-grid';
 
-import Header from 'components/Header/Header';
+import Nav from 'components/Nav/Nav';
 import './Page.scss';
 
 const Page = ({ id, children }) => (
   <div id={id} className="page">
-    <Header />
-    {children}
+    <header>
+      <Nav />
+    </header>
+    <main>
+      <Grid>
+        {children}
+      </Grid>
+    </main>
   </div>
 );
 
