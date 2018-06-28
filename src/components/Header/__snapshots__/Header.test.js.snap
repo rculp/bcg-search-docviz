@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders and matches our snapshot 1`] = `
+<Menu
+  className="page-header"
+  fixed="top"
+>
+  <Row>
+    <Col
+      xs={12}
+    >
+      <a
+        href="/"
+      >
+        <div
+          className="logo"
+        >
+          M
+        </div>
+      </a>
+    </Col>
+  </Row>
+</Menu>
+`;

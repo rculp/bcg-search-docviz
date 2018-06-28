@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renders and matches our snapshot 1`] = `
+<form
+  className="ui form"
+  onSubmit={[Function]}
+/>
+`;

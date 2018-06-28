@@ -1,16 +1,17 @@
 import React from 'react';
-import { Grid, Menu } from 'semantic-ui-react';
+import Menu from 'components/Menu/Menu';
+import { Row, Col } from 'react-flexbox-grid';
 import './Header.scss';
 
 const Header = () => (
-  <Menu attached="top">
-    <Grid>
-      <Grid.Column width={12}>
+  <Menu fixed="top" className="page-header">
+    <Row>
+      <Col xs={12}>
         <a href="/">
           <div className="logo">M</div>
         </a>
-      </Grid.Column>
-    </Grid>
+      </Col>
+    </Row>
   </Menu>
 );
 
