@@ -5,7 +5,18 @@ exports[`Page renders and matches our snapshot 1`] = `
   className="page"
   id="test-page"
 >
-  <Header />
-  <div />
+  <header>
+    <Nav />
+  </header>
+  <main>
+    <Grid>
+      <div />
+    </Grid>
+  </main>
+  <footer>
+    <Grid>
+      <Footer />
+    </Grid>
+  </footer>
 </div>
 `;

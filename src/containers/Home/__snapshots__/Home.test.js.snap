@@ -4,36 +4,34 @@ exports[`Home renders and matches our snapshot 1`] = `
 <Page
   id="home"
 >
-  <main>
-    <h2>
-      Sinequa Search
-    </h2>
-    <Form
-      as="form"
-    >
-      <FormField>
-        <Input
-          icon="search"
-          iconPosition="left"
-          id="query"
-          label={
-            <Button
-              as="button"
-              onClick={[Function]}
-              role="button"
-              type="submit"
-            >
-              Submit
-            </Button>
-          }
-          labelPosition="right"
-          onChange={[Function]}
-          placeholder="Search..."
-          size="massive"
-          type="text"
-        />
-      </FormField>
-    </Form>
-  </main>
+  <h2>
+    Sinequa Search
+  </h2>
+  <Form
+    as="form"
+  >
+    <FormField>
+      <Input
+        icon="search"
+        iconPosition="left"
+        id="query"
+        label={
+          <Button
+            as="button"
+            onClick={[Function]}
+            role="button"
+            type="submit"
+          >
+            Submit
+          </Button>
+        }
+        labelPosition="right"
+        onChange={[Function]}
+        placeholder="Search..."
+        size="massive"
+        type="text"
+      />
+    </FormField>
+  </Form>
 </Page>
 `;
