@@ -17,7 +17,9 @@ const Page = ({ id, children }) => (
       </Grid>
     </main>
     <footer>
-      <Footer />
+      <Grid>
+        <Footer />
+      </Grid>
     </footer>
   </div>
 );
