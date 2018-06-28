@@ -1,18 +1,17 @@
-/* stylelint-disable */
 .ui.card {
   &.green {
-    border-top: 4px solid #3FAD93;
+    border-top: 4px solid #3fad93;
     box-shadow: none;
   }
 
   .practiceAreas {
     display: inline-block;
-    color: darkgray;
+    color: #a9a9a9;
   }
 
   .matchPercentage {
     display: inline-block;
-    color: #3FAD93;
+    color: #3fad93;
     float: right;
   }
 }
