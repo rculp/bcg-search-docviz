@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import uuid from 'uuid/v1';
 import { Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ Card.PracticeArea = ({ practiceAreas }) => (
   <span className="practiceAreas">
     {
       practiceAreas.map((pa, index) => (
-        <span key={uuid()}>{ index > 0 && <span>&nbsp;&bull;&nbsp;</span> }{pa}</span>
+        <Fragment key={uuid()}>{ index > 0 && <span className="bullet">&nbsp;&bull;&nbsp;</span> }{pa}</Fragment>
       ))
     }
   </span>
