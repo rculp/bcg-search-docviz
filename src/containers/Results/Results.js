@@ -28,16 +28,16 @@ export const ResultsContainer = ({ history, results }) => {
       {
         results.results.length > 0 &&
         <Fragment>
-          <Heading>Showing 1 - { results.results.length } of { results.totalHitCount } results found</Heading>
+          <Heading className="resultCount" as="h2">Showing 1 - {results.results.length} of {results.totalHitCount} results found</Heading>
           {
             results.results.map(doc => (
               <Card key={uuid()} fluid color="green">
                 <Card.Content>
                   <Card.PracticeArea practiceAreas={doc.industryPA} />
                   <Card.MatchPercentage relevancyScore={doc.relevancyScore} />
-                  <Card.Header>{ doc.title }</Card.Header>
-                  <Card.Meta>UPDATED: { new Date(doc.uploadDate).toLocaleDateString() }</Card.Meta>
-                  <Card.Description>{ ReactHtmlParser(doc.smallSummaryHtml) }</Card.Description>
+                  <Card.Header>{doc.title}</Card.Header>
+                  <Card.Meta>UPDATED: {new Date(doc.uploadDate).toLocaleDateString()}</Card.Meta>
+                  <Card.Description>{ReactHtmlParser(doc.smallSummaryHtml)}</Card.Description>
                 </Card.Content>
               </Card>
             ))
