@@ -1,16 +1,16 @@
-//@import 'src/global-styles/typography';
-//
-//h1 {
-//  @extend %heading-large-sans;
-//}
-//
-//h2 {
-//  @extend %heading-regular-sans;
-//}
-//
-//h3 {
-//  @extend %heading-small-sans;
-//}
+@import 'src/global-styles/typography';
+
+h1 {
+  @extend %heading-large-sans;
+}
+
+h2 {
+  @extend %heading-regular-sans;
+}
+
+h3 {
+  @extend %heading-small-sans;
+}
 
 //p,
 //ol,
