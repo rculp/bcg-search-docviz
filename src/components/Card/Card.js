@@ -1,22 +1,37 @@
 import React from 'react';
+import uuid from 'uuid/v1';
 import { Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './Card.scss';
 
-Card.PracticeArea = ({ children }) => (
-  <span className="practiceAreas">{ children }</span>
+Card.PracticeArea = ({ practiceAreas }) => (
+  <span className="practiceAreas">
+    {
+      practiceAreas.map((pa, index) => (
+        <span key={uuid()}>{ index > 0 && <span>&nbsp;&bull;&nbsp;</span> }{pa}</span>
+      ))
+    }
+  </span>
 );
 
-Card.MatchPercentage = ({ children }) => (
-  <span className="matchPercentage">{ children }</span>
+Card.MatchPercentage = ({ relevancyScore }) => (
+  <span className="matchPercentage">{ relevancyScore * 100 }% MATCH</span>
 );
 
 Card.PracticeArea.propTypes = {
-  children: PropTypes.node.isRequired
+  practiceAreas: PropTypes.arrayOf(PropTypes.string)
+};
+
+Card.PracticeArea.defaultProps = {
+  practiceAreas: []
 };
 
 Card.MatchPercentage.propTypes = {
-  children: PropTypes.node.isRequired
+  relevancyScore: PropTypes.number
+};
+
+Card.MatchPercentage.defaultProps = {
+  relevancyScore: 0
 };
 
 export default Card;

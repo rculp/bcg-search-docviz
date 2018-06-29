@@ -33,14 +33,8 @@ export const ResultsContainer = ({ history, results }) => {
             results.results.map(doc => (
               <Card key={uuid()} fluid color="green">
                 <Card.Content>
-                  <Card.PracticeArea>
-                    {
-                      doc.industryPA.map((pa, index) => (
-                        <span key={uuid()}>{ index > 0 && <span>&nbsp;&bull;&nbsp;</span> }{pa}</span>
-                      ))
-                    }
-                  </Card.PracticeArea>
-                  <Card.MatchPercentage>{ doc.relevancyScore * 100 }% Match</Card.MatchPercentage>
+                  <Card.PracticeArea practiceAreas={doc.industryPA} />
+                  <Card.MatchPercentage relevancyScore={doc.relevancyScore} />
                   <Card.Header>{ doc.title }</Card.Header>
                   <Card.Meta>UPDATED: { new Date(doc.uploadDate).toLocaleDateString() }</Card.Meta>
                   <Card.Description>{ ReactHtmlParser(doc.smallSummaryHtml) }</Card.Description>
