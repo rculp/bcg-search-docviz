@@ -5,6 +5,8 @@
     "selector-max-id": 1,
     "color-hex-length": "long",
     "number-no-trailing-zeros": null,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "color-hex-case": "upper",
+    "no-missing-end-of-source-newline": null
   }
 }

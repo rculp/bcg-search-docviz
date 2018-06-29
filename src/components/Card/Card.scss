@@ -1,18 +1,18 @@
 .ui.card {
   &.green,
   &.green:hover {
-    border-top: 4px solid #3fad93;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    border-top: 4px solid #3FAD93;
+    box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
   }
 
   .practiceAreas {
     display: inline-block;
-    color: #a9a9a9;
+    color: #A9A9A9;
   }
 
   .matchPercentage {
     display: inline-block;
-    color: #3fad93;
+    color: #3FAD93;
     float: right;
   }
 }

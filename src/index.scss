@@ -1,16 +1,7 @@
-$icons-font-path: '../node_modules/semantic-ui-sass/icons';
-$flags-image-path: '../node_modules/semantic-ui-sass/images';
-@import '../node_modules/semantic-ui-sass/semantic-ui';
-
-@import 'global-styles/grid';
-@import 'global-styles/responsive';
-@import 'global-styles/colors';
-@import 'global-styles/typography';
+html {
+  font-size: 62.5%;
+}
 
 body {
   font-size: 1.6rem;
-}
-
-html {
-  font-size: 62.5%;
 }

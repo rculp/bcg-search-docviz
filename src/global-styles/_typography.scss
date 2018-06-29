@@ -33,3 +33,179 @@
   src: url('assets/fonts/BCGHenSerifBold.woff') format('woff');
   font-weight: 700;
 }
+
+/* Text Styles from Sketch */
+
+%display-large-serif {
+  font-family: HendersonBCGSerif-Bold;
+  font-size: 4.75rem;
+  color: #707070;
+  line-height: 1.25em;
+}
+
+%display-large-sans {
+  font-family: HendersonBCGSans-Bold;
+  font-size: 4.75rem;
+  color: #707070;
+  line-height: 1.25em;
+}
+
+%display-regular-serif {
+  font-family: HendersonBCGSerif-Regular;
+  font-size: 3.375rem;
+  color: #707070;
+  line-height: 1.26em;
+}
+
+%display-regular-sans {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 3.375rem;
+  color: #707070;
+  line-height: 1.26em;
+}
+
+%heading-large-serif {
+  font-family: HendersonBCGSerif-Bold;
+  font-size: 3rem;
+  color: #707070;
+  line-height: 1.25em;
+}
+
+%heading-large-sans {
+  font-family: HendersonBCGSans-Bold;
+  font-size: 3rem;
+  color: #707070;
+  line-height: 1.25em;
+}
+
+%heading-regular-serif {
+  font-family: HendersonBCGSerif-Bold;
+  font-size: 2.25rem;
+  color: #707070;
+  line-height: 1.25em;
+}
+
+%heading-regular-sans {
+  font-family: HendersonBCGSans-Bold;
+  font-size: 2.25rem;
+  color: #707070;
+  line-height: 1.25em;
+}
+
+%heading-small-serif {
+  font-family: HendersonBCGSerif-Regular;
+  font-size: 1.75rem;
+  color: #707070;
+  line-height: 1.25em;
+}
+
+%heading-small-sans {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 1.75rem;
+  color: #707070;
+  line-height: 1.25em;
+}
+
+%display-body-24px {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 1.5rem;
+  color: rgba(51, 51, 51, 0.73);
+  line-height: 1.67em;
+}
+
+%body-large-bold {
+  font-family: HendersonBCGSans-Bold;
+  font-size: 1.25rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%bold-large-normal {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 1.25rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%bold-large-light {
+  font-family: HendersonBCGSans-Light;
+  font-size: 1.25rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%body-regular-bold {
+  font-family: HendersonBCGSans-Bold;
+  font-size: 1rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%bold-regular-normal {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 1rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%bold-regular-light {
+  font-family: HendersonBCGSans-Light;
+  font-size: 1rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%body-copy-16px {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 1rem;
+  color: rgba(51, 51, 51, 0.73);
+  line-height: 1.88em;
+}
+
+%button-text---small {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 0.875rem;
+  color: #3FAD93;
+}
+
+%label-regular-bold {
+  font-family: HendersonBCGSans-Bold;
+  font-size: 0.875rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%label-regular-normal {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 0.875rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%label-regular-light {
+  font-family: HendersonBCGSans-Light;
+  font-size: 0.875rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%label-small-bold {
+  font-family: HendersonBCGSans-Bold;
+  font-size: 0.75rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%label-small-normal {
+  font-family: HendersonBCGSans-Regular;
+  font-size: 0.75rem;
+  color: #707070;
+  line-height: 1.50em;
+}
+
+%label-small-light {
+  font-family: HendersonBCGSans-Light;
+  font-size: 0.75rem;
+  color: #707070;
+  line-height: 1.50em;
+}

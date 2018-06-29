@@ -16,7 +16,8 @@
     "function-paren-newline": 0,
     "func-names": [1, "as-needed"],
     "comma-dangle": 0,
-    "max-len": 0
+    "max-len": 0,
+    "eol-last": 0
   },
   "overrides": [
     // Containers are not consumable components. Redux attaches many props from the store via mapStateToProps in
