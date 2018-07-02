@@ -15,21 +15,11 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import './Home.scss';
 
 export class HomeContainer extends Component {
-  componentDidUpdate = () => {
-    const { history, shouldRedirect, searchValue } = this.props;
-    if (shouldRedirect) {
-      history.push(UI_URL.RESULTS(searchValue));
-    }
-  };
-
-  componentWillUnmount = () => {
-    const { actions: { reset } } = this.props;
-    reset();
-  };
-
   submitHandler = () => {
-    const { actions: { search }, searchValue } = this.props;
-    search(searchValue, true);
+    const { actions: { search }, searchValue, history } = this.props;
+    search(searchValue, true).then(() => {
+      history.push(UI_URL.RESULTS(searchValue));
+    });
   };
 
   render = () => {
@@ -73,8 +63,7 @@ const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state),
   loading: searchSelectors.getLoading(state),
   error: searchSelectors.getError(state),
-  errorMessage: searchSelectors.getErrorMessage(state),
-  shouldRedirect: searchSelectors.getShouldRedirect(state)
+  errorMessage: searchSelectors.getErrorMessage(state)
 });
 
 const mapDispatchToProps = dispatch => ({

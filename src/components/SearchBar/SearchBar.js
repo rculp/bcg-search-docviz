@@ -7,14 +7,14 @@ import Button from 'components/Button/Button';
 import './SearchBar.scss';
 
 class SearchBar extends Component {
-  handleChange = (event) => {
-    const { changeHandler } = this.props;
-    changeHandler(event.target.value);
-  };
-
   onSubmit = () => {
     const { submitHandler } = this.props;
     submitHandler();
+  };
+
+  handleChange = (event) => {
+    const { changeHandler } = this.props;
+    changeHandler(event.target.value);
   };
 
   render = () => {

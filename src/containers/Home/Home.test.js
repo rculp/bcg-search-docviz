@@ -14,8 +14,7 @@ describe('Home', () => {
   const mockStore = configureStore();
   const mockActions = {
     search: jest.fn(),
-    changeSearchValue: jest.fn(),
-    reset: jest.fn()
+    changeSearchValue: jest.fn()
   };
   const initialState = {
     search: {
@@ -80,16 +79,6 @@ describe('Home', () => {
     );
     component.find(Input).simulate('change', mockEvent);
     expect(mockActions.changeSearchValue).toHaveBeenCalledWith('test');
-  });
-
-  it('should reset when unmounted', () => {
-    const component = shallow(
-      <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={false} searchValue={'testSearchValue'} />
-    );
-
-    component.instance().componentWillUnmount();
-
-    expect(mockActions.reset).toHaveBeenCalled();
   });
 
   it('redirects to results page if store contains redirect flag', () => {
