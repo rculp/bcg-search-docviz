@@ -8,7 +8,7 @@ export const API_SEARCH_PROFILE_REJECTED = 'API_SEARCH_PROFILE_REJECTED';
 export const API_SEARCH_PROFILE_FULFILLED = 'API_SEARCH_PROFILE_FULFILLED';
 
 const initialState = {
-  searchValue: '',
+  searchValue: new URL(window.location).searchParams.get('q') || '',
   loading: false,
   error: false,
   errorMessage: '',
