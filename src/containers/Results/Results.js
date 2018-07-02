@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import uuid from 'uuid/v1';
 
 import { connect } from 'react-redux';
@@ -18,74 +18,85 @@ import Page from 'components/Page/Page';
 
 import './Results.scss';
 
-export const ResultsContainer = ({
-  actions: { changeSearchValue, search },
-  results,
-  searchValue,
-  loading,
-  error,
-  errorMessage,
-  empty
-}) => (
-  <Page id="results">
-    <Row>
-      <Col xs={12} lg={6} lgOffset={3}>
-        <Form>
-          <Form.Field>
-            <SearchBar
-              isLoading={loading}
-              isDisabled={loading}
-              searchValue={searchValue}
-              changeHandler={changeSearchValue}
-              submitHandler={search}
-            />
-          </Form.Field>
-        </Form>
+export class ResultsContainer extends Component {
+  submitHandler = () => {
+    const { actions: { search }, searchValue } = this.props;
+    search(searchValue);
+  };
+
+  render = () => {
+    const {
+      actions: { changeSearchValue },
+      results,
+      searchValue,
+      loading,
+      error,
+      errorMessage,
+      empty
+    } = this.props;
+
+    return (
+      <Page id="results">
+        <Row>
+          <Col xs={12} lg={6} lgOffset={3}>
+            <Form>
+              <Form.Field>
+                <SearchBar
+                  isLoading={loading}
+                  isDisabled={loading}
+                  searchValue={searchValue}
+                  changeHandler={changeSearchValue}
+                  submitHandler={this.submitHandler}
+                />
+              </Form.Field>
+            </Form>
+            {
+              error &&
+              <Message
+                error
+                header="Search Failed"
+                content={errorMessage}
+              />
+            }
+            {
+              empty &&
+              <Message header="No Results Found" content="Please try a different search." />
+            }
+          </Col>
+        </Row>
         {
-          error &&
-          <Message
-            error
-            header="Search Failed"
-            content={errorMessage}
-          />
-        }
-        {
-          empty &&
-          <Message header="No Results Found" content="Please try a different search." />
-        }
-      </Col>
-    </Row>
-    {
-      !empty && !error &&
-      <Fragment>
-        <Loader size="large" active={loading}>Loading</Loader>
-        {
-          !loading &&
+          !empty && !error &&
           <Fragment>
-            <Heading className="resultCount" as="h2">Showing 1 - {results.length} of {results.totalHitCount} results found</Heading>
-            <Row>
-              <Col xs={12} lg={8}>
-                {
-                  results.map(doc => (
-                    <Card key={uuid()} fluid color="green">
-                      <Card.Content>
-                        <Card.PracticeArea practiceAreas={doc.industryPA} />
-                        <Card.MatchPercentage relevancyScore={doc.relevancyScore} />
-                        <Card.Header>{doc.title}</Card.Header>
-                        <Card.Meta>UPDATED: {new Date(doc.uploadDate).toLocaleDateString()}</Card.Meta>
-                        <Card.Description>{ReactHtmlParser(doc.smallSummaryHtml)}</Card.Description>
-                      </Card.Content>
-                    </Card>
-                  ))
-                }
-              </Col>
-            </Row>
+            <Loader size="large" active={loading}>Loading</Loader>
+            {
+              !loading &&
+              <Fragment>
+                <Heading className="resultCount" as="h2">Showing 1 - {results.length} of {results.totalHitCount} results found</Heading>
+                <Row>
+                  <Col xs={12} lg={8}>
+                    {
+                      results.map(doc => (
+                        <Card key={uuid()} fluid color="green">
+                          <Card.Content>
+                            <Card.PracticeArea practiceAreas={doc.industryPA} />
+                            <Card.MatchPercentage relevancyScore={doc.relevancyScore} />
+                            <Card.Header>{doc.title}</Card.Header>
+                            <Card.Meta>UPDATED: {new Date(doc.uploadDate).toLocaleDateString()}</Card.Meta>
+                            <Card.Description>{ReactHtmlParser(doc.smallSummaryHtml)}</Card.Description>
+                          </Card.Content>
+                        </Card>
+                      ))
+                    }
+                  </Col>
+                </Row>
+              </Fragment>
+            }
           </Fragment>
         }
-      </Fragment>
-    }
-  </Page>
-);
+      </Page>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   results: searchSelectors.getResults(state),

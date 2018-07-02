@@ -12,7 +12,7 @@ class SearchBar extends Component {
     changeHandler(event.target.value);
   };
 
-  fetchResults = () => {
+  onSubmit = () => {
     const { submitHandler } = this.props;
     submitHandler();
   };
@@ -30,7 +30,7 @@ class SearchBar extends Component {
         onChange={this.handleChange}
         icon="search"
         iconPosition="left"
-        label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
+        label={<Button type="submit" onClick={this.onSubmit}>Submit</Button>}
         labelPosition="right"
       />
     );
