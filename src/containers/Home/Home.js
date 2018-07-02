@@ -7,9 +7,8 @@ import { UI_URL } from 'config';
 
 import Page from 'components/Page/Page';
 import Form from 'components/Form/Form';
-import Input from 'components/Input/Input';
-import Button from 'components/Button/Button';
 import Message from 'components/Message/Message';
+import SearchBar from 'components/SearchBar/SearchBar';
 
 import './Home.scss';
 
@@ -26,36 +25,16 @@ export class HomeContainer extends Component {
     reset();
   };
 
-  fetchResults = () => {
-    const { actions: { search }, searchValue } = this.props;
-    search(searchValue);
-  };
-
-  handleChange = (event) => {
-    const { actions: { changeSearchValue } } = this.props;
-    changeSearchValue(event.target.value);
-  };
-
   render = () => {
-    const { searchValue, loading, error } = this.props;
+    const {
+      actions: { changeSearchValue }, searchValue, loading, error
+    } = this.props;
     return (
       <Page id="home">
         <h2>Sinequa Search</h2>
         <Form>
           <Form.Field>
-            <Input
-              size="massive"
-              placeholder="Search..."
-              id="query"
-              loading={loading}
-              disabled={loading}
-              value={searchValue}
-              onChange={this.handleChange}
-              icon="search"
-              iconPosition="left"
-              label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
-              labelPosition="right"
-            />
+            <SearchBar isLoading={loading} isDisabled={loading} searchValue={searchValue} changeHandler={changeSearchValue} />
           </Form.Field>
         </Form>
         { error &&

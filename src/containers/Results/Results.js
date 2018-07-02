@@ -9,12 +9,20 @@ import ReactHtmlParser from 'react-html-parser';
 import Heading from 'components/Heading/Heading';
 import Card from 'components/Card/Card';
 import Message from 'components/Message/Message';
+import Form from 'components/Form/Form';
+import Input from 'components/Input/Input';
+import Button from 'components/Button/Button';
 
 import Page from 'components/Page/Page';
 
 import './Results.scss';
 
-export const ResultsContainer = ({ history, results }) => {
+export const ResultsContainer = ({
+  history,
+  results,
+  searchValue,
+  loading
+}) => {
   if (!results.results) {
     history.push('/');
     return null;
@@ -28,6 +36,23 @@ export const ResultsContainer = ({ history, results }) => {
       {
         results.results.length > 0 &&
         <Fragment>
+          <Form>
+            <Form.Field>
+              <Input
+                size="massive"
+                placeholder="Search..."
+                id="query"
+                loading={loading}
+                disabled={loading}
+                value={searchValue}
+                onChange={this.handleChange}
+                icon="search"
+                iconPosition="left"
+                label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
+                labelPosition="right"
+              />
+            </Form.Field>
+          </Form>
           <Heading className="resultCount" as="h2">Showing 1 - {results.results.length} of {results.totalHitCount} results found</Heading>
           {
             results.results.map(doc => (
@@ -49,7 +74,10 @@ export const ResultsContainer = ({ history, results }) => {
 };
 
 const mapStateToProps = state => ({
-  results: searchSelectors.getResults(state)
+  results: searchSelectors.getResults(state),
+  searchValue: searchSelectors.getSearchValue(state),
+  loading: searchSelectors.getLoading(state),
+  error: searchSelectors.getError(state)
 });
 
 const mapDispatchToProps = dispatch => ({
