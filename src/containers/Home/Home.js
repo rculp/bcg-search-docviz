@@ -27,14 +27,20 @@ export class HomeContainer extends Component {
 
   render = () => {
     const {
-      actions: { changeSearchValue }, searchValue, loading, error
+      actions: { changeSearchValue, search }, searchValue, loading, error
     } = this.props;
     return (
       <Page id="home">
         <h2>Sinequa Search</h2>
         <Form>
           <Form.Field>
-            <SearchBar isLoading={loading} isDisabled={loading} searchValue={searchValue} changeHandler={changeSearchValue} />
+            <SearchBar
+              isLoading={loading}
+              isDisabled={loading}
+              searchValue={searchValue}
+              changeHandler={changeSearchValue}
+              apiCall={search}
+            />
           </Form.Field>
         </Form>
         { error &&

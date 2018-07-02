@@ -10,18 +10,19 @@ import Heading from 'components/Heading/Heading';
 import Card from 'components/Card/Card';
 import Message from 'components/Message/Message';
 import Form from 'components/Form/Form';
-import Input from 'components/Input/Input';
-import Button from 'components/Button/Button';
+import SearchBar from 'components/SearchBar/SearchBar';
 
 import Page from 'components/Page/Page';
 
 import './Results.scss';
 
 export const ResultsContainer = ({
+  actions: { changeSearchValue, search },
   history,
   results,
   searchValue,
-  loading
+  loading,
+  error
 }) => {
   if (!results.results) {
     history.push('/');
@@ -38,18 +39,12 @@ export const ResultsContainer = ({
         <Fragment>
           <Form>
             <Form.Field>
-              <Input
-                size="massive"
-                placeholder="Search..."
-                id="query"
-                loading={loading}
-                disabled={loading}
-                value={searchValue}
-                onChange={this.handleChange}
-                icon="search"
-                iconPosition="left"
-                label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
-                labelPosition="right"
+              <SearchBar
+                isLoading={loading}
+                isDisabled={loading}
+                searchValue={searchValue}
+                changeHandler={changeSearchValue}
+                apiCall={search}
               />
             </Form.Field>
           </Form>
@@ -68,6 +63,13 @@ export const ResultsContainer = ({
             ))
           }
         </Fragment>
+      }
+      { error &&
+      <Message
+        error
+        header="Search Failed"
+        content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
+      />
       }
     </Page>
   );

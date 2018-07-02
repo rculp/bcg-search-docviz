@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Input from 'components/Input/Input';
@@ -6,26 +6,26 @@ import Button from 'components/Button/Button';
 
 import './SearchBar.scss';
 
-class SearchBar {
+class SearchBar extends Component {
   handleChange = (event) => {
     const { changeHandler } = this.props;
     changeHandler(event.target.value);
   };
 
   fetchResults = () => {
-    const { actions: { search }, searchValue } = this.props;
-    search(searchValue);
+    const { apiCall, searchValue } = this.props;
+    apiCall(searchValue);
   };
 
   render = () => {
-    const { searchValue, isLoading } = this.props;
+    const { searchValue, isLoading, isDisabled } = this.props;
     return (
       <Input
         size="massive"
         placeholder="Search..."
         id="query"
         loading={isLoading}
-        disabled={isLoading}
+        disabled={isDisabled}
         value={searchValue}
         onChange={this.handleChange}
         icon="search"
@@ -38,12 +38,15 @@ class SearchBar {
 }
 
 SearchBar.propTypes = {
+  searchValue: PropTypes.string,
   isLoading: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  changeHandler: PropTypes.func.isRequired
+  changeHandler: PropTypes.func.isRequired,
+  apiCall: PropTypes.func.isRequired
 };
 
 SearchBar.defaultProps = {
+  searchValue: '',
   isLoading: false,
   isDisabled: false
 };
