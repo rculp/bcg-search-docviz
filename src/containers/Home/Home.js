@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Row, Col } from 'react-flexbox-grid';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import { UI_URL } from 'config';
 
 import Page from 'components/Page/Page';
+import Loader from 'components/Loader/Loader';
 import Form from 'components/Form/Form';
 import Message from 'components/Message/Message';
 import SearchBar from 'components/SearchBar/SearchBar';
@@ -27,29 +29,35 @@ export class HomeContainer extends Component {
 
   render = () => {
     const {
-      actions: { changeSearchValue, search }, searchValue, loading, error
+      actions: { changeSearchValue, search }, searchValue, loading, error, errorMessage
     } = this.props;
     return (
       <Page id="home">
-        <h2>Sinequa Search</h2>
-        <Form>
-          <Form.Field>
-            <SearchBar
-              isLoading={loading}
-              isDisabled={loading}
-              searchValue={searchValue}
-              changeHandler={changeSearchValue}
-              submitHandler={search}
-            />
-          </Form.Field>
-        </Form>
-        { error &&
-          <Message
-            error
-            header="Search Failed"
-            content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
-          />
-        }
+        <Row>
+          <Col xs={12} lg={6} lgOffset={3}>
+            <h2>Sinequa Search</h2>
+            <Form>
+              <Form.Field>
+                <SearchBar
+                  isLoading={loading}
+                  isDisabled={loading}
+                  searchValue={searchValue}
+                  changeHandler={changeSearchValue}
+                  submitHandler={search}
+                />
+              </Form.Field>
+            </Form>
+            {
+              error &&
+              <Message
+                error
+                header="Search Failed"
+                content={errorMessage}
+              />
+            }
+          </Col>
+        </Row>
+        <Loader size="large" active={loading}>Loading</Loader>
       </Page>
     );
   };
@@ -59,6 +67,7 @@ const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state),
   loading: searchSelectors.getLoading(state),
   error: searchSelectors.getError(state),
+  errorMessage: searchSelectors.getErrorMessage(state),
   shouldRedirect: searchSelectors.getShouldRedirect(state)
 });
 

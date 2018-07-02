@@ -20,61 +20,53 @@ import './Results.scss';
 
 export const ResultsContainer = ({
   actions: { changeSearchValue, search },
-  history,
   results,
   searchValue,
   loading,
   error,
+  errorMessage,
   empty
-}) => {
-  if (!results.results) {
-    history.push('/');
-    return null;
-  }
-
-  return (
-    <Page id="results">
-      <Row>
-        <Col xs={12} lg={6} lgOffset={3}>
-          <Form>
-            <Form.Field>
-              <SearchBar
-                isLoading={loading}
-                isDisabled={loading}
-                searchValue={searchValue}
-                changeHandler={changeSearchValue}
-                submitHandler={search}
-              />
-            </Form.Field>
-          </Form>
-        </Col>
-      </Row>
-      {
-        error &&
-        <Message
-          error
-          header="Search Failed"
-          content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
-        />
-      }
-      {
-        empty &&
-        <Message header="No Results Found" content="Please try a different search." />
-      }
-      {
-        !empty &&
-        <Fragment>
-          <Heading className="resultCount" as="h2">Showing 1 - {results.results.length} of {results.totalHitCount} results found</Heading>
-          {
-            loading &&
-            <Loader size="large">Loading</Loader>
-          }
-          {
-            !loading &&
+}) => (
+  <Page id="results">
+    <Row>
+      <Col xs={12} lg={6} lgOffset={3}>
+        <Form>
+          <Form.Field>
+            <SearchBar
+              isLoading={loading}
+              isDisabled={loading}
+              searchValue={searchValue}
+              changeHandler={changeSearchValue}
+              submitHandler={search}
+            />
+          </Form.Field>
+        </Form>
+        {
+          error &&
+          <Message
+            error
+            header="Search Failed"
+            content={errorMessage}
+          />
+        }
+        {
+          empty &&
+          <Message header="No Results Found" content="Please try a different search." />
+        }
+      </Col>
+    </Row>
+    {
+      !empty && !error &&
+      <Fragment>
+        <Loader size="large" active={loading}>Loading</Loader>
+        {
+          !loading &&
+          <Fragment>
+            <Heading className="resultCount" as="h2">Showing 1 - {results.length} of {results.totalHitCount} results found</Heading>
             <Row>
               <Col xs={12} lg={8}>
                 {
-                  results.results.map(doc => (
+                  results.map(doc => (
                     <Card key={uuid()} fluid color="green">
                       <Card.Content>
                         <Card.PracticeArea practiceAreas={doc.industryPA} />
@@ -88,18 +80,19 @@ export const ResultsContainer = ({
                 }
               </Col>
             </Row>
-          }
-        </Fragment>
-      }
-    </Page>
-  );
-};
+          </Fragment>
+        }
+      </Fragment>
+    }
+  </Page>
+);
 
 const mapStateToProps = state => ({
   results: searchSelectors.getResults(state),
   searchValue: searchSelectors.getSearchValue(state),
   loading: searchSelectors.getLoading(state),
   error: searchSelectors.getError(state),
+  errorMessage: searchSelectors.getErrorMessage(state),
   empty: searchSelectors.getEmpty(state)
 });
 
