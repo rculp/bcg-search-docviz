@@ -29,6 +29,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', index);
+app.use('/search', delay(1500), users);
 
 // catch 404 and forward to error handler
 app.use(delay(1500), function(req, res, next) {

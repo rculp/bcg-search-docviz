@@ -13,8 +13,8 @@ class SearchBar extends Component {
   };
 
   fetchResults = () => {
-    const { submitHandler, searchValue } = this.props;
-    submitHandler(searchValue);
+    const { submitHandler } = this.props;
+    submitHandler();
   };
 
   render = () => {

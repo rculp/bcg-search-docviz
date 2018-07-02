@@ -27,9 +27,14 @@ export class HomeContainer extends Component {
     reset();
   };
 
+  submitHandler = () => {
+    const { actions: { search }, searchValue } = this.props;
+    search(searchValue, true);
+  };
+
   render = () => {
     const {
-      actions: { changeSearchValue, search }, searchValue, loading, error, errorMessage
+      actions: { changeSearchValue }, searchValue, loading, error, errorMessage
     } = this.props;
     return (
       <Page id="home">
@@ -43,7 +48,8 @@ export class HomeContainer extends Component {
                   isDisabled={loading}
                   searchValue={searchValue}
                   changeHandler={changeSearchValue}
-                  submitHandler={search}
+                  submitHandler={this.submitHandler}
+                  redirectOnSuccess
                 />
               </Form.Field>
             </Form>

@@ -21,11 +21,11 @@ const initialState = {
 export const actions = {
   reset: () => ({ type: RESET }),
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
-  search: payload => (dispatch) => {
+  search: (payload, redirect) => (dispatch) => {
     dispatch({ type: API_SEARCH_PROFILE_PENDING });
 
     return fetch(API_URL.SEARCH(payload))
-      .then((response) => {
+      .then((response) => { // TODO centralize error handling
         if (response.status >= 400 && response.status < 600) {
           dispatch({ type: API_SEARCH_PROFILE_REJECTED, payload: 'Bad response from server' });
           return Promise.reject();
@@ -36,7 +36,7 @@ export const actions = {
         return Promise.reject();
       })
       .then((json) => {
-        dispatch({ type: API_SEARCH_PROFILE_FULFILLED, payload: json });
+        dispatch({ type: API_SEARCH_PROFILE_FULFILLED, payload: { ...json, redirect } });
       });
   }
 };
@@ -84,7 +84,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        shouldRedirect: true,
+        shouldRedirect: action.payload.redirect,
         results: action.payload.results,
         empty: action.payload.results.length <= 0
       };
