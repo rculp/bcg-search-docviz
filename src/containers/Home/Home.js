@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Row, Col } from 'react-flexbox-grid';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import { UI_URL } from 'config';
 
 import Page from 'components/Page/Page';
+import Loader from 'components/Loader/Loader';
 import Form from 'components/Form/Form';
-import Input from 'components/Input/Input';
-import Button from 'components/Button/Button';
 import Message from 'components/Message/Message';
+import SearchBar from 'components/SearchBar/SearchBar';
 
 import './Home.scss';
 
@@ -26,47 +27,37 @@ export class HomeContainer extends Component {
     reset();
   };
 
-  fetchResults = () => {
-    const { actions: { search }, searchValue } = this.props;
-    search(searchValue);
-  };
-
-  handleChange = (event) => {
-    const { actions: { changeSearchValue } } = this.props;
-    changeSearchValue(event.target.value);
-  };
-
   render = () => {
-    const { searchValue, loading, error } = this.props;
+    const {
+      actions: { changeSearchValue, search }, searchValue, loading, error, errorMessage
+    } = this.props;
     return (
       <Page id="home">
-        <main>
-          <h2>Sinequa Search</h2>
-          <Form>
-            <Form.Field>
-              <Input
-                size="massive"
-                placeholder="Search..."
-                id="query"
-                loading={loading}
-                disabled={loading}
-                value={searchValue}
-                onChange={this.handleChange}
-                icon="search"
-                iconPosition="left"
-                label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
-                labelPosition="right"
+        <Row>
+          <Col xs={12} lg={6} lgOffset={3}>
+            <h2>Sinequa Search</h2>
+            <Form>
+              <Form.Field>
+                <SearchBar
+                  isLoading={loading}
+                  isDisabled={loading}
+                  searchValue={searchValue}
+                  changeHandler={changeSearchValue}
+                  submitHandler={search}
+                />
+              </Form.Field>
+            </Form>
+            {
+              error &&
+              <Message
+                error
+                header="Search Failed"
+                content={errorMessage}
               />
-            </Form.Field>
-          </Form>
-          { error &&
-            <Message
-              error
-              header="Search Failed"
-              content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
-            />
-          }
-        </main>
+            }
+          </Col>
+        </Row>
+        <Loader size="large" active={loading}>Loading</Loader>
       </Page>
     );
   };
@@ -76,6 +67,7 @@ const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state),
   loading: searchSelectors.getLoading(state),
   error: searchSelectors.getError(state),
+  errorMessage: searchSelectors.getErrorMessage(state),
   shouldRedirect: searchSelectors.getShouldRedirect(state)
 });
 

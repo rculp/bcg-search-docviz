@@ -1,95 +1,99 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import uuid from 'uuid/v1';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Row, Col } from 'react-flexbox-grid';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
-import uuid from 'uuid/v1';
 import ReactHtmlParser from 'react-html-parser';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import Heading from 'components/Heading/Heading';
-import Footer from 'components/Footer/Footer';
-import RefinerTagCloud from 'components/RefinerTagCloud/RefinerTagCloud';
-import RefinerTree from 'components/RefinerTree/RefinerTree';
-import RefinerList from 'components/RefinerList/RefinerList';
+import Loader from 'components/Loader/Loader';
 import Card from 'components/Card/Card';
 import Message from 'components/Message/Message';
+import Form from 'components/Form/Form';
+import SearchBar from 'components/SearchBar/SearchBar';
 
 import Page from 'components/Page/Page';
 
 import './Results.scss';
 
-export const ResultsContainer = ({ history, results }) => {
-  if (!results.Result) {
-    history.push('/');
-    return null;
-  }
-  return (
-    <Page id="results">
-      <main>
+export const ResultsContainer = ({
+  actions: { changeSearchValue, search },
+  results,
+  searchValue,
+  loading,
+  error,
+  errorMessage,
+  empty
+}) => (
+  <Page id="results">
+    <Row>
+      <Col xs={12} lg={6} lgOffset={3}>
+        <Form>
+          <Form.Field>
+            <SearchBar
+              isLoading={loading}
+              isDisabled={loading}
+              searchValue={searchValue}
+              changeHandler={changeSearchValue}
+              submitHandler={search}
+            />
+          </Form.Field>
+        </Form>
         {
-          results.Result.Docs.length <= 0 &&
+          error &&
+          <Message
+            error
+            header="Search Failed"
+            content={errorMessage}
+          />
+        }
+        {
+          empty &&
           <Message header="No Results Found" content="Please try a different search." />
         }
+      </Col>
+    </Row>
+    {
+      !empty && !error &&
+      <Fragment>
+        <Loader size="large" active={loading}>Loading</Loader>
         {
-          results.Result.Docs.length > 0 &&
-          <div>
-            <Heading>Showing 1 - 20 of 432 results found</Heading>
-            <Card fluid color="green">
-              <Card.Content>
-                <Card.PracticeArea>Industrial Goods &bull; Technology Advantage</Card.PracticeArea>
-                <Card.MatchPercentage>83% Match</Card.MatchPercentage>
-                <Card.Header>Digital trends as an enabler for digital transformation: How can TA support you on Digital transformation?</Card.Header>
-                <Card.Meta>UPDATED: 12 OCT 2018</Card.Meta>
-                <Card.Description>With the advent of AI and Intelligent Automation capabilies, the possibilites for digital transformation to create a shift in healthcare providers mindsets is proving a challenge to conventional regulation…</Card.Description>
-              </Card.Content>
-            </Card>
-            <Grid>
-              <Row>
-                <Col xs={4}>
-                  <Heading as="h1">Refiners</Heading>
-                  {
-                    results.Result.Boxes.map((box) => {
-                      if (box.type === 'TagCloud') {
-                        return <RefinerTagCloud key={uuid()} box={box} />;
-                      } else if (box.type === 'Tree') {
-                        return <RefinerTree key={uuid()} box={box} />;
-                      } else if (box.type === 'List') {
-                        return <RefinerList key={uuid()} box={box} />;
-                      }
-                      return <div key={uuid()}>Unrecognized refiner type</div>;
-                    })
-                  }
-                </Col>
-                <Col xs={8}>
-                  <Heading as="h1">Results</Heading>
-                  {
-                    results.Result.Docs.map(doc => (
-                      <Grid key={uuid()}>
-                        <Row>
-                          <Col xs={6}>
-                            {doc.filename}
-                          </Col>
-                          <Col xs={6}>
-                            { ReactHtmlParser(doc.largesummaryhtml) }
-                          </Col>
-                        </Row>
-                      </Grid>
-                    ))
-                  }
-                </Col>
-              </Row>
-            </Grid>
-          </div>
+          !loading &&
+          <Fragment>
+            <Heading className="resultCount" as="h2">Showing 1 - {results.length} of {results.totalHitCount} results found</Heading>
+            <Row>
+              <Col xs={12} lg={8}>
+                {
+                  results.map(doc => (
+                    <Card key={uuid()} fluid color="green">
+                      <Card.Content>
+                        <Card.PracticeArea practiceAreas={doc.industryPA} />
+                        <Card.MatchPercentage relevancyScore={doc.relevancyScore} />
+                        <Card.Header>{doc.title}</Card.Header>
+                        <Card.Meta>UPDATED: {new Date(doc.uploadDate).toLocaleDateString()}</Card.Meta>
+                        <Card.Description>{ReactHtmlParser(doc.smallSummaryHtml)}</Card.Description>
+                      </Card.Content>
+                    </Card>
+                  ))
+                }
+              </Col>
+            </Row>
+          </Fragment>
         }
-      </main>
-      <Footer />
-    </Page>
-  );
-};
+      </Fragment>
+    }
+  </Page>
+);
 
 const mapStateToProps = state => ({
-  results: searchSelectors.getResults(state)
+  results: searchSelectors.getResults(state),
+  searchValue: searchSelectors.getSearchValue(state),
+  loading: searchSelectors.getLoading(state),
+  error: searchSelectors.getError(state),
+  errorMessage: searchSelectors.getErrorMessage(state),
+  empty: searchSelectors.getEmpty(state)
 });
 
 const mapDispatchToProps = dispatch => ({

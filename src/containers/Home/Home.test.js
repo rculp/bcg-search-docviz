@@ -2,6 +2,7 @@ import { shallow, mount } from 'enzyme';
 import { UI_URL } from 'config';
 
 import React from 'react';
+import { StaticRouter } from 'react-router';
 import configureStore from 'redux-mock-store';
 
 import ConnectedHomeContainer, { HomeContainer } from './Home';
@@ -60,7 +61,9 @@ describe('Home', () => {
 
   it('should fetch results when submit button is clicked', () => {
     const component = mount(
-      <HomeContainer actions={mockActions} searchValue="testSearchValue" />
+      <StaticRouter context={{}}>
+        <HomeContainer actions={mockActions} searchValue="testSearchValue" />
+      </StaticRouter>
     );
     component.find(Button).simulate('click');
     expect(mockActions.search).toHaveBeenCalledWith('testSearchValue');

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav renders and matches our snapshot 1`] = `
+<nav>
+  <Menu>
+    <Link
+      replace={false}
+      to="/"
+    >
+      <div
+        className="logo"
+      >
+        M
+      </div>
+    </Link>
+  </Menu>
+</nav>
+`;

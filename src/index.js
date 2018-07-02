@@ -1,3 +1,4 @@
+import 'semantic-ui-css/semantic.css';
 import 'index.scss';
 
 import registerServiceWorker from 'registerServiceWorker';

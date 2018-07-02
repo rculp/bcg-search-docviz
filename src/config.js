@@ -6,5 +6,6 @@ export const API_URL = {
 };
 
 export const UI_URL = {
+  HOME: '/',
   RESULTS: searchTerm => `/results?q=${encodeURIComponent(searchTerm)}`
 };

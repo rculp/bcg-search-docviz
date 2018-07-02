@@ -1,4 +1,36 @@
+@import 'src/global-styles/responsive';
+@import 'src/global-styles/colors';
+
 .page {
-  position: relative;
-  height: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: $gray--lightest;
+
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    height: 56px;
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      height: 48px;
+    }
+  }
+
+  main {
+    flex: 1;
+    width: 100%;
+
+    padding-bottom: 90px;
+    padding-top: calc(56px + 45px);
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      padding-top: calc(48px + 45px);
+    }
+  }
+
+  footer {
+    width: 100%;
+  }
 }

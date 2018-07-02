@@ -1,20 +1,43 @@
-$icons-font-path: '../node_modules/semantic-ui-sass/icons';
-$flags-image-path: '../node_modules/semantic-ui-sass/images';
-@import '../node_modules/semantic-ui-sass/semantic-ui';
+@font-face {
+  font-family: 'HendersonBCGSans-Regular';
+  src: url('assets/fonts/HendersonBCGSans-Regular.woff') format('woff');
+  font-weight: 400;
+}
 
-@import 'global-styles/grid';
-@import 'global-styles/responsive';
-@import 'global-styles/colors';
-@import 'global-styles/typography';
+@font-face {
+  font-family: 'HendersonBCGSans-Light';
+  src: url('assets/fonts/HendersonBCGSans-Light.woff') format('woff');
+  font-weight: 300;
+}
 
-body {
-  font-size: 1.6rem;
+@font-face {
+  font-family: 'HendersonBCGSans-Thin';
+  src: url('assets/fonts/HendersonBCGSans-Thin.woff') format('woff');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'HendersonBCGSans-Bold';
+  src: url('assets/fonts/HendersonBCGSans-Bold.woff') format('woff');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'HendersonBCGSerif-Regular';
+  src: url('assets/fonts/HendersonBCGSerif-Regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'HendersonBCGSerif-Bold';
+  src: url('assets/fonts/HendersonBCGSerif-Bold.woff') format('woff');
+  font-weight: 700;
 }
 
 html {
   font-size: 62.5%;
 }
 
-#root {
-  height: 100%;
+body {
+  font-size: 1.6rem;
 }

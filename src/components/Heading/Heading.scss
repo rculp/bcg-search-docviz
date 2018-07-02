@@ -1,30 +1,13 @@
-//h1 {
-//
-//}
-//
-//h2 {
-//
-//}
-//
-//h3 {
-//
-//}
-//
-//h4 {
-//
-//}
-//
-//h5 {
-//
-//}
-//
-//h6 {
-//
-//}
-//
-//p,
-//ol,
-//ul,
-//li {
-//
-//}
+@import 'src/global-styles/typography';
+
+h1 {
+  @extend %heading-large-sans;
+}
+
+h2 {
+  @extend %heading-regular-sans;
+}
+
+h3 {
+  @extend %heading-small-sans;
+}
