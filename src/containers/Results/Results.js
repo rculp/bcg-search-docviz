@@ -31,6 +31,14 @@ export const ResultsContainer = ({
   return (
     <Page id="results">
       {
+        error &&
+        <Message
+          error
+          header="Search Failed"
+          content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
+        />
+      }
+      {
         results.results.length <= 0 &&
         <Message header="No Results Found" content="Please try a different search." />
       }
@@ -44,7 +52,7 @@ export const ResultsContainer = ({
                 isDisabled={loading}
                 searchValue={searchValue}
                 changeHandler={changeSearchValue}
-                apiCall={search}
+                submitHandler={search}
               />
             </Form.Field>
           </Form>
@@ -63,13 +71,6 @@ export const ResultsContainer = ({
             ))
           }
         </Fragment>
-      }
-      { error &&
-      <Message
-        error
-        header="Search Failed"
-        content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
-      />
       }
     </Page>
   );

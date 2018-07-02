@@ -13,8 +13,8 @@ class SearchBar extends Component {
   };
 
   fetchResults = () => {
-    const { apiCall, searchValue } = this.props;
-    apiCall(searchValue);
+    const { submitHandler, searchValue } = this.props;
+    submitHandler(searchValue);
   };
 
   render = () => {
@@ -42,7 +42,7 @@ SearchBar.propTypes = {
   isLoading: PropTypes.bool,
   isDisabled: PropTypes.bool,
   changeHandler: PropTypes.func.isRequired,
-  apiCall: PropTypes.func.isRequired
+  submitHandler: PropTypes.func.isRequired
 };
 
 SearchBar.defaultProps = {

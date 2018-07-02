@@ -39,7 +39,7 @@ export class HomeContainer extends Component {
               isDisabled={loading}
               searchValue={searchValue}
               changeHandler={changeSearchValue}
-              apiCall={search}
+              submitHandler={search}
             />
           </Form.Field>
         </Form>
