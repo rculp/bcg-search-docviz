@@ -15,7 +15,8 @@ const initialState = {
   loading: false,
   error: false,
   shouldRedirect: false,
-  results: {}
+  results: {},
+  empty: false
 };
 
 export const actions = {
@@ -32,7 +33,8 @@ export const selectors = {
   getLoading: state => state[name].loading,
   getError: state => state[name].error,
   getShouldRedirect: state => state[name].shouldRedirect,
-  getResults: state => state[name].results
+  getResults: state => state[name].results,
+  getEmpty: state => state[name].empty
 };
 
 export function reducer(state = initialState, action) {
@@ -58,7 +60,8 @@ export function reducer(state = initialState, action) {
         loading: false,
         error: true,
         shouldRedirect: false,
-        results: {}
+        results: {},
+        empty: false
       };
     case API_SEARCH_PROFILE_FULFILLED:
       return {
@@ -66,7 +69,8 @@ export function reducer(state = initialState, action) {
         loading: false,
         error: false,
         shouldRedirect: true,
-        results: action.payload
+        results: action.payload,
+        empty: action.payload.length <= 0
       };
     default:
       return state;

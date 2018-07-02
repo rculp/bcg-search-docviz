@@ -3,10 +3,12 @@ import uuid from 'uuid/v1';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Row, Col } from 'react-flexbox-grid';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import ReactHtmlParser from 'react-html-parser';
 
 import Heading from 'components/Heading/Heading';
+import Loader from 'components/Loader/Loader';
 import Card from 'components/Card/Card';
 import Message from 'components/Message/Message';
 import Form from 'components/Form/Form';
@@ -22,29 +24,18 @@ export const ResultsContainer = ({
   results,
   searchValue,
   loading,
-  error
+  error,
+  empty
 }) => {
   if (!results.results) {
     history.push('/');
     return null;
   }
+
   return (
     <Page id="results">
-      {
-        error &&
-        <Message
-          error
-          header="Search Failed"
-          content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
-        />
-      }
-      {
-        results.results.length <= 0 &&
-        <Message header="No Results Found" content="Please try a different search." />
-      }
-      {
-        results.results.length > 0 &&
-        <Fragment>
+      <Row>
+        <Col xs={12} lg={6} lgOffset={3}>
           <Form>
             <Form.Field>
               <SearchBar
@@ -56,19 +47,47 @@ export const ResultsContainer = ({
               />
             </Form.Field>
           </Form>
+        </Col>
+      </Row>
+      {
+        error &&
+        <Message
+          error
+          header="Search Failed"
+          content="It's not your fault! We're experiencing technical issues. Please try again in a few minutes."
+        />
+      }
+      {
+        empty &&
+        <Message header="No Results Found" content="Please try a different search." />
+      }
+      {
+        !empty &&
+        <Fragment>
           <Heading className="resultCount" as="h2">Showing 1 - {results.results.length} of {results.totalHitCount} results found</Heading>
           {
-            results.results.map(doc => (
-              <Card key={uuid()} fluid color="green">
-                <Card.Content>
-                  <Card.PracticeArea practiceAreas={doc.industryPA} />
-                  <Card.MatchPercentage relevancyScore={doc.relevancyScore} />
-                  <Card.Header>{doc.title}</Card.Header>
-                  <Card.Meta>UPDATED: {new Date(doc.uploadDate).toLocaleDateString()}</Card.Meta>
-                  <Card.Description>{ReactHtmlParser(doc.smallSummaryHtml)}</Card.Description>
-                </Card.Content>
-              </Card>
-            ))
+            loading &&
+            <Loader size="large">Loading</Loader>
+          }
+          {
+            !loading &&
+            <Row>
+              <Col xs={12} lg={8}>
+                {
+                  results.results.map(doc => (
+                    <Card key={uuid()} fluid color="green">
+                      <Card.Content>
+                        <Card.PracticeArea practiceAreas={doc.industryPA} />
+                        <Card.MatchPercentage relevancyScore={doc.relevancyScore} />
+                        <Card.Header>{doc.title}</Card.Header>
+                        <Card.Meta>UPDATED: {new Date(doc.uploadDate).toLocaleDateString()}</Card.Meta>
+                        <Card.Description>{ReactHtmlParser(doc.smallSummaryHtml)}</Card.Description>
+                      </Card.Content>
+                    </Card>
+                  ))
+                }
+              </Col>
+            </Row>
           }
         </Fragment>
       }
@@ -80,7 +99,8 @@ const mapStateToProps = state => ({
   results: searchSelectors.getResults(state),
   searchValue: searchSelectors.getSearchValue(state),
   loading: searchSelectors.getLoading(state),
-  error: searchSelectors.getError(state)
+  error: searchSelectors.getError(state),
+  empty: searchSelectors.getEmpty(state)
 });
 
 const mapDispatchToProps = dispatch => ({
