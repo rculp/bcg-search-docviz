@@ -12,8 +12,7 @@ describe('Home', () => {
   const mockStore = configureStore();
   const mockActions = {
     search: jest.fn(),
-    changeSearchValue: jest.fn(),
-    reset: jest.fn()
+    changeSearchValue: jest.fn()
   };
   const initialState = {
     search: {
@@ -57,14 +56,27 @@ describe('Home', () => {
     expect(component.find(Message).props().header).toEqual('Search Failed');
   });
 
-  it('should reset when unmounted', () => {
-    const component = shallow(
-      <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={false} searchValue={'testSearchValue'} />
+  it('should fetch results when submit button is clicked', () => {
+    const component = mount(
+      <StaticRouter context={{}}>
+        <HomeContainer actions={mockActions} searchValue="testSearchValue" />
+      </StaticRouter>
     );
+    component.find(Button).simulate('click');
+    expect(mockActions.search).toHaveBeenCalledWith('testSearchValue');
+  });
 
-    component.instance().componentWillUnmount();
-
-    expect(mockActions.reset).toHaveBeenCalled();
+  it('should change search value when input value changes', () => {
+    const mockEvent = {
+      target: {
+        value: 'test'
+      }
+    };
+    const component = shallow(
+      <HomeContainer actions={mockActions}/>
+    );
+    component.find(Input).simulate('change', mockEvent);
+    expect(mockActions.changeSearchValue).toHaveBeenCalledWith('test');
   });
 
   it('redirects to results page if store contains redirect flag', () => {

@@ -1,4 +1,4 @@
-import { actions, selectors, reducer, RESET, CHANGE_SEARCH_VALUE, API_SEARCH_PROFILE, API_SEARCH_PROFILE_PENDING, API_SEARCH_PROFILE_REJECTED, API_SEARCH_PROFILE_FULFILLED } from './search';
+import { actions, selectors, reducer, CHANGE_SEARCH_VALUE, API_SEARCH_PROFILE_PENDING, API_SEARCH_PROFILE_REJECTED, API_SEARCH_PROFILE_FULFILLED } from './search';
 import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import config from 'config';
@@ -9,7 +9,6 @@ const initialState = {
   searchValue: '',
   loading: false,
   error: false,
-  shouldRedirect: false,
   results: {}
 };
 
@@ -20,7 +19,6 @@ describe('Search', () => {
   });
 
   it('synchronous action creators should generate the correct action objects', () => {
-    expect(actions.reset()).toEqual({ type: 'RESET' });
     expect(actions.changeSearchValue('first')).toEqual({ type: 'CHANGE_SEARCH_VALUE', payload: 'first' });
   });
 
@@ -40,9 +38,6 @@ describe('Search', () => {
   it('reducers should update store state to the correct new state', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
 
-    expect(reducer(undefined, { type: RESET }))
-      .toEqual(initialState);
-
     expect(reducer(undefined, { type: CHANGE_SEARCH_VALUE, payload: 'new search term' }))
       .toEqual({...initialState, searchValue: 'new search term'});
 
@@ -50,9 +45,9 @@ describe('Search', () => {
       .toEqual({...initialState, loading: true});
 
     expect(reducer(undefined, { type: API_SEARCH_PROFILE_REJECTED }))
-      .toEqual({...initialState, loading: false, error: true, shouldRedirect: false, results: {}});
+      .toEqual({...initialState, loading: false, error: true, results: {}});
 
     expect(reducer(undefined, { type: API_SEARCH_PROFILE_FULFILLED, payload: [] }))
-      .toEqual({...initialState, loading: false, error: false, shouldRedirect: true, results: []});
+      .toEqual({...initialState, loading: false, error: false, results: []});
   });
 });

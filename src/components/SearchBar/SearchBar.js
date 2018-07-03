@@ -8,14 +8,14 @@ import Button from 'components/Button/Button';
 import './SearchBar.scss';
 
 class SearchBar extends Component {
+  onSubmit = () => {
+    const { submitHandler } = this.props;
+    submitHandler();
+  };
+
   handleChange = (event) => {
     const { changeHandler } = this.props;
     changeHandler(event.target.value);
-  };
-
-  fetchResults = () => {
-    const { submitHandler, searchValue } = this.props;
-    submitHandler(searchValue);
   };
 
   render = () => {
@@ -31,7 +31,7 @@ class SearchBar extends Component {
         icon="search"
         iconPosition="left"
         label={
-          <Button icon className="searchButton" type="submit" onClick={this.fetchResults}>
+          <Button icon className="searchButton" type="submit" onClick={this.onSubmit}>
             {
               isLoading ? <div className="iconContainer loadIcons"><Icon name="circle" className="left" /><Icon name="circle" className="middle" /><Icon name="circle" className="right" /></div> : <div className="iconContainer searchIcon"><Icon name="arrow right" /></div>
             }

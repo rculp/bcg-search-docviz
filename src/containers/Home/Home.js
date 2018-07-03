@@ -8,27 +8,36 @@ import { UI_URL } from 'config';
 
 import Page from 'components/Page/Page';
 import Form from 'components/Form/Form';
-import Message from 'components/Message/Message';
 import SearchBar from 'components/SearchBar/SearchBar';
 
 import './Home.scss';
 
 export class HomeContainer extends Component {
-  componentDidUpdate = () => {
-    const { history, shouldRedirect, searchValue } = this.props;
-    if (shouldRedirect) {
-      history.push(UI_URL.RESULTS(searchValue));
-    }
+  componentDidMount = () => {
+    const { actions: { changeSearchValue }, history } = this.props;
+    let q = new URL(window.location).searchParams.get('q');
+    changeSearchValue(q);
+    document.title = `Home${q ? ` | ${q}` : ''}`;
+    this.historyUnlistener = history.listen(() => {
+      q = new URL(window.location).searchParams.get('q');
+      changeSearchValue(q);
+      document.title = `Home${q ? ` | ${q}` : ''}`;
+    });
   };
 
   componentWillUnmount = () => {
-    const { actions: { reset } } = this.props;
-    reset();
+    this.historyUnlistener();
+  };
+
+  submitHandler = () => {
+    const { searchValue, history } = this.props;
+    history.push(UI_URL.HOME(searchValue), '');
+    history.push(UI_URL.RESULTS(searchValue), '');
   };
 
   render = () => {
     const {
-      actions: { changeSearchValue, search }, searchValue, loading, error, errorMessage
+      actions: { changeSearchValue }, searchValue
     } = this.props;
     return (
       <Page id="home">
@@ -38,22 +47,12 @@ export class HomeContainer extends Component {
             <Form>
               <Form.Field>
                 <SearchBar
-                  isLoading={loading}
-                  isDisabled={loading}
                   searchValue={searchValue}
                   changeHandler={changeSearchValue}
-                  submitHandler={search}
+                  submitHandler={this.submitHandler}
                 />
               </Form.Field>
             </Form>
-            {
-              error &&
-              <Message
-                error
-                header="Search Failed"
-                content={errorMessage}
-              />
-            }
           </Col>
         </Row>
       </Page>
@@ -63,10 +62,7 @@ export class HomeContainer extends Component {
 
 const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state),
-  loading: searchSelectors.getLoading(state),
-  error: searchSelectors.getError(state),
-  errorMessage: searchSelectors.getErrorMessage(state),
-  shouldRedirect: searchSelectors.getShouldRedirect(state)
+  loading: searchSelectors.getLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({

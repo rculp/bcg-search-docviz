@@ -2,7 +2,6 @@ import { API_URL } from 'config';
 
 export const name = 'search';
 
-export const RESET = 'RESET';
 export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
 export const API_SEARCH_PROFILE_PENDING = 'API_SEARCH_PROFILE_PENDING';
 export const API_SEARCH_PROFILE_REJECTED = 'API_SEARCH_PROFILE_REJECTED';
@@ -13,19 +12,17 @@ const initialState = {
   loading: false,
   error: false,
   errorMessage: '',
-  shouldRedirect: false,
   results: [],
   empty: false
 };
 
 export const actions = {
-  reset: () => ({ type: RESET }),
-  changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
+  changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload: payload || '' }),
   search: payload => (dispatch) => {
     dispatch({ type: API_SEARCH_PROFILE_PENDING });
 
     return fetch(API_URL.SEARCH(payload))
-      .then((response) => {
+      .then((response) => { // TODO centralize error handling
         if (response.status >= 400 && response.status < 600) {
           dispatch({ type: API_SEARCH_PROFILE_REJECTED, payload: 'Bad response from server' });
           return Promise.reject();
@@ -46,18 +43,12 @@ export const selectors = {
   getLoading: state => state[name].loading,
   getError: state => state[name].error,
   getErrorMessage: state => state[name].errorMessage,
-  getShouldRedirect: state => state[name].shouldRedirect,
   getResults: state => state[name].results,
   getEmpty: state => state[name].empty
 };
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
-    case RESET:
-      return {
-        ...state,
-        shouldRedirect: false
-      };
     case CHANGE_SEARCH_VALUE:
       return {
         ...state,
@@ -69,7 +60,6 @@ export function reducer(state = initialState, action) {
         loading: true,
         error: false,
         errorMessage: '',
-        shouldRedirect: false,
         results: [],
         empty: false
       };
@@ -84,7 +74,6 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        shouldRedirect: true,
         results: action.payload.results,
         empty: action.payload.results.length <= 0
       };
