@@ -7,7 +7,6 @@ import { actions as searchActions, selectors as searchSelectors } from 'redux/se
 import { UI_URL } from 'config';
 
 import Page from 'components/Page/Page';
-import Loader from 'components/Loader/Loader';
 import Form from 'components/Form/Form';
 import Message from 'components/Message/Message';
 import SearchBar from 'components/SearchBar/SearchBar';
@@ -34,8 +33,8 @@ export class HomeContainer extends Component {
     return (
       <Page id="home">
         <Row>
-          <Col xs={12} lg={6} lgOffset={3}>
-            <h2>Sinequa Search</h2>
+          <Col xs={12} lg={8} lgOffset={2}>
+            <h2>I am looking for:</h2>
             <Form>
               <Form.Field>
                 <SearchBar
@@ -57,7 +56,6 @@ export class HomeContainer extends Component {
             }
           </Col>
         </Row>
-        <Loader size="large" active={loading}>Loading</Loader>
       </Page>
     );
   };

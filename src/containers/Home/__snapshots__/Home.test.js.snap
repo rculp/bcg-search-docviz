@@ -4,34 +4,29 @@ exports[`Home renders and matches our snapshot 1`] = `
 <Page
   id="home"
 >
-  <h2>
-    Sinequa Search
-  </h2>
-  <Form
-    as="form"
-  >
-    <FormField>
-      <Input
-        icon="search"
-        iconPosition="left"
-        id="query"
-        label={
-          <Button
-            as="button"
-            onClick={[Function]}
-            role="button"
-            type="submit"
-          >
-            Submit
-          </Button>
-        }
-        labelPosition="right"
-        onChange={[Function]}
-        placeholder="Search..."
-        size="massive"
-        type="text"
-      />
-    </FormField>
-  </Form>
+  <Row>
+    <Col
+      lg={8}
+      lgOffset={2}
+      xs={12}
+    >
+      <h2>
+        I am looking for:
+      </h2>
+      <Form
+        as="form"
+      >
+        <FormField>
+          <SearchBar
+            changeHandler={[Function]}
+            isDisabled={false}
+            isLoading={false}
+            searchValue=""
+            submitHandler={[Function]}
+          />
+        </FormField>
+      </Form>
+    </Col>
+  </Row>
 </Page>
 `;

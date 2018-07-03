@@ -1,3 +1,136 @@
+@import 'src/global-styles/colors';
+@import 'src/global-styles/responsive';
+
+@keyframes fadein {
+  0% { opacity: 0.7; }
+  66% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  66% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+
 .searchBar {
   // keep
+}
+
+.ui.button.searchButton {
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    display: none;
+  }
+}
+
+.iconContainer {
+  &.searchIcon {
+    padding: 0 8px;
+  }
+
+  &.loadIcons {
+    padding: 4px 0;
+  }
+
+  .icon.arrow {
+    font-size: 24px;
+    vertical-align: middle;
+    margin: 0;
+    width: 1em;
+  }
+
+  
+  .icon.circle {
+    font-size: 8px;
+    vertical-align: middle;
+    margin-right: 8px;
+    width: initial;
+    
+    &.right {
+      margin-right: 0;
+    } 
+
+    &.left,
+    &.right {
+      animation: 3s ease 0s normal forwards 1 fadein;
+      animation-iteration-count: infinite;
+    }
+
+    &.middle {
+      animation: 3s ease 0s normal forwards 1 fadeout;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+.ui.disabled.input {
+  opacity: 1;
+}
+
+.ui.label.button {
+  background: $bcg-green;
+  color: $white;
+  padding: 16px 8px !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &:focus {
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+  }
+
+  &:hover,
+  &:focus {
+    color: $white;
+    background: darken($bcg-green, 8%);
+    
+    .icon {
+      opacity: 1;
+    }
+  }
+}
+
+.ui.form .ui.input {
+  color: $gray--dark;
+  font-size: 16px;
+
+  &:focus {
+    color: $gray--darker;
+  }
+
+  input {
+    background: $white;
+    border: 1px solid $gray--light;
+    color: $gray--dark;
+    font-family: HendersonBCGSans-Regular;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      border-right-color: $gray--light !important;
+      border-bottom-right-radius: 0.285714rem !important;
+      border-top-right-radius: 0.285714rem !important;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &:hover {
+      border-color: darken($gray, 8%);
+      @media (max-width: map-get($grid-breakpoints, sm)) {
+        border-right-color: darken($gray, 8%) !important;
+      }
+    }
+
+    &:focus {
+      border-color: $bcg-green;
+      color: $gray--darker;
+      outline-color: -webkit-focus-ring-color;
+      outline-style: auto;
+      @media (max-width: map-get($grid-breakpoints, sm)) {
+        border-right-color: $bcg-green !important;
+      }
+    }
+  }
 }

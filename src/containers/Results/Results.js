@@ -29,7 +29,7 @@ export const ResultsContainer = ({
 }) => (
   <Page id="results">
     <Row>
-      <Col xs={12} lg={6} lgOffset={3}>
+      <Col xs={12} lg={8} lgOffset={2}>
         <Form>
           <Form.Field>
             <SearchBar

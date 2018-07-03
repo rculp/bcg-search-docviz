@@ -1,13 +1,11 @@
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { UI_URL } from 'config';
 
 import React from 'react';
-import { StaticRouter } from 'react-router';
 import configureStore from 'redux-mock-store';
 
 import ConnectedHomeContainer, { HomeContainer } from './Home';
-import Input from 'components/Input/Input';
-import Button from 'components/Button/Button';
+
 import Message from 'components/Message/Message';
 
 describe('Home', () => {
@@ -47,39 +45,16 @@ describe('Home', () => {
 
   it('renders and matches our snapshot', () => {
     const component = shallow(
-      <HomeContainer />
+      <HomeContainer actions={mockActions} />
     );
     expect(component).toMatchSnapshot();
   });
 
   it('shows error message error is set', () => {
     const component = shallow(
-      <HomeContainer error={true}/>
+      <HomeContainer  actions={mockActions} error={true}/>
     );
     expect(component.find(Message).props().header).toEqual('Search Failed');
-  });
-
-  it('should fetch results when submit button is clicked', () => {
-    const component = mount(
-      <StaticRouter context={{}}>
-        <HomeContainer actions={mockActions} searchValue="testSearchValue" />
-      </StaticRouter>
-    );
-    component.find(Button).simulate('click');
-    expect(mockActions.search).toHaveBeenCalledWith('testSearchValue');
-  });
-
-  it('should change search value when input value changes', () => {
-    const mockEvent = {
-      target: {
-        value: 'test'
-      }
-    };
-    const component = shallow(
-      <HomeContainer actions={mockActions}/>
-    );
-    component.find(Input).simulate('change', mockEvent);
-    expect(mockActions.changeSearchValue).toHaveBeenCalledWith('test');
   });
 
   it('should reset when unmounted', () => {

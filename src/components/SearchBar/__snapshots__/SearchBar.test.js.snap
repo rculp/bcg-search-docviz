@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar renders and matches our snapshot 1`] = `
+<Input
+  disabled={false}
+  icon="search"
+  iconPosition="left"
+  id="query"
+  label={
+    <Button
+      as="button"
+      className="searchButton"
+      icon={true}
+      onClick={[Function]}
+      role="button"
+      type="submit"
+    >
+      <div
+        className="iconContainer searchIcon"
+      >
+        <Icon
+          as="i"
+          name="arrow right"
+        />
+      </div>
+    </Button>
+  }
+  labelPosition="right"
+  onChange={[Function]}
+  placeholder="Try to be as descriptive as possible"
+  size="massive"
+  type="text"
+  value=""
+/>
+`;

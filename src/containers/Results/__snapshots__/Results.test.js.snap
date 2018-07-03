@@ -4,103 +4,49 @@ exports[`Results renders and matches our snapshot 1`] = `
 <Page
   id="results"
 >
-  <div>
-    <Header>
-      Showing 1 - 20 of 432 results found
-    </Header>
-    <Card
-      color="green"
-      fluid={true}
+  <Row>
+    <Col
+      lg={8}
+      lgOffset={2}
+      xs={12}
     >
-      <CardContent>
-        <Component>
-          Industrial Goods • Technology Advantage
-        </Component>
-        <Component>
-          83% Match
-        </Component>
-        <CardHeader>
-          Digital trends as an enabler for digital transformation: How can TA support you on Digital transformation?
-        </CardHeader>
-        <CardMeta>
-          UPDATED: 12 OCT 2018
-        </CardMeta>
-        <CardDescription>
-          With the advent of AI and Intelligent Automation capabilies, the possibilites for digital transformation to create a shift in healthcare providers mindsets is proving a challenge to conventional regulation…
-        </CardDescription>
-      </CardContent>
-    </Card>
-    <Grid>
+      <Form
+        as="form"
+      >
+        <FormField>
+          <SearchBar
+            changeHandler={[Function]}
+            isDisabled={false}
+            isLoading={false}
+            searchValue=""
+            submitHandler={[Function]}
+          />
+        </FormField>
+      </Form>
+    </Col>
+  </Row>
+  <React.Fragment>
+    <Loader
+      size="large"
+    >
+      Loading
+    </Loader>
+    <React.Fragment>
+      <Header
+        as="h2"
+        className="resultCount"
+      >
+        Showing 1 - 
+         of 
+         results found
+      </Header>
       <Row>
         <Col
-          xs={4}
-        >
-          <Header
-            as="h1"
-          >
-            Refiners
-          </Header>
-          <RefinerTagCloud
-            box={
-              Object {
-                "type": "TagCloud",
-              }
-            }
-            key="1"
-          />
-          <RefinerTree
-            box={
-              Object {
-                "type": "Tree",
-              }
-            }
-            key="1"
-          />
-          <RefinerList
-            box={
-              Object {
-                "type": "List",
-              }
-            }
-            key="1"
-          />
-          <div
-            key="1"
-          >
-            Unrecognized refiner type
-          </div>
-        </Col>
-        <Col
-          xs={8}
-        >
-          <Header
-            as="h1"
-          >
-            Results
-          </Header>
-          <Grid
-            key="1"
-          >
-            <Row>
-              <Col
-                xs={6}
-              >
-                filename1
-              </Col>
-              <Col
-                xs={6}
-              >
-                <b
-                  key="0"
-                >
-                  test
-                </b>
-              </Col>
-            </Row>
-          </Grid>
-        </Col>
+          lg={8}
+          xs={12}
+        />
       </Row>
-    </Grid>
-  </div>
+    </React.Fragment>
+  </React.Fragment>
 </Page>
 `;

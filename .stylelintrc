@@ -7,6 +7,7 @@
     "number-no-trailing-zeros": null,
     "selector-class-pattern": null,
     "color-hex-case": "upper",
-    "no-missing-end-of-source-newline": null
+    "no-missing-end-of-source-newline": null,
+    "max-nesting-depth": 3
   }
 }

@@ -11,6 +11,11 @@ import Message from 'components/Message/Message';
 
 describe('Results', () => {
   const mockStore = configureStore();
+  const mockActions = {
+    search: jest.fn(),
+    changeSearchValue: jest.fn(),
+    reset: jest.fn()
+  };
   const initialState = {
     search: {
       results: {
@@ -24,7 +29,8 @@ describe('Results', () => {
           Docs: [
             { filename: 'filename1', largesummaryhtml: '<b>test</b>' }
           ]
-        }
+        },
+        map: jest.fn()
       }
     }
   };
@@ -46,7 +52,7 @@ describe('Results', () => {
 
   it('renders and matches our snapshot', () => {
     const component = shallow(
-      <ResultsContainer results={initialState.search.results} history={mockHistory}/>
+      <ResultsContainer actions={mockActions} results={initialState.search.results} history={mockHistory}/>
     );
     expect(component).toMatchSnapshot();
   });
@@ -56,7 +62,7 @@ describe('Results', () => {
     initialState_noDocsReturned.search.results.Result.Docs = [];
 
     const component = shallow(
-      <ResultsContainer results={initialState_noDocsReturned.search.results} history={mockHistory}/>
+      <ResultsContainer actions={mockActions} results={initialState_noDocsReturned.search.results} history={mockHistory}/>
     );
     expect(component.find(Message).props().header).toEqual('No Results Found');
   });
@@ -66,7 +72,7 @@ describe('Results', () => {
     initialState_noResult.search.results.Result = null;
 
     const component = shallow(
-      <ResultsContainer results={initialState_noResult.search.results} history={mockHistory}/>
+      <ResultsContainer actions={mockActions} results={initialState_noResult.search.results} history={mockHistory}/>
     );
     expect(mockHistory.push).toHaveBeenCalledWith('/');
   });

@@ -1,10 +1,29 @@
+@import 'src/global-styles/responsive';
+
 #home {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  .container {
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
 }
 
 #home h2 {
   font-size: 28px;
-  text-align: center;
+  text-align: left;
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    font-size: 22px;
+  }
+}
+
+#home.page main {
+  padding-top: calc(56px + 120px);
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    padding-top: calc(56px + 64px);
+  }
 }

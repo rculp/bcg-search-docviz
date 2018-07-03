@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from 'semantic-ui-react';
 
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
@@ -22,15 +23,14 @@ class SearchBar extends Component {
     return (
       <Input
         size="massive"
-        placeholder="Search..."
+        placeholder="Try to be as descriptive as possible"
         id="query"
-        loading={isLoading}
         disabled={isDisabled}
         value={searchValue}
         onChange={this.handleChange}
         icon="search"
         iconPosition="left"
-        label={<Button type="submit" onClick={this.fetchResults}>Submit</Button>}
+        label={<Button icon className="searchButton" type="submit" onClick={this.fetchResults}>{isLoading ? <div className="iconContainer loadIcons"><Icon name="circle" className="left" /><Icon name="circle" className="middle" /><Icon name="circle" className="right" /></div> : <div className="iconContainer searchIcon"><Icon name="arrow right" /></div>}</Button>}
         labelPosition="right"
       />
     );
