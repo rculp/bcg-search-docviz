@@ -7,24 +7,22 @@ import { actions as searchActions, selectors as searchSelectors } from 'redux/se
 import { UI_URL } from 'config';
 
 import Page from 'components/Page/Page';
-import Loader from 'components/Loader/Loader';
 import Form from 'components/Form/Form';
-import Message from 'components/Message/Message';
 import SearchBar from 'components/SearchBar/SearchBar';
 
 import './Home.scss';
 
 export class HomeContainer extends Component {
   submitHandler = () => {
-    const { actions: { search }, searchValue, history } = this.props;
-    search(searchValue, true).then(() => {
-      history.push(UI_URL.RESULTS(searchValue));
-    });
+    const { searchValue, history } = this.props;
+    const newurl = UI_URL.HOME(searchValue);
+    window.history.pushState({ path: newurl }, '', newurl);
+    history.push(UI_URL.RESULTS(searchValue), '');
   };
 
   render = () => {
     const {
-      actions: { changeSearchValue }, searchValue, loading, error, errorMessage
+      actions: { changeSearchValue }, searchValue
     } = this.props;
     return (
       <Page id="home">
@@ -34,26 +32,14 @@ export class HomeContainer extends Component {
             <Form>
               <Form.Field>
                 <SearchBar
-                  isLoading={loading}
-                  isDisabled={loading}
                   searchValue={searchValue}
                   changeHandler={changeSearchValue}
                   submitHandler={this.submitHandler}
-                  redirectOnSuccess
                 />
               </Form.Field>
             </Form>
-            {
-              error &&
-              <Message
-                error
-                header="Search Failed"
-                content={errorMessage}
-              />
-            }
           </Col>
         </Row>
-        <Loader size="large" active={loading}>Loading</Loader>
       </Page>
     );
   };
@@ -61,9 +47,7 @@ export class HomeContainer extends Component {
 
 const mapStateToProps = state => ({
   searchValue: searchSelectors.getSearchValue(state),
-  loading: searchSelectors.getLoading(state),
-  error: searchSelectors.getError(state),
-  errorMessage: searchSelectors.getErrorMessage(state)
+  loading: searchSelectors.getLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({

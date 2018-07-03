@@ -18,7 +18,7 @@ const initialState = {
 
 export const actions = {
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
-  search: (payload, redirect) => (dispatch) => {
+  search: payload => (dispatch) => {
     dispatch({ type: API_SEARCH_PROFILE_PENDING });
 
     return fetch(API_URL.SEARCH(payload))
@@ -33,7 +33,7 @@ export const actions = {
         return Promise.reject();
       })
       .then((json) => {
-        dispatch({ type: API_SEARCH_PROFILE_FULFILLED, payload: { ...json, redirect } });
+        dispatch({ type: API_SEARCH_PROFILE_FULFILLED, payload: json });
       });
   }
 };

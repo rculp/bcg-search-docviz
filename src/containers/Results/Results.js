@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { Row, Col } from 'react-flexbox-grid';
 import { actions as searchActions, selectors as searchSelectors } from 'redux/search/search';
 import ReactHtmlParser from 'react-html-parser';
+import { UI_URL } from 'config';
 
 import Heading from 'components/Heading/Heading';
 import Loader from 'components/Loader/Loader';
@@ -19,8 +20,17 @@ import Page from 'components/Page/Page';
 import './Results.scss';
 
 export class ResultsContainer extends Component {
+  componentDidMount = () => {
+    const { actions: { search }, searchValue } = this.props;
+    if (searchValue) {
+      search(searchValue);
+    }
+  };
+
   submitHandler = () => {
     const { actions: { search }, searchValue } = this.props;
+    const newurl = UI_URL.RESULTS(searchValue);
+    window.history.pushState({ path: newurl }, '', newurl);
     search(searchValue);
   };
 
