@@ -13,10 +13,14 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import './Home.scss';
 
 export class HomeContainer extends Component {
+  componentDidMount = () => {
+    const { actions: { changeSearchValue } } = this.props;
+    changeSearchValue(new URL(window.location).searchParams.get('q'));
+  };
+
   submitHandler = () => {
     const { searchValue, history } = this.props;
-    const newurl = UI_URL.HOME(searchValue);
-    window.history.pushState({ path: newurl }, '', newurl);
+    history.push(UI_URL.HOME(searchValue), '');
     history.push(UI_URL.RESULTS(searchValue), '');
   };
 

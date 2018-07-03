@@ -1,3 +1,4 @@
+import { store } from 'redux/store';
 import { API_URL } from 'config';
 
 export const name = 'search';
@@ -8,7 +9,7 @@ export const API_SEARCH_PROFILE_REJECTED = 'API_SEARCH_PROFILE_REJECTED';
 export const API_SEARCH_PROFILE_FULFILLED = 'API_SEARCH_PROFILE_FULFILLED';
 
 const initialState = {
-  searchValue: new URL(window.location).searchParams.get('q') || '',
+  searchValue: '',
   loading: false,
   error: false,
   errorMessage: '',
@@ -17,11 +18,13 @@ const initialState = {
 };
 
 export const actions = {
-  changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload }),
-  search: payload => (dispatch) => {
+  changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload: payload || '' }),
+  search: () => (dispatch) => {
+    const { searchValue } = store.getState()[name];
+
     dispatch({ type: API_SEARCH_PROFILE_PENDING });
 
-    return fetch(API_URL.SEARCH(payload))
+    return fetch(API_URL.SEARCH(searchValue))
       .then((response) => { // TODO centralize error handling
         if (response.status >= 400 && response.status < 600) {
           dispatch({ type: API_SEARCH_PROFILE_REJECTED, payload: 'Bad response from server' });

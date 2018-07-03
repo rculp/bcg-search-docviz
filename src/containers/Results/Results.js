@@ -21,16 +21,22 @@ import './Results.scss';
 
 export class ResultsContainer extends Component {
   componentDidMount = () => {
-    const { actions: { search }, searchValue } = this.props;
-    if (searchValue) {
-      search(searchValue);
-    }
+    const { actions: { search, changeSearchValue }, history } = this.props;
+    changeSearchValue(new URL(window.location).searchParams.get('q'));
+    search();
+    this.historyUnlistener = history.listen(() => {
+      changeSearchValue(new URL(window.location).searchParams.get('q'));
+      search();
+    });
+  };
+
+  componentWillUnmount = () => {
+    this.historyUnlistener();
   };
 
   submitHandler = () => {
-    const { actions: { search }, searchValue } = this.props;
-    const newurl = UI_URL.RESULTS(searchValue);
-    window.history.pushState({ path: newurl }, '', newurl);
+    const { actions: { search }, searchValue, history } = this.props;
+    history.push(UI_URL.RESULTS(searchValue), '');
     search(searchValue);
   };
 

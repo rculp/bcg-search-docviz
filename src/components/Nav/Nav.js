@@ -7,7 +7,7 @@ import './Nav.scss';
 const Nav = () => (
   <nav>
     <Menu>
-      <Link to={UI_URL.HOME}>
+      <Link to={UI_URL.HOME()}>
         <div className="logo">M</div>
       </Link>
     </Menu>
