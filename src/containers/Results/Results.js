@@ -24,12 +24,12 @@ export class ResultsContainer extends Component {
     const { actions: { search, changeSearchValue }, history } = this.props;
     let q = new URL(window.location).searchParams.get('q');
     changeSearchValue(q);
-    document.title = `Results${q ? ` | ${q}` : ''}`;
+    document.title = `Results${q && ` | ${q}`}`;
     search(q);
     this.historyUnlistener = history.listen(() => {
       q = new URL(window.location).searchParams.get('q');
       changeSearchValue(q);
-      document.title = `Results${q ? ` | ${q}` : ''}`;
+      document.title = `Results${q && ` | ${q}`}`;
       search(q);
     });
   };
@@ -39,9 +39,10 @@ export class ResultsContainer extends Component {
   };
 
   submitHandler = () => {
-    const { actions: { search }, searchValue, history } = this.props;
-    history.push(UI_URL.RESULTS(searchValue), '');
-    search(searchValue);
+    const {
+      actions: { search }, searchValue, lastTermSearched, history
+    } = this.props;
+    search(searchValue, lastTermSearched).then(() => history.push(UI_URL.RESULTS(searchValue)));
   };
 
   render = () => {
@@ -124,7 +125,8 @@ const mapStateToProps = state => ({
   loading: searchSelectors.getLoading(state),
   error: searchSelectors.getError(state),
   errorMessage: searchSelectors.getErrorMessage(state),
-  empty: searchSelectors.getEmpty(state)
+  empty: searchSelectors.getEmpty(state),
+  lastTermSearched: searchSelectors.getLastTermSearched(state)
 });
 
 const mapDispatchToProps = dispatch => ({

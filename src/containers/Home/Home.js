@@ -31,8 +31,8 @@ export class HomeContainer extends Component {
 
   submitHandler = () => {
     const { searchValue, history } = this.props;
-    history.push(UI_URL.HOME(searchValue), '');
-    history.push(UI_URL.RESULTS(searchValue), '');
+    history.push(UI_URL.HOME(searchValue));
+    history.push(UI_URL.RESULTS(searchValue));
   };
 
   render = () => {

@@ -13,15 +13,19 @@ const initialState = {
   error: false,
   errorMessage: '',
   results: [],
-  empty: false
+  empty: false,
+  lastTermSearched: ''
 };
 
 export const actions = {
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload: payload || '' }),
-  search: payload => (dispatch) => {
-    dispatch({ type: API_SEARCH_PROFILE_PENDING });
+  search: (searchValue, lastTermSearched) => (dispatch) => {
+    if (searchValue === lastTermSearched) {
+      return Promise.reject();
+    }
+    dispatch({ type: API_SEARCH_PROFILE_PENDING, payload: searchValue });
 
-    return fetch(API_URL.SEARCH(payload))
+    return fetch(API_URL.SEARCH(searchValue))
       .then((response) => { // TODO centralize error handling
         if (response.status >= 400 && response.status < 600) {
           dispatch({ type: API_SEARCH_PROFILE_REJECTED, payload: 'Bad response from server' });
@@ -44,7 +48,8 @@ export const selectors = {
   getError: state => state[name].error,
   getErrorMessage: state => state[name].errorMessage,
   getResults: state => state[name].results,
-  getEmpty: state => state[name].empty
+  getEmpty: state => state[name].empty,
+  getLastTermSearched: state => state[name].lastTermSearched
 };
 
 export function reducer(state = initialState, action) {
@@ -61,7 +66,8 @@ export function reducer(state = initialState, action) {
         error: false,
         errorMessage: '',
         results: [],
-        empty: false
+        empty: false,
+        lastTermSearched: action.payload
       };
     case API_SEARCH_PROFILE_REJECTED:
       return {
