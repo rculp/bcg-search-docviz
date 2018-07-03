@@ -21,12 +21,16 @@ import './Results.scss';
 
 export class ResultsContainer extends Component {
   componentDidMount = () => {
-    const { actions: { search, changeSearchValue }, searchValue, history } = this.props;
-    changeSearchValue(new URL(window.location).searchParams.get('q'));
-    search(searchValue);
+    const { actions: { search, changeSearchValue }, history } = this.props;
+    let q = new URL(window.location).searchParams.get('q');
+    changeSearchValue(q);
+    document.title = `Results${q ? ` | ${q}` : ''}`;
+    search(q);
     this.historyUnlistener = history.listen(() => {
-      changeSearchValue(new URL(window.location).searchParams.get('q'));
-      search(searchValue);
+      q = new URL(window.location).searchParams.get('q');
+      changeSearchValue(q);
+      document.title = `Results${q ? ` | ${q}` : ''}`;
+      search(q);
     });
   };
 

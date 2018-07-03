@@ -15,9 +15,13 @@ import './Home.scss';
 export class HomeContainer extends Component {
   componentDidMount = () => {
     const { actions: { changeSearchValue }, history } = this.props;
-    changeSearchValue(new URL(window.location).searchParams.get('q'));
+    let q = new URL(window.location).searchParams.get('q');
+    changeSearchValue(q);
+    document.title = `Home${q ? ` | ${q}` : ''}`;
     this.historyUnlistener = history.listen(() => {
-      changeSearchValue(new URL(window.location).searchParams.get('q'));
+      q = new URL(window.location).searchParams.get('q');
+      changeSearchValue(q);
+      document.title = `Home${q ? ` | ${q}` : ''}`;
     });
   };
 
