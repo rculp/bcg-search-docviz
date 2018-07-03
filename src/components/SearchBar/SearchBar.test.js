@@ -26,6 +26,13 @@ describe('SearchBar', () => {
     expect(props.submitHandler).toHaveBeenCalledWith('testSearchValue');
   });
 
+  it('should switch to the loading icon when loading results', () => {
+    const component = mount(
+      <SearchBar {...props} isLoading="true" />
+    );
+    expect(component.find('.loadIcons')).to.have.length(1);
+  });
+
   it('should change search value when input value changes', () => {
     const mockEvent = {
       target: {

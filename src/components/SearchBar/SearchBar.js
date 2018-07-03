@@ -30,7 +30,13 @@ class SearchBar extends Component {
         onChange={this.handleChange}
         icon="search"
         iconPosition="left"
-        label={<Button icon className="searchButton" type="submit" onClick={this.fetchResults}>{isLoading ? <div className="iconContainer loadIcons"><Icon name="circle" className="left" /><Icon name="circle" className="middle" /><Icon name="circle" className="right" /></div> : <div className="iconContainer searchIcon"><Icon name="arrow right" /></div>}</Button>}
+        label={
+          <Button icon className="searchButton" type="submit" onClick={this.fetchResults}>
+            {
+              isLoading ? <div className="iconContainer loadIcons"><Icon name="circle" className="left" /><Icon name="circle" className="middle" /><Icon name="circle" className="right" /></div> : <div className="iconContainer searchIcon"><Icon name="arrow right" /></div>
+            }
+          </Button>
+          }
         labelPosition="right"
       />
     );
