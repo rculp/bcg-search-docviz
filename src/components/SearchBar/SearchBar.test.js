@@ -23,12 +23,13 @@ describe('SearchBar', () => {
       <SearchBar {...props} searchValue="testSearchValue" />
     );
     component.find(Button).simulate('click');
-    expect(props.submitHandler).toHaveBeenCalledWith('testSearchValue');
+    expect(props.submitHandler).toHaveBeenCalled();
   });
 
   it('should switch to the loading icon when loading results', () => {
+    props.isLoading = true;
     const component = mount(
-      <SearchBar {...props} isLoading="true" />
+      <SearchBar {...props} />
     );
     expect(component.find('.loadIcons')).to.have.length(1);
   });

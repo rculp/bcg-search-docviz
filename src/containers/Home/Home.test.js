@@ -49,36 +49,6 @@ describe('Home', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('shows error message error is set', () => {
-    const component = shallow(
-      <HomeContainer  actions={mockActions} error={true}/>
-    );
-    expect(component.find(Message).props().header).toEqual('Search Failed');
-  });
-
-  it('should fetch results when submit button is clicked', () => {
-    const component = mount(
-      <StaticRouter context={{}}>
-        <HomeContainer actions={mockActions} searchValue="testSearchValue" />
-      </StaticRouter>
-    );
-    component.find(Button).simulate('click');
-    expect(mockActions.search).toHaveBeenCalledWith('testSearchValue');
-  });
-
-  it('should change search value when input value changes', () => {
-    const mockEvent = {
-      target: {
-        value: 'test'
-      }
-    };
-    const component = shallow(
-      <HomeContainer actions={mockActions}/>
-    );
-    component.find(Input).simulate('change', mockEvent);
-    expect(mockActions.changeSearchValue).toHaveBeenCalledWith('test');
-  });
-
   it('redirects to results page if store contains redirect flag', () => {
     const component = shallow(
       <HomeContainer actions={mockActions} history={mockHistory} shouldRedirect={true} searchValue={'testSearchValue'} />

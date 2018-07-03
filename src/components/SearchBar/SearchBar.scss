@@ -53,12 +53,12 @@
 
     &.left,
     &.right {
-      animation: 3s ease 0s normal forwards 1 fadein;
+      animation: 1s ease 0s normal forwards 1 fadein;
       animation-iteration-count: infinite;
     }
 
     &.middle {
-      animation: 3s ease 0s normal forwards 1 fadeout;
+      animation: 1s ease 0s normal forwards 1 fadeout;
       animation-iteration-count: infinite;
     }
   }
