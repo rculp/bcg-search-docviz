@@ -21,12 +21,12 @@ import './Results.scss';
 
 export class ResultsContainer extends Component {
   componentDidMount = () => {
-    const { actions: { search, changeSearchValue }, history } = this.props;
+    const { actions: { search, changeSearchValue }, searchValue, history } = this.props;
     changeSearchValue(new URL(window.location).searchParams.get('q'));
-    search();
+    search(searchValue);
     this.historyUnlistener = history.listen(() => {
       changeSearchValue(new URL(window.location).searchParams.get('q'));
-      search();
+      search(searchValue);
     });
   };
 

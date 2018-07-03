@@ -1,4 +1,3 @@
-import { store } from 'redux/store';
 import { API_URL } from 'config';
 
 export const name = 'search';
@@ -19,12 +18,10 @@ const initialState = {
 
 export const actions = {
   changeSearchValue: payload => ({ type: CHANGE_SEARCH_VALUE, payload: payload || '' }),
-  search: () => (dispatch) => {
-    const { searchValue } = store.getState()[name];
-
+  search: payload => (dispatch) => {
     dispatch({ type: API_SEARCH_PROFILE_PENDING });
 
-    return fetch(API_URL.SEARCH(searchValue))
+    return fetch(API_URL.SEARCH(payload))
       .then((response) => { // TODO centralize error handling
         if (response.status >= 400 && response.status < 600) {
           dispatch({ type: API_SEARCH_PROFILE_REJECTED, payload: 'Bad response from server' });

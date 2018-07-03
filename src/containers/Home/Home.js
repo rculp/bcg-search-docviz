@@ -14,8 +14,15 @@ import './Home.scss';
 
 export class HomeContainer extends Component {
   componentDidMount = () => {
-    const { actions: { changeSearchValue } } = this.props;
+    const { actions: { changeSearchValue }, history } = this.props;
     changeSearchValue(new URL(window.location).searchParams.get('q'));
+    this.historyUnlistener = history.listen(() => {
+      changeSearchValue(new URL(window.location).searchParams.get('q'));
+    });
+  };
+
+  componentWillUnmount = () => {
+    this.historyUnlistener();
   };
 
   submitHandler = () => {
